@@ -4,5 +4,5 @@ module.exports = app => {
     app.use('/api/store', require('./store.routes.js'))
     app.use('/api/order', require('./order.routes.js'))
     app.use('/api/user', require('./user.routes.js'))
-    // app.use('/api', require('./auth.routes.js'))
+    app.use('/api', require('./auth.routes.js'))
 }
