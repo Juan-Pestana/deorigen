@@ -15,7 +15,12 @@ const userSchema = new Schema({
     orderHistory: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order'
-    }]
+    }],
+    role: {type: String, enum: ['buyer', 'producer', 'admin'], default: 'buyer'},
+    store: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Store'
+    }
 }, {
     timestamps: true
 })
