@@ -68,3 +68,5 @@ router.delete('/deleteProduct/:product_id', (req, res) => {
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
+
+module.exports = router
