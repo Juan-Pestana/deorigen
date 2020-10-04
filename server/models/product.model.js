@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const productSchema = new Schema({
     
-    store: {
+    store: { //CONEXIÓN DUPLICADA pendiente si se queda en Order History o aquí
         type: Schema.Types.ObjectId,
         rel: 'Store'
     },

@@ -41,7 +41,7 @@ const storeSchema = new Schema({
     address: {
         type: String
     },
-    owner: {
+    owner: { //CONEXIÓN ONE TO ONE pendiente si se integra en user o no
         type: Schema.Types.ObjectId,
         rel: 'User'
     },
@@ -49,6 +49,8 @@ const storeSchema = new Schema({
         type: Schema.Types.ObjectId,
         rel: 'Product'
     }]
+    // Pendiente de si se crea array de productos dentro de tienda o se referencia 
+
 }, {
     timestamps: true
 })

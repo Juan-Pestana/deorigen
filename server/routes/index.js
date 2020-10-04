@@ -1,5 +1,4 @@
 module.exports = app => {
-
     // Base URLS
     app.use('/api/product', require('./product.routes.js'))
     app.use('/api/store', require('./store.routes.js'))
