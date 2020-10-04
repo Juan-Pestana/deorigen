@@ -44,7 +44,11 @@ const storeSchema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
         rel: 'User'
-    }
+    },
+    products: [{
+        type: Schema.Types.ObjectId,
+        rel: 'Product'
+    }]
 }, {
     timestamps: true
 })
