@@ -1,7 +1,7 @@
 const express = require ('express')
 const router = express.Router()
 
-const Store = require ('../models/user.model')
+const Store = require ('../models/store.model')
 
 
 //Endpoints
@@ -31,6 +31,14 @@ router.get('getOneStore/:store_id', (req, res) => {
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
+
+router.post('/newStore', (req, res) => {
+
+    Store.create(req.body)
+        .then(response => res.json(response)) //pendiente añadir push a array de productos dentro de store o user.store
+        .catch(err => res.status(500).json(err))
+})
+
 
 router.put('/editStore/:store_id', (req, res, next) => {
 
