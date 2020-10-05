@@ -10,7 +10,8 @@ router.post('/signup', (req, res, next) => {
 
     // const username = req.body.username;
     // const password = req.body.password;
-    const{username, password, email, firstName, lastName, address, phone} = req.body
+    const{username, password, firstName, lastName, address, phone} = req.body
+    const email = username
 
     if (!username || !password) {
         res.status(400).json({ message: 'Empty fields' });
@@ -53,17 +54,17 @@ router.post('/signup', (req, res, next) => {
 
             // Automatically log in user after sign up
             // .login() here is actually predefined passport method
-            // req.login(aNewUser, (err) => {
+            req.login(aNewUser, (err) => {
 
-            //     if (err) {
-            //         res.status(500).json({ message: 'Login error' });
-            //         return;
-            //     }
+                if (err) {
+                    res.status(500).json({ message: 'Login error' });
+                    return;
+                }
 
-            //     // Send the user's information to the frontend
-            //     // We can use also: res.status(200).json(req.user);
+                // Send the user's information to the frontend
+                // We can use also: res.status(200).json(req.user);
                 res.status(200).json(aNewUser);
-            // });
+            });
         });
     });
 });
