@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const productSchema = new Schema({
     
-    store: { //CONEXIÓN DUPLICADA pendiente si se queda en Order History o aquí
+    store: { //CONEXIÓN DUPLICADA pendiente si se queda en Product List de Store o aquí
         type: Schema.Types.ObjectId,
         rel: 'Store'
     },
@@ -31,6 +31,10 @@ const productSchema = new Schema({
         enum: ['meat', `fish`, 'dairy', 'wine', 'veggies'],
         required: true
 
+    },
+    productPicUrl:{
+        type: String,
+        default: "",
     },
     seasonal: {
         type: Boolean,

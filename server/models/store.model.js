@@ -12,17 +12,12 @@ const storeSchema = new Schema({
     tagline:{
         type: String,
         required: true,
-        unique: true,
         trim: true,
-        lowercase: true,
     },
     description:{
         type: String,
         required: true,
-        unique: true,
         trim: true,
-        lowercase: true,
-
     },
     heroPicUrl:{
         type: String,

@@ -4,14 +4,20 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import CardDeck from 'react-bootstrap/CardDeck'
+
+import ProductCard from './productCard'
 
 import productService from './../../../services/product.services'
+
+import './shop.css'
 
 class Shop extends Component {
     constructor() {
         super()
         this.state ={
             products : [],
+            search : ""
 
         }
         this.productService = new productService
@@ -27,14 +33,24 @@ class Shop extends Component {
 
     }
 
+    handleInputChange = e => {
+        let { name, value} = e.target
+        this.setState({ [name]: value })
+    }
+
     render(){
 
         return(
-            <>
-            <ul>
-                {this.state.products.map(elm => <li key = {elm._id}>{elm.productName}</li>)}
-            </ul>
-            </>
+            <Container>
+                <div className="control">
+                    <input className="input" type="text" name="search" value={this.state.search} onChange={this.handleInputChange} placeholder='busque sus productos'/>
+                </div>
+                <Row>
+                    <CardDeck>
+                        {this.state.products.filter(elm => elm.productName.includes(this.state.search)).map(elm => <ProductCard key = {elm._id} {...elm} />)}
+                    </CardDeck>
+                </Row>
+            </Container>
         )
     }
 
