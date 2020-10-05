@@ -11,6 +11,6 @@ export default class UserService {
 
     getAllUsers = () => this.api.get('/user/getAllUsers')
     getOneUser = id => this.api.get(`/user/getOneUser/${id}`)
-    newUser = user => this.api.post('user/newUser', user)
-    updateUser = (id, user) => this.api.put(`user/editUser/${id}`, user)
+    newUser = user => this.api.post('/user/newUser', user)
+    updateUser = (id, user) => this.api.put(`/user/editUser/${id}`, user)
 }
