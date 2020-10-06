@@ -20,7 +20,7 @@ class Shop extends Component {
             search : ""
 
         }
-        this.productService = new productService
+        this.productService = new productService()
     }
 
     componentDidMount = () => this.loadProducts()

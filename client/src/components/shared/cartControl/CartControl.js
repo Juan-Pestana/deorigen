@@ -27,7 +27,7 @@ class ProductCard extends Component {
     })
 
     removeFromCart = () => this.setState({
-        quantity: 0
+        quantity: 0 
     })
 
     render() {

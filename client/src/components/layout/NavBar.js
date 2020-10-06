@@ -59,10 +59,10 @@ export default class extends Component {
     <Nav className="ml-auto">
       <Link className="nav-link" to="/">Home</Link>
       <Link className="nav-link" to="/shop">Tienda</Link>
-      {!this.props.loggedInUser && <div className="nav-link" onClick={() => this.handleSignupModal(true)}>Regístrate</div>}
+      {/* {!this.props.loggedInUser && <div className="nav-link" onClick={() => this.handleSignupModal(true)}>Regístrate</div>}
       {!this.props.loggedInUser && <div className="nav-link" onClick={() => this.handleLoginModal(true)}>Inicia Sesión</div>}
       {this.props.loggedInUser && <div className="nav-link" onClick={this.logoutUser}>Cerrar sesión</div>}
-      <Link className="nav-link" to="/profile">- Hola, {this.props.loggedInUser ? this.props.loggedInUser.firstName : 'invitado'}</Link>
+      <Link className="nav-link" to="/profile">- Hola, {this.props.loggedInUser ? this.props.loggedInUser.firstName : 'invitado'}</Link> */}
       <NavDropdown title={this.props.loggedInUser ? this.props.loggedInUser.firstName : 'Invitado'} id="collasible-nav-dropdown">
         {this.props.loggedInUser && <NavDropdown.Item >Tu Cuenta</NavDropdown.Item>}
         {this.props.loggedInUser && <NavDropdown.Item onClick={this.logoutUser}>Cerrar Sesión</NavDropdown.Item>}
