@@ -24,8 +24,9 @@ class App extends Component {
         }
 
   initializeCart = () => {
-    let cartLocalStorage = localStorage.getItem('deOrigenCart')
-    cartLocalStorage ? console.log('Items en el carrito',cartLocalStorage) : localStorage.setItem('deOrigenCart', [])
+    let cartLocalStorage = (localStorage.getItem('deOrigenCart'))
+    cartLocalStorage ? console.log('Items en el carrito',cartLocalStorage) : localStorage.setItem('deOrigenCart', JSON.stringify([]))
+    //localStorage.setItem('deOrigenCart', JSON.stringify([]))
   }      
     
   componentDidMount = () => this.fetchUser()

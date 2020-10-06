@@ -16,26 +16,64 @@ class ProductCard extends Component {
      constructor() {
         super()
         this.state = {
-            product_id:"",
             quantity : 0
-
         }
     }
 
-    handleQuantity = (num) => this.setState({
-        quantity: this.state.quantity + num
+    componentDidMount = () => this.initializeProductQuantity(this.props.productId)
+    
+    initializeProductQuantity = (productId) => {
+        let cartLocalStorage = JSON.parse(localStorage.getItem('deOrigenCart'))
+
+        cartLocalStorage.forEach(elm => {
+            if (elm.product === productId) {
+                this.setState({quantity : elm.quantity})
+            }
+        })
+    }
+
+    handleQuantity = (num) => {
+        this.setState({quantity : this.state.quantity + num})
+        this.modifyLocalStorageCart(this.props.productId, this.state.quantity + num)    
+    }
+
+    removeFromCart = () => {
+        this.setState({ quantity: 0 })
+        this.removeFromLocalStorageCart(this.props.productId)
+    }
+
+    modifyLocalStorageCart = (productId, quantity) => {
+        let cartLocalStorage = JSON.parse(localStorage.getItem('deOrigenCart'))
+        let itemExists = false
+
+        console.log(cartLocalStorage)
         
-        
-    })
+        cartLocalStorage.forEach(elm => {
+                if (elm.product === productId) {
+                    elm.quantity = quantity
+                    itemExists = true
+                }
+            })
 
-    // modifyLocalStorageCart = (productId, num) => {
-    //     let cartLocalStorage = localStorage.getItem('deOrigenCart')
+        !itemExists && cartLocalStorage.push({product: productId, quantity})
+        localStorage.setItem('deOrigenCart', JSON.stringify(cartLocalStorage))
+    }
 
-    // }
+    removeFromLocalStorageCart = (productId) =>{
+        let cartLocalStorage = JSON.parse(localStorage.getItem('deOrigenCart'))
+        let itemIndex 
 
-    removeFromCart = () => this.setState({
-        quantity: 0
-    })
+        cartLocalStorage.forEach((elm, index) => {
+            if (elm.product === productId) {
+                itemIndex = index
+            }
+        })
+
+        cartLocalStorage.splice(itemIndex, 1)
+        localStorage.setItem('deOrigenCart', JSON.stringify(cartLocalStorage))
+    }
+
+    
 
     render() {
         return (
