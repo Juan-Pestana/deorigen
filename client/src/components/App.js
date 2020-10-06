@@ -20,7 +20,13 @@ class App extends Component {
             loggedInUser: undefined
           }
           this.authService = new authService()
+          this.initializeCart()
         }
+
+  initializeCart = () => {
+    let cartLocalStorage = localStorage.getItem('deOrigenCart')
+    cartLocalStorage ? console.log('Items en el carrito',cartLocalStorage) : localStorage.setItem('deOrigenCart', [])
+  }      
     
   componentDidMount = () => this.fetchUser()
 

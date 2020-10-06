@@ -28,6 +28,11 @@ class ProductCard extends Component {
         
     })
 
+    // modifyLocalStorageCart = (productId, num) => {
+    //     let cartLocalStorage = localStorage.getItem('deOrigenCart')
+
+    // }
+
     removeFromCart = () => this.setState({
         quantity: 0
     })
