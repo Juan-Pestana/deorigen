@@ -24,6 +24,8 @@ class ProductCard extends Component {
 
     handleQuantity = (num) => this.setState({
         quantity: this.state.quantity + num
+        
+        
     })
 
     removeFromCart = () => this.setState({

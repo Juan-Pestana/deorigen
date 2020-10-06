@@ -47,7 +47,8 @@ class Shop extends Component {
                 </div>
                 <Row>
                     <CardDeck>
-                        {this.state.products.filter(elm => elm.productName.includes(this.state.search)).map(elm => <ProductCard key = {elm._id} {...elm} />)}
+                        {this.state.products.filter(elm => elm.productName.includes(this.state.search))
+                                            .map(elm => <ProductCard key = {elm._id} {...elm} />)}
                     </CardDeck>
                 </Row>
             </Container>
