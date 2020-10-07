@@ -13,7 +13,8 @@ class Login extends Component {
         super(props)
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            errorMessage: ''
         }
         this.authService = new authService()
     }
@@ -34,7 +35,9 @@ class Login extends Component {
                 this.props.closeModal()
                 // this.props.history.push('/')
             })
-            .catch(err => console.log('Erroooooor:', { err }))
+            .catch(err => {
+                this.setState({errorMessage : err.response.data.message})
+                console.log('Erroooooor:', { err })})
     }
 
 
@@ -53,8 +56,11 @@ class Login extends Component {
                                     <Form.Label>Contraseña</Form.Label>
                                     <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
                                 </Form.Group>
-
-                                <Button variant="dark" type="submit">Acceder</Button>
+                                <div className = 'd-flex'>
+                                    <Button variant="dark" type="submit">Acceder</Button>
+                                    <p className='text-danger ml-5 my-auto'>{this.state.errorMessage}</p>
+                                </div>
+                                
                             </Form>
 
         )

@@ -1,8 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
+const { populate } = require('../models/user.model')
 
 const User = require('../models/user.model')
+const Store = require('../models/store.model')
+const Products = require('../models/product.model')
 
 // Endpoints
 router.get('/getAllUsers', (req, res) => {
@@ -22,9 +25,11 @@ router.get('/getOneUser/:user_id', (req, res) => {
     }
 
     User.findById(req.params.user_id,)
-        .populate('currentOrder')
-        .populate('orderHistory')
-        .then(response => res.json(response))
+        // .populate('store')
+        .populate('store')
+        
+        // .populate('orderHistory')
+        .then(response => res.json(test))
         .catch(err => res.status(500).json(err))
 })
 
