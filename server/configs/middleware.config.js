@@ -1,9 +1,9 @@
+
+
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const cors = require('cors')
-
-
 const whitelist = [process.env.DOMAIN_LOCAL, process.env.DOMAIN_REMOTE]
 const corsOptions = {
     origin: (origin, cb) => {
@@ -12,7 +12,6 @@ const corsOptions = {
     },
     credentials: true
 }
-
 module.exports = app => {
     app.use(cors(corsOptions))
     app.use(logger('dev'))

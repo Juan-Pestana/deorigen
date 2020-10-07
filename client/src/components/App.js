@@ -5,6 +5,7 @@ import NavBar from './layout/NavBar'
 import Index from './pages/index/Index'
 import Shop from './pages/shop/Shop'
 import Login from './pages/login/Login'
+import Account from './pages/account/Account'
 import Signup from './pages/signup/Signup' 
 
 import authService from './../services/auth.service'
@@ -49,6 +50,7 @@ class App extends Component {
       <>
       <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser}/>
       <Switch>
+          <Route path='/account' render={() => this.state.loggedInUser ? <Account loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />
           <Route path="/" exact render={() => <Index />} />
           <Route path="/shop" render={() => <Shop />} />
           {/* <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} /> */}
