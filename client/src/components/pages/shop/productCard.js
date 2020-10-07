@@ -18,6 +18,7 @@ class ProductCard extends Component {
     }
 
     render() {
+        
         return (
             <Col md={4} lg={3} >
                 <Card className="product-card">
@@ -27,7 +28,7 @@ class ProductCard extends Component {
                         <p className="format">{this.props.format}</p>
                         <p> <span className="price">{this.props.price}</span> €</p>
                         <hr></hr>
-                        <CartControl productId={this.props.id} />
+                        <CartControl productId={this.props._id} />
                     </Card.Body>
                 </Card>
             </Col>
