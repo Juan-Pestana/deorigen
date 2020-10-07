@@ -1,0 +1,15 @@
+.product-card {
+    padding-top: 20px;
+    margin: 10px 0;
+    border: none;
+    min-width: 200px;
+    
+
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
+
+}

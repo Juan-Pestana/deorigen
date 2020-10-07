@@ -73,10 +73,7 @@ class ProductCard extends Component {
         localStorage.setItem('deOrigenCart', JSON.stringify(cartLocalStorage))
     }
 
-    removeFromCart = () => this.setState({
-        quantity: 0 
-    })
-
+   
     render() {
         return (
             <div className="cartControl d-flex justify-content-between">

@@ -19,7 +19,7 @@ const orderSchema = new Schema({
     isClosed: Boolean,
     dateString: String,
 },{
-    timerstamps: true
+    timestamps: true
 })
 
 const Order = mongoose.model("Order", orderSchema)

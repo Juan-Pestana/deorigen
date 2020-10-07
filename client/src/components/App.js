@@ -7,6 +7,8 @@ import Shop from './pages/shop/Shop'
 import Login from './pages/login/Login'
 import Account from './pages/account/Account'
 import Signup from './pages/signup/Signup' 
+import Cart from './pages/cart/Cart' 
+
 
 import authService from './../services/auth.service'
 
@@ -56,6 +58,7 @@ class App extends Component {
           <Route path="/shop" render={() => <Shop />} />
           {/* <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} /> */}
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
+          <Route path="/cart" render={props => <Cart setTheUser={this.setTheUser} {...props} />} />
       </Switch>
         
 

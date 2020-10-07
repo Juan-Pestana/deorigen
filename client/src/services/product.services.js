@@ -15,5 +15,5 @@ export default class ProductService {
     updateProduct = (id, product) => this.api.put(`/product/editProduct/${id}`, product)
     deleteProduct = id => this.api.delete(`/product/deleteProduct/${id}`)
     getProductsFromStore = storeId => this.api.get(`/product/getProductsFromStore/${storeId}`) 
-
+    getProductsFromCart = cartIdArray => this.api.get(`product/getProductsFromCart/${JSON.stringify(cartIdArray)}`)
 }

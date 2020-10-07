@@ -25,6 +25,22 @@ router.get('/getProductsFromStore/:store_id', (req,res) => {
     .catch(err => res.status(500).json(err))
 })
 
+router.get('/getProductsFromCart/:idArray', (req,res) => {
+
+    const idArray = JSON.parse(req.params.idArray)
+    
+    // if (!mongoose.Types.ObjectId.isValid(req.params.store_id)) {
+    //     res.status(400).json({ message: 'Specified id is not valid' })
+    //     return
+    // }
+    
+    Product.find()
+    .where('_id')
+    .in(idArray)
+    .then(response => res.json(response))
+    .catch(err => res.status(500).json(err))
+})
+
 
 router.get('/getOneProduct/:product_id', (req, res) => {
 
