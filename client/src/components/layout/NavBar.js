@@ -7,10 +7,13 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+import './NavBar.css'
+
 import authService from './../../services/auth.service'
 
 import Signup from './../pages/signup/Signup'
 import Login from './../pages/login/Login'
+import Cart from './../pages/cart/Cart'
 
 
 
@@ -21,7 +24,8 @@ export default class extends Component {
         super(props)
         this.state = {
             showSignupModal : false,
-            showLoginModal : false
+            showLoginModal : false,
+            showCartModal : false,
         }
         this.authService = new authService()
 
@@ -36,6 +40,7 @@ export default class extends Component {
 
     handleSignupModal = showSignupModal => this.setState({ showSignupModal })
     handleLoginModal = showLoginModal => this.setState({ showLoginModal })
+    handleCartModal = showCartModal => this.setState({ showCartModal })
 
 
     render() {
@@ -71,6 +76,7 @@ export default class extends Component {
         {!this.props.loggedInUser &&<NavDropdown.Item onClick={() => this.handleSignupModal(true)}>Regístrate</NavDropdown.Item>}
 
       </NavDropdown>
+      <div className="nav-link" onClick={() => this.handleCartModal(true)}>Carrito</div>
     </Nav>
 
   </Navbar.Collapse>
@@ -91,6 +97,15 @@ export default class extends Component {
     </Modal.Header>
     <Modal.Body>
                 <Login  setTheUser = {this.props.setTheUser} closeModal={() => this.handleLoginModal(false)}/>
+    </Modal.Body>
+</Modal>
+
+<Modal show={this.state.showCartModal} onHide={() => this.handleCartModal(false)} size="lg">
+    <Modal.Header closeButton>
+    <Modal.Title>Tu Carrito</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+                <Cart  setTheUser = {this.props.setTheUser} closeModal={() => this.handleCartModal(false)}/>
     </Modal.Body>
 </Modal>
 

@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
-import CartControl from './../../shared/cartControl/CartControl'
+import CartControl from '../../shared/cartControl/CartControl'
 
-class ProductCard extends Component {
+class CartCard extends Component {
 
      constructor() {
         super()
@@ -18,23 +19,26 @@ class ProductCard extends Component {
     }
 
     render() {
-        
+        console.log(this.props)
         return (
-            <Col md={4} lg={3} >
-                <Card className="product-card">
-                    <Card.Img variant="top" src={this.props.productPicUrl} />
-                    <Card.Body>
+            <Col >
+                <Row className="product-card">
+                    <Col xs={4} >
+                        <img className="cart-image" src={this.props.productPicUrl} />
+                    </Col>
+                    <Col xs={8}>
                         <h6>{this.props.productName}</h6>
                         <p className="format">{this.props.format}</p>
                         <p> <span className="price">{this.props.price}</span> €</p>
                         <hr></hr>
                         <CartControl productId={this.props._id} />
-                    </Card.Body>
-                </Card>
+                    </Col>
+                    
+                </Row>
             </Col>
 
         )
     }
 }
 
-export default ProductCard
+export default CartCard
