@@ -3,6 +3,7 @@ const router = express.Router()
 const mongoose = require('mongoose')
 
 const Store = require ('../models/store.model')
+const Product = require ('../models/product.model')
 
 //Endpoints
 
@@ -28,7 +29,8 @@ router.get('/getOneStore/:store_id', (req, res) => {
     }
 
     Store.findById(req.params.store_id)
-        .populate('owner')
+        // .populate('owner')
+        .populate('products')
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
