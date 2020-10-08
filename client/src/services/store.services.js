@@ -10,7 +10,7 @@ export default class StoreService {
     }
 
     
-    getOneStore = id => this.api.get(`/store/getOneOrder/${id}`)
-    newStore = order => this.api.post('/store/newOrder', order)
-    updateStore = (id, store) => this.api.put(`/store/editOrder/${id}`, store)
+    getOneStore = id => this.api.get(`/store/getOneStore/${id}`)
+    newStore = order => this.api.post('/store/newStore', order)
+    updateStore = (id, store) => this.api.put(`/store/editStore/${id}`, store)
 }

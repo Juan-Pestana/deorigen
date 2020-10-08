@@ -5,7 +5,7 @@ const productSchema = new Schema({
     
     store: { //CONEXIÓN DUPLICADA pendiente si se queda en Product List de Store o aquí
         type: Schema.Types.ObjectId,
-        rel: 'Store'
+        ref: 'Store'
     },
     productName:{
         type: String,
