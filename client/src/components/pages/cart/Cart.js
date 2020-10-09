@@ -70,6 +70,7 @@ class Cart extends Component {
 
 
     render(){
+        console.log('busca las props de router', this.props)
         console.log(this.state)
         return(
             <Container onClick={this.loadProductsFromLocalStorage}> 

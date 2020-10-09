@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
+import userService from './../../../services/user.services'
 
 
 class PersonalInfo extends Component {
@@ -10,8 +11,21 @@ class PersonalInfo extends Component {
        super()
        this.state = {
            quantity : 0,
-           isClosing: '' 
+           isClosing: '',
+           user : {}
+
        }
+       this.userService = new userService()
+   }
+
+   componentDidMount = () => this.setUserFromDB()
+
+   setUserFromDB = () => {
+       this.userService
+            .getOneUser(this.props.user._id)
+            .then(response => this.setState({user : response.data}))
+            .catch(err => console.log('Error:', err))
+
    }
    componentDidMount = () => this.checkCloseOrder()
 
@@ -21,7 +35,7 @@ class PersonalInfo extends Component {
     // peticion a la base de datos, para  estado actualizado 
 
    render (){
-       console.log(this.props)
+    
 
     return(
         <>
@@ -29,19 +43,19 @@ class PersonalInfo extends Component {
             <button onClick={()=>this.props.setShow('PersonalInfoForm')} className='btn btn-outline-secondary btn-sm float-right mr-3'>Editar</button>
     
             <label className = 'text-muted'>Nombre</label>
-            <p>{this.props.user.firstName}</p>
+            <p>{this.state.user.firstName}</p>
             <hr className='mb-2'/>
             <label className = 'text-muted'>Apellido</label>
-            <p>{this.props.user.lastName}</p>
+            <p>{this.state.user.lastName}</p>
             <hr className='mb-2'/>
             <label className = 'text-muted'>Dirección</label>
-            <p>{this.props.user.address}</p>
+            <p>{this.state.user.address}</p>
             <hr className='mb-2'/>
             <label className = 'text-muted'>Email</label>
-            <p>{this.props.user.email}</p>
+            <p>{this.state.user.email}</p>
             <hr className='mb-2'/>
             <label className = 'text-muted'>Teléfono</label>
-            <p>{this.props.user.phone}</p>
+            <p>{this.state.user.phone}</p>
             <hr className='mb-2'/>
 
             {this.state.isClosing && 

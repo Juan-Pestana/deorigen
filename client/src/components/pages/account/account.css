@@ -2,4 +2,14 @@
 
 .accountPage{
     height: 90vh;
+
+
+}
+
+.storeProducts .cartControl {
+    display : none !important;
+}
+
+.heroPic {
+    height: 100px;
 }

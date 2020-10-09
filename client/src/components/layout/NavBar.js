@@ -73,7 +73,7 @@ export default class extends Component {
       {this.props.loggedInUser && <div className="nav-link" onClick={this.logoutUser}>Cerrar sesión</div>}
       <Link className="nav-link" to="/profile">- Hola, {this.props.loggedInUser ? this.props.loggedInUser.firstName : 'invitado'}</Link> */}
       <NavDropdown title={this.props.loggedInUser ? this.props.loggedInUser.firstName : 'Invitado'} id="collasible-nav-dropdown">
-        {this.props.loggedInUser && <NavDropdown.Item><Link to='/account' className= 'nav-link  '>Tu Cuenta</Link></NavDropdown.Item>}
+        {this.props.loggedInUser && <NavDropdown.Item><Link to='/account' className= 'dropdown-item'>Tu Cuenta</Link></NavDropdown.Item>}
         {this.props.loggedInUser && <NavDropdown.Item onClick={this.logoutUser }>Cerrar Sesión</NavDropdown.Item>}
         
         {!this.props.loggedInUser &&<NavDropdown.Item onClick={() => this.handleLoginModal(true)}>Inicia Sesión</NavDropdown.Item>}
