@@ -15,6 +15,8 @@ import authService from './../services/auth.service'
 
 import './App.css'
 
+
+
 class App extends Component {
 
         constructor() {
@@ -61,7 +63,7 @@ class App extends Component {
           <Route path="/cart" render={props => <Cart setTheUser={this.setTheUser} {...props} />} />
       </Switch>
         
-
+      
         
       </>
     );

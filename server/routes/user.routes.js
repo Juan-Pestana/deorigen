@@ -29,7 +29,7 @@ router.get('/getOneUser/:user_id', (req, res) => {
         .populate('store')
         
         // .populate('orderHistory')
-        .then(response => res.json(test))
+        .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
 
