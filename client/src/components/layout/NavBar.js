@@ -40,7 +40,11 @@ export default class extends Component {
 
     handleSignupModal = showSignupModal => this.setState({ showSignupModal })
     handleLoginModal = showLoginModal => this.setState({ showLoginModal })
-    handleCartModal = showCartModal => this.setState({ showCartModal })
+    
+    handleCartModal = (showCartModal,link) => {
+        this.setState({ showCartModal })
+        this.props.refreshPage(link)
+        }   
 
 
     render() {
@@ -100,12 +104,12 @@ export default class extends Component {
     </Modal.Body>
 </Modal>
 
-<Modal show={this.state.showCartModal} onHide={() => this.handleCartModal(false)} size="lg">
+<Modal show={this.state.showCartModal} onHide={() => this.handleCartModal(false, window.location.pathname)} size="lg">
     <Modal.Header closeButton>
     <Modal.Title>Tu Carrito</Modal.Title>
     </Modal.Header>
     <Modal.Body>
-                <Cart  setTheUser = {this.props.setTheUser} closeModal={() => this.handleCartModal(false)}/>
+                <Cart  setTheUser = {this.props.setTheUser} closeModal={this.handleCartModal}/>
     </Modal.Body>
 </Modal>
 

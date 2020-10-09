@@ -22,7 +22,8 @@ class App extends Component {
         constructor() {
           super()
           this.state = {
-            loggedInUser: undefined
+            loggedInUser: undefined,
+            refreshUrl:''
           }
           this.authService = new authService()
           this.initializeCart()
@@ -46,6 +47,10 @@ class App extends Component {
         .catch(err => this.setState({ loggedInUser: null }))
     }
 
+    refreshPage = (pathname) => {
+      this.setState({refreshUrl : pathname})
+    }
+
 
 
 
@@ -53,14 +58,15 @@ class App extends Component {
   render() {
     return (
       <>
-      <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser}/>
+      <NavBar setTheUser={this.setTheUser} {...this.props} loggedInUser={this.state.loggedInUser} refreshPage={this.refreshPage}/>
       <Switch>
+          { this.state.refreshUrl && <Redirect push to={this.state.refreshUrl} onLoad={this.refreshPage('')} ></Redirect>}
           <Route path='/account' render={() => this.state.loggedInUser ? <Account loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />
           <Route path="/" exact render={() => <Index />} />
           <Route path="/shop" render={() => <Shop />} />
           {/* <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} /> */}
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
-          <Route path="/cart" render={props => <Cart setTheUser={this.setTheUser} {...props} />} />
+          <Route path="/order" render={props => <Cart setTheUser={this.setTheUser} {...props} />} />
       </Switch>
         
       
