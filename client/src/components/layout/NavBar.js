@@ -43,7 +43,7 @@ export default class extends Component {
     
     handleCartModal = (showCartModal,link) => {
         this.setState({ showCartModal })
-        this.props.refreshPage(link)
+        !this.props.loggedInUser && link === '/order'? this.handleLoginModal (true,) : this.props.refreshPage(link)
         }   
 
 
