@@ -13,4 +13,7 @@ export default class OrderService {
     getOneOrder = id => this.api.get(`/order/getOneOrder/${id}`)
     newOrder = order => this.api.post('/order/newOrder', order)
     updateOrder = (id, order) => this.api.put(`order/editOrder/${id}`, order)
+
+    getShippingExpenses = () => this.api.get('/order/getShippingExpenses')
+    checkPayment = (paymentRequest) => this.api.post(`/order/checkPayment`, paymentRequest)
 }

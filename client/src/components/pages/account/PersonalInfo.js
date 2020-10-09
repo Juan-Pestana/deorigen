@@ -18,7 +18,10 @@ class PersonalInfo extends Component {
        this.userService = new userService()
    }
 
-   componentDidMount = () => this.setUserFromDB()
+   componentDidMount = () => {
+        this.setUserFromDB()
+        this.checkCloseOrder()
+   }
 
    setUserFromDB = () => {
        this.userService
@@ -27,7 +30,6 @@ class PersonalInfo extends Component {
             .catch(err => console.log('Error:', err))
 
    }
-   componentDidMount = () => this.checkCloseOrder()
 
    checkCloseOrder = () => {
     this.props.closing && this.setState({isClosing : true})
@@ -61,7 +63,7 @@ class PersonalInfo extends Component {
             {this.state.isClosing && 
                                 <Row style={{ padding: "25px"}}>
                                     <Button style={{ padding: "10px"}}className="btn btn-secondary btn-block" 
-                                            onClick={() => this.props.setShow('PaymentInfo')}> Confirmar Datos personales </Button> 
+                                            onClick={() => this.props.setShow('PaymentInfoForm')}> Confirmar Datos personales </Button> 
                                 </Row>
             }
         </div>

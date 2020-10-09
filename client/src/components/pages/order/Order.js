@@ -4,7 +4,7 @@ import storeService from '../../../services/store.services'
 
 import Cart from './../cart/Cart'
 import PersonalInfo from './../account/PersonalInfo'
-import PersonalInfoForm from './../account/PersonalInfoForm'
+import PaymentInfoForm from './PaymentInfoForm'
 
 import './order.css'
 
@@ -41,13 +41,13 @@ class Order extends Component {
             <nav className = 'col-3 d-flex flex-column pt-5 bg-light align-items-center'> 
                     <div className='nav-link p-3' onClick={() => this.setShow('Cart')}>Listado de productos</div>    
                     <div className='nav-link p-3' onClick={() => this.setShow('PersonalInfo')}>Información Personal</div>
-                    {/* <div className='nav-link p-3' onClick={this.setShow('cart')}>Ultimos Pedidos</div> */}
+                    <div className='nav-link p-3' onClick={() => this.setShow('PaymentInfoForm')}>Información de pago</div>
            </nav>
             <div className = 'col-9 d-flex mt-5'> 
                 
                 {this.state.show == 'Cart' && <Cart user={this.props.loggedInUser} setShow={this.setShow} closing={true}></Cart>}   
                 {this.state.show == 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} setShow={this.setShow} closing={true}></PersonalInfo>}   
-                {this.state.show == 'PersonalInfoForm' && <PersonalInfoForm user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfoForm>} 
+                {this.state.show == 'PaymentInfoForm' && <PaymentInfoForm user={this.props.loggedInUser} setShow={this.setShow}></PaymentInfoForm>} 
             </div>
             
             
