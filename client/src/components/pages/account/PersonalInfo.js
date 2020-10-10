@@ -10,7 +10,6 @@ class PersonalInfo extends Component {
     constructor() {
        super()
        this.state = {
-           quantity : 0,
            isClosing: '',
            user : {}
 

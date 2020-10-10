@@ -13,4 +13,5 @@ export default class UserService {
     getOneUser = id => this.api.get(`/user/getOneUser/${id}`)
     newUser = user => this.api.post('/user/newUser', user)
     updateUser = (id, user) => this.api.put(`/user/editUser/${id}`, user)
+    deleteUser = id => this.api.delete(`/user/deleteUser/${id}`)
 }

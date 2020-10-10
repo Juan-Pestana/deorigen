@@ -53,5 +53,17 @@ router.put('/editUser/:user_id', (req, res, next) => {
         .catch(err => res.status(500).json(err))
 })
 
+router.delete('/deleteUser/:user_id', (req, res) => {
+    
+    if (!mongoose.Types.ObjectId.isValid(req.params.user_id)) {
+        res.status(400).json({ message: 'Specified id is not valid' })
+        return
+    }
+
+    User.findByIdAndRemove(req.params.product_id)
+        .then(response => res.json(response))
+        .catch(err => res.status(500).json(err))
+})
+
 
 module.exports = router
