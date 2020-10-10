@@ -48,7 +48,7 @@ class StoreSettingsForm extends Component {
             .catch(err => console.log('Erroro!!', { err }))
     }
 
-    handleImageUpload = e => {
+    contentPicUpload = e => {
 
         // const picUrl = e.target.name
         const uploadData = new FormData()
@@ -63,6 +63,27 @@ class StoreSettingsForm extends Component {
             })
 
             .catch(err => console.log('Erroro!!', { err }))
+    }
+
+    heroPicUpload = e => {
+
+        // const picUrl = e.target.name
+        const uploadData = new FormData()
+        uploadData.append( 'imageUrl', e.target.files[0])
+
+        console.log(uploadData)
+        this.filesService
+            .uploadImage(uploadData)
+            .then(response => {
+                console.log(response)
+                this.setState({ heroPicUrl : response.data.secure_url})
+            })
+
+            .catch(err => console.log('Erroro!!', { err }))
+    }
+
+    setLocation = location => {
+        this.setState({location})
     }
 
 
@@ -90,16 +111,16 @@ class StoreSettingsForm extends Component {
 
                 <Form.Group>
                     <Form.Label>Foto Header</Form.Label>
-                    <Form.Control type="file" name="heroPicUrl" onChange={this.handleImageUpload} />
+                    <Form.Control type="file" name="heroPicUrl" onChange={this.heroPicUpload} />
                 </Form.Group>
 
                 <Form.Group>
                     <Form.Label>Foto Contenido</Form.Label>
-                    <Form.Control type="file" name="imageUrl" onChange={this.handleImageUpload} />
+                    <Form.Control type="file" name="imageUrl" onChange={this.contentPicUpload} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Localización</Form.Label>
-                    <LocationSearchInput />
+                    <LocationSearchInput setLocation ={this.setLocation}/>
                 </Form.Group>
 
 

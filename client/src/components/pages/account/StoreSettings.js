@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 import storeService from './../../../services/store.services'
+import productService from './../../../services/product.services'
 import ProductCard from './../shop/productCard'
 
 
@@ -14,6 +15,7 @@ class StoreSettings extends Component {
 
        }
        this.storeService = new storeService()
+       this.productService= new productService()
    }
 
    componentDidMount = () => this.setStoreFromDB()
@@ -26,11 +28,28 @@ class StoreSettings extends Component {
 
    }
 
+  
+
+   deleteProduct = id => {
+        const update = this.state.store.products
+        update.splice(update.indexOf(id), 1)
+
+       this.productService
+            .deleteProduct(id)
+            .then(this.setState({
+                store: {...this.state.store, products: update}
+            }))
+            .catch(err => console.log('Error:', err))
+
+
+   }
+
     
 
 
    render (){
        console.log(this.state.store)
+    //    const products = this.state.store.products.map(elem =>{ <ProductCard key = {elm._id} {...elm} /> <div><button>Editar</button><button>Eliminar</button></div>})
     
 
     return(
@@ -70,10 +89,16 @@ class StoreSettings extends Component {
         <div className='mt-5'>
             <h2>Tus Productos a la venta</h2>
             <hr></hr>
-            <button className='btn btn-outline-secondary btn-sm float-right mr-3'>Crear Producto</button>
-            <div className='container'>
-                <div className= 'row storeProducts'>
-                {this.state.store.products && this.state.store.products.map(elm=><ProductCard key = {elm._id} {...elm} />)}
+            <button onClick={()=>this.props.setShow('CreateProductForm')} className='btn btn-outline-secondary btn-sm float-right mr-3'>Crear Producto</button>
+            <div className='container storeProducts'>
+                <div className= 'row'>
+             
+                {this.state.store.products && this.state.store.products.map(elm=><div className='col-sm-6 col-md-4' key = {elm._id}><ProductCard  {...elm} />
+                    <div className='btn-group d-flex justify-content-center mr-3'>
+                        <button onClick={()=> this.deleteProduct(elm._id)}  className='btn btn-outline-dark btn-sm'>eliminar</button>
+                        <button onClick={this.props.productToEdit(elm.id)} className='btn btn-dark btn-sm'>editar</button>
+                    </div>
+                </div>)}
                   
             
             </div>

@@ -6,6 +6,8 @@ import PersonalInfo from './PersonalInfo'
 import PersonalInfoForm from './PersonalInfoForm'
 import StoreSettings from './StoreSettings'
 import StoreSettingsForm from './StoreSettingsForm'
+import CreateProductForm from './CreateProductForm'
+import EditProduct from './EditProduct'
 
 import './account.css'
 // import Store from '../../../../../server/models/store.model'
@@ -16,7 +18,8 @@ class Account extends Component {
         this.state ={
             user : null,
             store: null,
-            show: 'PersonalInfo'
+            show: 'PersonalInfo',
+            productToEdit: null
 
         }
         this.storeService = new storeService()
@@ -52,7 +55,12 @@ class Account extends Component {
 
     setShow = (pageShow) => {
         console.log('cambia a ', pageShow)
-        this.setState({show : pageShow})}
+        this.setState({show : pageShow})
+    }
+
+    productToEdit = id =>{
+        this.setState({productToEdit : id}, this.setShow('EditProduct'))
+    }
 
 
     render(){
@@ -73,9 +81,10 @@ class Account extends Component {
 
                {this.state.show == 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfo>}   
                {this.state.show == 'PersonalInfoForm' && <PersonalInfoForm user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfoForm>}
-               {this.state.show == 'StoreSettings' && <StoreSettings user={this.props.loggedInUser} setShow={this.setShow}></StoreSettings>}
-               {this.state.store && this.state.show == 'StoreSettingsForm' && <StoreSettingsForm store={this.state.store} setShow={this.setShow}></StoreSettingsForm>}
-
+               {this.state.show == 'StoreSettings' && <StoreSettings user={this.props.loggedInUser} setShow={this.setShow} productToEdit = {()=>this.productToEdit}></StoreSettings>}
+               {this.state.store && this.state.show == 'StoreSettingsForm' && <StoreSettingsForm store={this.state.store} setShow={this.setShow} ></StoreSettingsForm>}
+               {this.state.store && this.state.show == 'CreateProductForm' && <CreateProductForm store={this.state.store} setShow={this.setShow}></CreateProductForm>}
+               {this.state.store && this.state.show == 'EditProduct' && <EditProduct product={this.state.productToEdit} setShow={this.setShow}></EditProduct>}
             </div>
             
             
