@@ -18,7 +18,7 @@ import Cart from './../pages/cart/Cart'
 
 
 
-export default class extends Component {
+export default class NavBar extends Component {
 
     constructor(props) {
         super(props)
@@ -43,7 +43,7 @@ export default class extends Component {
     
     handleCartModal = (showCartModal,link) => {
         this.setState({ showCartModal })
-        this.props.refreshPage(link)
+        !this.props.loggedInUser && link === '/order'? this.handleLoginModal (true,) : this.props.refreshPage(link)
         }   
 
 

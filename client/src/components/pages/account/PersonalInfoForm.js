@@ -20,11 +20,12 @@ class PersonalInfoForm extends Component {
     }
 
 
-    componentDidMount = () => this.setUser()
-
+    componentDidMount = () => {
+        this.setUser()
+        
+    }
     setUser = () => {
         this.setState ({...this.props.user})
-
     }
 
 

@@ -7,15 +7,17 @@ const orderSchema = new Schema({
         ref: 'User'
     },
     productList: [{
-        productItem: {  
             product:{
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Product'
             } ,
-            quantity:{type: Number, min: 0, default: 1}
-        }      
+            quantity:{type: Number, min: 0, default: 1}         
     }],
     total: { type: Number, min:0},
+    payment:{
+        cardName: String,
+        cardNumber: Number
+    },
     isClosed: Boolean,
     dateString: String,
 },{

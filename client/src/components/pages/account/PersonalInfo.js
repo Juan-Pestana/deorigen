@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import Row from 'react-bootstrap/Row'
+import Button from 'react-bootstrap/Button'
 import userService from './../../../services/user.services'
 
 
@@ -8,14 +10,18 @@ class PersonalInfo extends Component {
     constructor() {
        super()
        this.state = {
-           user : {},
-           quantity : 0
+           quantity : 0,
+           isClosing: '',
+           user : {}
 
        }
        this.userService = new userService()
    }
 
-   componentDidMount = () => this.setUserFromDB()
+   componentDidMount = () => {
+        this.setUserFromDB()
+        this.checkCloseOrder()
+   }
 
    setUserFromDB = () => {
        this.userService
@@ -25,8 +31,10 @@ class PersonalInfo extends Component {
 
    }
 
-    
-
+   checkCloseOrder = () => {
+    this.props.closing && this.setState({isClosing : true})
+}
+    // peticion a la base de datos, para  estado actualizado 
 
    render (){
     
@@ -51,6 +59,13 @@ class PersonalInfo extends Component {
             <label className = 'text-muted'>Teléfono</label>
             <p>{this.state.user.phone}</p>
             <hr className='mb-2'/>
+
+            {this.state.isClosing && 
+                                <Row style={{ padding: "25px"}}>
+                                    <Button style={{ padding: "10px"}}className="btn btn-secondary btn-block" 
+                                            onClick={() => this.props.setShow('PaymentInfoForm')}> Confirmar Datos personales </Button> 
+                                </Row>
+            }
         </div>
         
         </>

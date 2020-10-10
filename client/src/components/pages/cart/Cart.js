@@ -19,22 +19,21 @@ class Cart extends Component {
         this.state ={
             productList : [],
             subtotal : "",
-            category: ''
+            isClosing: ''
 
         }
         this.productService = new productService()
     }
 
-    componentDidMount = () => this.loadProductsFromLocalStorage()
+    componentDidMount = () => {
+        this.loadProductsFromLocalStorage()
+        this.checkCloseOrder()
+    }
 
-    // componentDidUpdate = () => {
-    //     let cartLocalStorage = JSON.parse(localStorage.getItem('deOrigenCart'))
-    //     if (cartLocalStorage.length != this.state.productList.length) {
-    //         console.log('Entra')
-    //         this.loadProductsFromLocalStorage()
-    //     }
-    // }
-
+    checkCloseOrder = () => {
+        this.props.closing && this.setState({isClosing : true})
+    }
+  
     loadProductsFromLocalStorage = () =>{
         let cartLocalStorage = JSON.parse(localStorage.getItem('deOrigenCart'))
         
@@ -58,8 +57,6 @@ class Cart extends Component {
         else{
             this.setState({productList:[], subtotal: 0})
         }
-
-
     }
 
     updateSubtotal = () => {
@@ -67,9 +64,9 @@ class Cart extends Component {
             console.log(subtotalArr, typeof(subtotalArr[0]))
             const subtotal = subtotalArr.reduce(function(a, b){ return parseFloat(a) + parseFloat(b) })
             console.log(subtotal)
-            this.setState({subtotal})
-        
+            this.setState({subtotal})     
     }
+
 
 
     render(){
@@ -87,14 +84,21 @@ class Cart extends Component {
                         <Row className={"justify-content-center"} style={{ padding : "20px"}}>
                             <h4>Total aproximado: {this.state.subtotal}</h4>
                         </Row>
-                        {this.state.productList.length === 0 && 
+                        {(!this.state.isClosing && this.state.productList.length === 0) && 
                                 <Row style={{ padding: "25px"}}>
                                     <Button to="/shop" style={{ padding: "10px"}}className="btn btn-secondary btn-block" onClick={() => this.props.closeModal(false,"/shop")}> Ir a la Tienda </Button> 
                                 </Row>
                         }
-                        {this.state.productList.length > 0 && 
+                        {(!this.state.isClosing && this.state.productList.length > 0 )&& 
                                 <Row style={{ padding: "25px"}}>
                                     <Button to="/order" style={{ padding: "10px"}}className="btn btn-secondary btn-block" onClick={() => this.props.closeModal(false,"/order")}> Tramitar Pedido </Button> 
+                                </Row>
+                        }
+
+                        {(this.state.isClosing && this.state.productList.length > 0 )&& 
+                                <Row style={{ padding: "25px"}}>
+                                    <Button to="/order" style={{ padding: "10px"}}className="btn btn-secondary btn-block" 
+                                            onClick={() => this.props.setShow('PersonalInfo')}> Confirmar Productos </Button> 
                                 </Row>
                         }
 
