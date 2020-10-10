@@ -53,13 +53,7 @@ export default class NavBar extends Component {
             <Navbar bg="light" expand="lg">
             <Link to="/">
                 <Navbar.Brand>
-                    <img
-                        src="https://lh3.googleusercontent.com/proxy/x66LNY4JqxId1kUgVuwA2adPZxsuiU68JjPs7iT79tzI9ps36X9TfvPiZJGIySrORiXBP7H7EiXyqavBJ04Uc8N4zNKwS9Wbvn3iqdAaeYpu791iBg"
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
-                        alt="React Bootstrap logo"
-                    />{' '} De Origen
+                    {' '} De Origen
                 </Navbar.Brand>
             </Link>
           
