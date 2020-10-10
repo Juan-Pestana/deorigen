@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default class CoasterService {
+export default class fileService {
 
     constructor() {
         this.api = axios.create({
