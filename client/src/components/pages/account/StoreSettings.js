@@ -48,8 +48,8 @@ class StoreSettings extends Component {
 
 
    render (){
-       console.log(this.state.store)
-    //    const products = this.state.store.products.map(elem =>{ <ProductCard key = {elm._id} {...elm} /> <div><button>Editar</button><button>Eliminar</button></div>})
+      
+    console.log(this.props)
     
 
     return(
@@ -96,7 +96,7 @@ class StoreSettings extends Component {
                 {this.state.store.products && this.state.store.products.map(elm=><div className='col-sm-6 col-md-4' key = {elm._id}><ProductCard  {...elm} />
                     <div className='btn-group d-flex justify-content-center mr-3'>
                         <button onClick={()=> this.deleteProduct(elm._id)}  className='btn btn-outline-dark btn-sm'>eliminar</button>
-                        <button onClick={this.props.productToEdit(elm.id)} className='btn btn-dark btn-sm'>editar</button>
+                        <button onClick={()=> this.props.productToEdit(elm._id)} className='btn btn-dark btn-sm'>editar</button>
                     </div>
                 </div>)}
                   

@@ -36,7 +36,7 @@ class EditProduct extends Component {
             console.log('este es el id', this.props.product)
         this.productService
             .getOneProduct(this.props.product)
-            .then(response => this.setState({...response}))
+            .then(response => this.setState({...response.data}))
             .catch(err => console.log('Erroro!!', { err }))
 
     }

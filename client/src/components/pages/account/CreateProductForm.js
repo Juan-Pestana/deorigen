@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import LocationSearchInput from './LocationSearchInput'
+
 
 import productService from '../../../services/product.services'
 import storeService from '../../../services/store.services'
