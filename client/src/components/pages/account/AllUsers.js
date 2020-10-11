@@ -44,7 +44,7 @@ class AllUsers extends Component {
 
     deleteOneUser = id => {
         const update = this.state.users
-        const index = update.findIndex(elem => elem.id === id)
+        const index = update.findIndex(elem => elem.id === id)  //ojo y si tiene una tienda???
         update.splice(index-1, 1)
 
         this.userService
@@ -62,7 +62,7 @@ class AllUsers extends Component {
     return(
         <>
         <div className= 'container'>
-        {/* {this.state.users && this.state.users.map(elem => <EachUser key={elem.id} user={...elem} deleteUser={this.deleteOneUser} /> )} */}
+        {this.state.users && this.state.users.map(elem => <EachUser key={elem.id} {...elem} deleteUser={this.deleteOneUser} setShow ={this.props.setShow}/> )}
 
         </div>
         
