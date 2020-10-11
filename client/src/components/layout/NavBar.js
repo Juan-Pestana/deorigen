@@ -51,9 +51,9 @@ export default class NavBar extends Component {
     render() {
         return (
             <>
-            <Container fluid className="bg-dark">
+            <Container fluid="md" className="bg-dark">
             
-            <Navbar className="NavBar" bg="dark" variant="dark" expand="lg" sticky="top">
+            <Navbar className="NavBar px-lg-5" bg="dark" variant="dark" expand="lg" fixed="top" >
             <Link to="/">
                 <Navbar.Brand>
                 <img

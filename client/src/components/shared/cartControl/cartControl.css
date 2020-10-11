@@ -17,3 +17,26 @@
     height: 30px;
     margin: 4px;
 }
+
+@media (max-width: 768px) {
+    .cartControl .quantity {
+        font-size: 1.1em
+    }
+
+    .cart-icons  img {
+        width: 20px;
+        height: 20px;
+        margin: 2px;
+    }
+
+    .format {
+        font-size: .8em
+    }
+
+    hr {
+        margin: 4px 0
+    }
+
+
+
+}

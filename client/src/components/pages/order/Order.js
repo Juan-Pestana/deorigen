@@ -2,6 +2,10 @@ import React, {Component} from 'react'
 
 import storeService from '../../../services/store.services'
 
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 import Cart from './../cart/Cart'
 import PersonalInfo from './../account/PersonalInfo'
 import PaymentInfoForm from './PaymentInfoForm'
@@ -36,24 +40,26 @@ class Order extends Component {
 
         return(
 
-        <>
-        <div className = 'row accountPage'>
-            <nav className = 'col-3 d-flex flex-column pt-5 bg-light align-items-center'> 
+        <Container className="page px-0 px-md-3">
+        <Row className="d-none d-md-block">
+            <nav className = 'col d-flex pt-5 bg-light align-items-center'> 
                     <div className='nav-link p-3' onClick={() => this.setShow('Cart')}>Listado de productos</div>    
                     <div className='nav-link p-3' onClick={() => this.setShow('PersonalInfo')}>Información Personal</div>
                     <div className='nav-link p-3' onClick={() => this.setShow('PaymentInfoForm')}>Información de pago</div>
            </nav>
-            <div className = 'col-9 d-flex mt-5'> 
+        </Row>    
+        <Row>
+            <div className = 'col d-flex mt-5'> 
                 
                 {this.state.show == 'Cart' && <Cart user={this.props.loggedInUser} setShow={this.setShow} closing={true}></Cart>}   
                 {this.state.show == 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} setShow={this.setShow} closing={true}></PersonalInfo>}   
                 {this.state.show == 'PaymentInfoForm' && <PaymentInfoForm user={this.props.loggedInUser} setShow={this.setShow}></PaymentInfoForm>} 
             </div>
+        </Row>    
             
-            
-        </div>
+        
            
-        </>
+        </Container>
         )
     }
 

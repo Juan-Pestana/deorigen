@@ -4,11 +4,11 @@ body {
   font-family: 'Open Sans', sans-serif;;
   font-weight: 400;
   font-size:1em;
+  background-image: url(https://images.unsplash.com/photo-1524491596574-ffd31af46beb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
-
-
-
 
 .App {
   text-align: center;
@@ -61,6 +61,14 @@ h6{
 
 hr {
   margin: 0.5rem auto
+}
+
+
+
+.container.page {
+  background-color: white;
+  padding-top: 80px;
+  min-height: 750px;
 }
 
 .format {

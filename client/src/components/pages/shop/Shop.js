@@ -52,14 +52,14 @@ class Shop extends Component {
     render(){
 
         return(
-            <Container >
+            <Container className="px-0 px-md-3 px-lg-5 page">
                 
                 <h1>Tienda</h1>
-                <Row className="justify-content-center">
-                    <Col lg={5} className="searchBar">
+                <Row className="justify-content-between">
+                    <Col  className="searchBar">
                         <Form.Control className="input" type="text" name="search" value={this.state.search} onChange={this.handleInputChange} placeholder='Introduce el nombre del producto'/>
                     </Col>
-                    <Col lg={7} className="filters">
+                    <Col  lg="auto" className="filters" className="d-flex justify-content-center">
                     <ButtonGroup className="d-none d-md-block" >
                         <Button variant="outline-dark" name='meat' onClick= { () => this.setCategory('meat')}>Carne</Button>
                         <Button variant="outline-dark" name='fish' onClick={ () => this.setCategory('fish')}>Pescado</Button>

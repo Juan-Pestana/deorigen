@@ -104,7 +104,7 @@ class PaymentInfoForm extends Component {
     render() {
 
         return (
-            <Container>
+            <Container className="px-0 px-md-3">
                 {this.state.loggedInUser && <PayPersonalCard {...this.state.loggedInUser} />}
                 <hr></hr>
 

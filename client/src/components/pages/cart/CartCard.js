@@ -21,9 +21,9 @@ class CartCard extends Component {
     render() {
         console.log(this.props)
         return (
-            <Col >
+            <Col xs={12} >
                 <Row className="product-card">
-                    <Col xs={4} >
+                    <Col xs={4} className="px-0 px-md-3">
                         <img className="cart-image" src={this.props.productPicUrl} />
                     </Col>
                     <Col xs={8}>
