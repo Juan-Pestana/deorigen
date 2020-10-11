@@ -21,15 +21,15 @@ class CartCard extends Component {
     render() {
         console.log(this.props)
         return (
-            <Col >
+            <Col xs={12} >
                 <Row className="product-card">
-                    <Col xs={4} >
+                    <Col xs={4} className="px-0 px-md-3">
                         <img className="cart-image" src={this.props.productPicUrl} />
                     </Col>
                     <Col xs={8}>
                         <h6>{this.props.productName}</h6>
-                        <p className="format">{this.props.format}</p>
-                        <p> <span className="price">{this.props.price}</span> €</p>
+                        <p className="format">{this.props.format} <br></br>
+                        <span className="price">{this.props.price} €</span> /ud.</p>
                         <hr></hr>
                         <CartControl productId={this.props._id} />
                     </Col>

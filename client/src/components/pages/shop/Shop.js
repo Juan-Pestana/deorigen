@@ -2,7 +2,10 @@ import React, {Component} from 'react'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
 import CardDeck from 'react-bootstrap/CardDeck'
 
@@ -49,18 +52,32 @@ class Shop extends Component {
     render(){
 
         return(
-            <Container>
-                <div className="control">
-                    <input className="input" type="text" name="search" value={this.state.search} onChange={this.handleInputChange} placeholder='busque sus productos'/>
-                </div>
-                <div className='d-flex justify-content-around'>
-                    <div className='btn btn-outline-primary btn-sm' name='meat' onClick= { () => this.setCategory('meat')}>Carne</div>
-                    <div className='btn btn-outline-primary btn-sm' name='fish' onClick={ () => this.setCategory('fish')}>Pescado</div>
-                    <div className='btn btn-outline-primary btn-sm' name='veggies' onClick={ () =>this.setCategory('veggies')}>Verduras</div>
-                    <div className='btn btn-outline-primary btn-sm' name='wine' onClick={ () => this.setCategory('wine')}>Vino</div>
-                    <div className='btn btn-outline-primary btn-sm' name='dairy' onClick={ () => this.setCategory('dairy')}>Lacteos</div>
-                    <div className='btn btn-outline-primary btn-sm' name='dairy' onClick={ () => this.setCategory('')}>borrar filtros</div>
-                </div>
+            <Container className="px-0 px-md-3 px-lg-5 page">
+                
+                <h1>Tienda</h1>
+                <Row className="justify-content-between">
+                    <Col  className="searchBar">
+                        <Form.Control className="input" type="text" name="search" value={this.state.search} onChange={this.handleInputChange} placeholder='Introduce el nombre del producto'/>
+                    </Col>
+                    <Col  lg="auto" className="filters" className="d-flex justify-content-center">
+                    <ButtonGroup className="d-none d-md-block" >
+                        <Button variant="outline-dark" name='meat' onClick= { () => this.setCategory('meat')}>Carne</Button>
+                        <Button variant="outline-dark" name='fish' onClick={ () => this.setCategory('fish')}>Pescado</Button>
+                        <Button variant="outline-dark" name='veggies' onClick={ () =>this.setCategory('veggies')}>Verduras</Button>
+                        <Button variant="outline-dark" name='wine' onClick={ () => this.setCategory('wine')}>Vino</Button>
+                        <Button variant="outline-dark" name='dairy' onClick={ () => this.setCategory('dairy')}>Lacteos</Button>
+                        <Button variant="outline-primary" name='clear' onClick={ () => this.setCategory('')}>Limpiar</Button>
+                    </ButtonGroup>
+                    <div className="d-flex flex-wrap justify-content-between d-md-none smallPhone" >
+                        <Button variant="outline-dark" name='meat' onClick= { () => this.setCategory('meat')}>Carne</Button>
+                        <Button variant="outline-dark" name='fish' onClick={ () => this.setCategory('fish')}>Pescado</Button>
+                        <Button variant="outline-dark" name='veggies' onClick={ () =>this.setCategory('veggies')}>Verduras</Button>
+                        <Button variant="outline-dark" name='wine' onClick={ () => this.setCategory('wine')}>Vino</Button>
+                        <Button variant="outline-dark" name='dairy' onClick={ () => this.setCategory('dairy')}>Lacteos</Button>
+                        <Button variant="outline-primary" name='clear' onClick={ () => this.setCategory('')}>Limpiar</Button>
+                    </div>
+                    </Col>
+                </Row>
                 <Row>
                     <CardDeck>
                         {(this.state.category ? this.state.products.filter(elm => elm.category === this.state.category)  : this.state.products)
