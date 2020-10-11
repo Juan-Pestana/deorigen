@@ -6,10 +6,35 @@
 
 }
 
+.accountContent{
+    background-color: white;
+}
+
 .storeProducts .cartControl {
     display : none !important;
 }
 
 .heroPic {
     height: 100px;
+}
+
+.turnThePhone {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+   
+    color: white;
+    background-color: teal;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    
+    z-index: 00;
+
+}
+
+@media (max-width: 768px) and (orientation: portrait){
+    .turnThePhone {
+        display: flex
+    } 
 }

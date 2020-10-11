@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 
 const Index = () => {
     return (
-        <Container>
+        <Container className="page">
             <h1>deOrigen</h1>
             <Link to="/shop">
                 <Button size="sm" variant="dark" style={{ marginTop: '20px' }}>Vamos alatienda</Button>

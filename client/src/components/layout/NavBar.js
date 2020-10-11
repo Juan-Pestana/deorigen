@@ -53,7 +53,7 @@ export default class NavBar extends Component {
             <>
             <Container fluid="md" className="bg-dark">
             
-            <Navbar className="NavBar px-lg-5" bg="dark" variant="dark" expand="lg" fixed="top" >
+            <Navbar className="NavBar px-lg-5" bg="dark" variant="dark" expand="md" fixed="top" >
             <Link to="/">
                 <Navbar.Brand>
                 <img

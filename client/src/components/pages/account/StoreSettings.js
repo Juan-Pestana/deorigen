@@ -1,8 +1,14 @@
 import React, {Component} from 'react'
 
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
+
 import storeService from './../../../services/store.services'
 import productService from './../../../services/product.services'
 import ProductCard from './../shop/productCard'
+import Card from 'react-bootstrap/esm/Card'
 
 
 class StoreSettings extends Component {
@@ -53,8 +59,9 @@ class StoreSettings extends Component {
     
 
     return(
-        <>
-        <div className='container ml-4'>
+        <Container>
+        <h1>Tu Tienda</h1>
+        <div >
             <button onClick={()=>this.props.setShow('StoreSettingsForm')} className='btn btn-outline-secondary btn-sm float-right mr-3'>Editar</button>
     
             <label className = 'text-muted'>Nombre de la tienda</label>
@@ -90,7 +97,7 @@ class StoreSettings extends Component {
             <h2>Tus Productos a la venta</h2>
             <hr></hr>
             <button onClick={()=>this.props.setShow('CreateProductForm')} className='btn btn-outline-secondary btn-sm float-right mr-3'>Crear Producto</button>
-            <div className='container storeProducts'>
+            <Container className='storeProducts'>
                 <div className= 'row'>
              
                 {this.state.store.products && this.state.store.products.map(elm=><div className='col-sm-6 col-md-4' key = {elm._id}><ProductCard  {...elm} />
@@ -102,11 +109,17 @@ class StoreSettings extends Component {
                   
             
             </div>
-            </div>
+            </Container>
         </div>
+        <div className="turnThePhone">
 
-        
-        </>
+            <h4>
+                Recomendamos acceder a esta sección desde un ordenador. Si no resulta posible por favor utiliza el dispositivo en horizontal
+            </h4>
+           
+
+        </div>       
+        </Container>
     )
 
    }
