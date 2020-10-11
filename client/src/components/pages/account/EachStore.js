@@ -42,36 +42,7 @@ class EachUser extends Component {
        this.setState({ [name] : value})
    }
 
-   handleFormSubmit = () => {
-       const newStore = {
-           storeName : `la tienda de ${this.state.firstName}`,
-           tagline : 'prueba algo con gancho',
-           description: 'hablanos de tus productos y del entorno',
-           owner: this.props._id
-       }
-
-    if(this.state.role === 'producer' && !this.state.store){
-        this.storeService
-            .newStore(this.props._id, newStore)
-            .then(response => this.setState({store : response.data.store }))
-            .then(()=>this.props.setShow('AllUsers'))
-    }else if (this.state.role === 'buyer' && this.state.store ){
-        this.storeService
-            .deleteStore(this.state.store)
-            .then(()=> this.setState({store : undefined}))
-            .then(()=>this.props.setShow('AllUsers'))
-    }else if(this.state.role === "admin"){
-        this.userService
-            .updateUser(this.props.id, this.state )
-            .then(()=>this.setState({role : 'admin'}))
-            .then(()=>this.props.setShow('AllUsers'))
-    } else {
-        console.log('no hay cambios')
-    }
-
-   }
-
-
+  
 
 
 
@@ -81,16 +52,17 @@ class EachUser extends Component {
             <>
             <div className='row'>
                 <div className=' col-sm-6 col-md-4'>
-                    <label className='text-muted'>Nombre</label>
-                    <p>{this.props.firstName} {this.props.lastName}</p>
+                    <label className='text-muted'>Nombre de la tienda</label>
+                    <p>{this.props.storeName}</p>
                 </div>
                 <div className=' col-sm-6 col-md-3'>
-                    <label className='text-muted'>Rol</label>
-                    <p>{this.props.role}</p>
+                    <label className='text-muted'>Nombre del titular</label>
+                    <p>{this.props.owner.firstName} {this.props.owner.lastName}</p>
                 </div>
                 <div className=' col-sm-12 col-md-5'>
-                    <Button  onClick={() => this.deleteOneUser(this.props._id)} variant='dark' size='sm' className='mb-2 d-block ml-auto'>Eliminar</Button>
-                <Form onSubmit={this.handleFormSubmit}>
+                    <Button  onClick={() => this.deleteOneStore(this.props._id)} variant='dark' size='sm' className='mb-2 d-block ml-auto'>Eliminar</Button>
+                    <Button  onClick={() => this.editOneStore(this.props._id)} variant='dark' size='sm' className='mb-2 d-block ml-auto'>Editar</Button>
+                {/* <Form onSubmit={this.handleFormSubmit}>
                     <Form.Group>
                         <div className='d-flex'>
                         <Form.Control className='mr-4' as="select" size='sm' name="role"  value={this.state.role} onChange={this.handleInputChange}>
@@ -104,7 +76,7 @@ class EachUser extends Component {
                     </Form.Group>
                     
 
-                </Form>
+                </Form> */}
                     
                 </div>
             </div>

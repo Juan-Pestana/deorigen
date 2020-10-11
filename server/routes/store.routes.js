@@ -12,6 +12,7 @@ const User = require ('../models/user.model')
 router.get('/getAllStores', (req, res) => {
 
     Store.find()
+        .populate('owner')
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })

@@ -9,9 +9,9 @@ export default class StoreService {
         })
     }
 
-    
+    getAllStores =() => this.api.get('/store/getAllStores')
     getOneStore = id => this.api.get(`/store/getOneStore/${id}`)
     newStore = (userId, store) => this.api.post(`/store/newStore/${userId}`, store)
     updateStore = (id, store) => this.api.put(`/store/editStore/${id}`, store)
-    deleteStore = id => this.api.delete(`store/deleteStore/${id}`)
+    deleteStore = id => this.api.delete(`/store/deleteStore/${id}`)
 }
