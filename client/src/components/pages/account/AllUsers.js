@@ -62,9 +62,7 @@ class AllUsers extends Component {
     return(
         <>
         <div className= 'container'>
-        {this.state.users && this.state.users.map(elem => <EachUser key={elem.id} user = {...elem} delete={this.deleteOneUser} />
-            
-            )}
+        {/* {this.state.users && this.state.users.map(elem => <EachUser key={elem.id} user={...elem} deleteUser={this.deleteOneUser} /> )} */}
 
         </div>
         

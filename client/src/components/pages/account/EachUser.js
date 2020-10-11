@@ -1,3 +1,4 @@
+import React, {Component} from 'react'
 
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -12,6 +13,7 @@ class EachUser extends Component {
             user : ""
 
         }
+        
     }
 
 
@@ -25,59 +27,60 @@ class EachUser extends Component {
        this.setState({ user :{ ...this.state.user, [name] : value}})
    }
 
-    handleFormSubmit =  e => {
-        e.preventDefault()
+    // handleFormSubmit =  e => {
+    //     e.preventDefault()
 
-        const newStore = {
-            storeName : `la tienda de ${this.state.user.firstName}`,
-            tagline : `prueba algo con gancho`,
-            description: 'modifica este texto y háblanos de tu tienda, tus productos y tu entorno',
-            owner: elem._id
-        }
+    //     const newStore = {
+    //         storeName : `la tienda de ${this.state.user.firstName}`,
+    //         tagline : `prueba algo con gancho`,
+    //         description: 'modifica este texto y háblanos de tu tienda, tus productos y tu entorno',
+    //         owner: this.state.user.id
+    //     }
 
-        // const allUsers = [...this.state.users]
-        // const index = this.state.users.indexOf(elem)
-        // const user = {...elem}
-        // user.role = this.state.newRole
-        // console.log('estoy aquí y juan quiere ser', user.role)
-        const updUser = {...this.state.user}
-        if(this.state.user.role === 'producer' && !this.state.user.store){
+    //     // const allUsers = [...this.state.users]
+    //     // const index = this.state.users.indexOf(elem)
+    //     // const user = {...elem}
+    //     // user.role = this.state.newRole
+    //     // console.log('estoy aquí y juan quiere ser', user.role)
+    //     const updUser = {...this.state.user}
+    //     if(this.state.user.role === 'producer' && !this.state.user.store){
             
-            this.storeSercice
-                .newStore(newStore)
-                .then(response =>{
-                    console.log(response)
-                    updUser.store = response.data._id} )
+    //         this.storeSercice
+    //             .newStore(newStore)
+    //             .then(response =>{
+    //                 console.log(response)
+    //                 updUser.store = response.data._id} )
 
-                .then(() => this.userService.updateUser(updUser._id, updUser))
-                .then(()=> this.setState({user : updUser})
-                // .catch(err => console.log('Error:', err))
+    //             .then(() => this.userService.updateUser(updUser._id, updUser))
+    //             .then(()=> this.setState({user : updUser})
+    //             // .catch(err => console.log('Error:', err))
                             
                     
 
-            )} else if(user.store && user.role === 'buyer' ){
-                    this.storeSercice.deleteStore(user.store)
-                    .then(() => this.userService.updateUser(user._id, user))
-                    .then(()=> allUsers[index].store = undefined)
-                    .then(() => this.setState({users : allUsers}))
-                    .catch(err => console.log('Error:', err))
+    //         )} else if(this.state.user.store && this.state.user.role === 'buyer' ){
+
+    //                 this.storeSercice.deleteStore(user.store)
+    //                 .then(() => this.userService.updateUser(user._id, user))
+    //                 .then(()=> allUsers[index].store = undefined)
+    //                 .then(() => this.setState({users : allUsers}))
+    //                 .catch(err => console.log('Error:', err))
             
-        } else{
-            this.userService.updateUser(user._id, user)
-            .then(()=> allUsers[index] = user)
-            .then(()=> this.setState({users : allUsers}))
-            .catch(err => console.log('Error:', err))
-        }
+    //     } else{
+    //         this.userService.updateUser(user._id, user)
+    //         .then(()=> allUsers[index] = user)
+    //         .then(()=> this.setState({users : allUsers}))
+    //         .catch(err => console.log('Error:', err))
+    //     }
         
            
 
-    }
+    // }
 
     render() {
         console.log(this.props)
         return (
             <>
-            <div className='row'>
+            {/* <div className='row'>
                 <div className=' col-sm-6 col-md-4'>
                     <label className='text-muted'>Nombre</label>
                     <p>{elem.firstName} {elem.lastName}</p>
@@ -105,7 +108,7 @@ class EachUser extends Component {
                 </Form>
                     
                 </div>
-            </div>
+            </div> */}
 
             </>
 

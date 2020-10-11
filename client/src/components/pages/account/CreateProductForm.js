@@ -18,7 +18,7 @@ class CreateProductForm extends Component {
                 format: '',
                 price: '',
                 category: '',
-
+                store: this.props.store._id,
                 productPicUrl: ''
             },
             store: {}

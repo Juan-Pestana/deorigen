@@ -36,9 +36,9 @@ const productSchema = new Schema({
         type: String,
         default: "",
     },
-    seasonal: {
+    active: {
         type: Boolean,
-        default: false
+        default: true
     },
     discount: {
         type: Number,

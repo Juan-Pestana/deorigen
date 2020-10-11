@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 
 const Store = require ('../models/store.model')
 const Product = require ('../models/product.model')
+const User = require ('../models/user.model')
+// const { default: UserService } = require('../../client/src/services/user.services')
 
 //Endpoints
 
@@ -35,11 +37,23 @@ router.get('/getOneStore/:store_id', (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post('/newStore', (req, res) => {
+router.post('/newStore/:user_id', (req, res) => {
+    
+    let newStoreId = ''
+    let storeUser = {}
 
     Store.create(req.body)
-        .then(response => res.json(response)) //pendiente añadir push a array de productos dentro de store o user.store
-        .catch(err => res.status(500).json(err))
+        .then(response => newStoreId = response._id)
+        .then(()=>User.findById(req.params.user_id))
+        .then(user=> storeUser = user)
+        .then(()=> {
+            storeUser.store = newStoreId
+            storeUser.role = "producer"})
+        .then(()=> User.findByIdAndUpdate(req.params.user_id, storeUser))
+        .then(response => res.json(response))
+        .catch(err => console.log('este es el error', err))
+
+        // .catch(err => res.status(500).json(err))
 })
 
 
@@ -61,10 +75,28 @@ router.delete('/deleteStore/:store_id', (req, res) => {
         res.status(400).json({ message: 'Specified id is not valid' })
         return
     }
+    let ownerID = ''
+    let updOwner ={}
 
-    Store.findByIdAndRemove(req.params.store_id)
-        .then(response => res.json(response))
-        .catch(err => res.status(500).json(err))
+    Store.findById(req.params.store_id)
+    .then(store => ownerID = store.owner)
+    .then(()=> User.findById(ownerID))
+    .then(owner => updOwner = owner)
+    .then(()=> updOwner.role = 'buyer')
+    .then(()=>User.findByIdAndUpdate(ownerID, updOwner))
+    .then(()=> Product.updateMany({store : req.params.store_id},{active : false}))
+
+    .then(()=>Store.findByIdAndDelete(req.params.store_id))
+    .then(response =>{
+        console.log('tienda eliminada')
+        res.json(response)
+
+    } )
+    .catch(err => console.log('este es el error', err))
+
+    
+        
+        
 })
 
 module.exports = router
