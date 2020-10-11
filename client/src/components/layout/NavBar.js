@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 import Modal from 'react-bootstrap/Modal'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import './NavBar.css'
+import logo from './LogoDeOrigen_home.png'
 
 import authService from './../../services/auth.service'
 
@@ -50,35 +51,43 @@ export default class NavBar extends Component {
     render() {
         return (
             <>
-            <Navbar bg="light" expand="lg">
+            <Container fluid className="bg-dark">
+            
+            <Navbar className="NavBar" bg="dark" variant="dark" expand="lg" sticky="top">
             <Link to="/">
                 <Navbar.Brand>
-                    {' '} De Origen
+                <img
+                    alt=""
+                    src={logo}
+                   
+                    height="40"
+                    className="d-inline-block align-top"
+                />
+                    {' '} 
                 </Navbar.Brand>
             </Link>
           
-  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-  <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="ml-auto">
-      <Link className="nav-link" to="/">Home</Link>
-      <Link className="nav-link" to="/shop">Tienda</Link>
-      {/* {!this.props.loggedInUser && <div className="nav-link" onClick={() => this.handleSignupModal(true)}>Regístrate</div>}
-      {!this.props.loggedInUser && <div className="nav-link" onClick={() => this.handleLoginModal(true)}>Inicia Sesión</div>}
-      {this.props.loggedInUser && <div className="nav-link" onClick={this.logoutUser}>Cerrar sesión</div>}
-      <Link className="nav-link" to="/profile">- Hola, {this.props.loggedInUser ? this.props.loggedInUser.firstName : 'invitado'}</Link> */}
-      <NavDropdown title={this.props.loggedInUser ? this.props.loggedInUser.firstName : 'Invitado'} id="collasible-nav-dropdown">
-        {this.props.loggedInUser && <NavDropdown.Item><Link to='/account' className= 'dropdown-item'>Tu Cuenta</Link></NavDropdown.Item>}
-        {this.props.loggedInUser && <NavDropdown.Item onClick={this.logoutUser }>Cerrar Sesión</NavDropdown.Item>}
-        
-        {!this.props.loggedInUser &&<NavDropdown.Item onClick={() => this.handleLoginModal(true)}>Inicia Sesión</NavDropdown.Item>}
-        {!this.props.loggedInUser &&<NavDropdown.Item onClick={() => this.handleSignupModal(true)}>Regístrate</NavDropdown.Item>}
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="ml-auto">
+                    <Link className="nav-link" to="/">Home</Link>
+                    <Link className="nav-link" to="/shop">Tienda</Link>
+                    
+                    <NavDropdown  className="nav-dropdown" title={this.props.loggedInUser ? this.props.loggedInUser.firstName : 'Invitado'} id="collasible-nav-dropdown">
+                        {this.props.loggedInUser && <NavDropdown.Item><Link to='/account' className= 'dropdown-item'>Tu Cuenta</Link></NavDropdown.Item>}
+                        {this.props.loggedInUser && <NavDropdown.Item onClick={this.logoutUser }>Cerrar Sesión</NavDropdown.Item>}
+                        
+                        {!this.props.loggedInUser &&<NavDropdown.Item onClick={() => this.handleLoginModal(true)}>Inicia Sesión</NavDropdown.Item>}
+                        {!this.props.loggedInUser &&<NavDropdown.Item onClick={() => this.handleSignupModal(true)}>Regístrate</NavDropdown.Item>}
 
-      </NavDropdown>
-      <div className="nav-link" onClick={() => this.handleCartModal(true)}>Carrito</div>
-    </Nav>
+                    </NavDropdown>
+                    <div className="nav-link" onClick={() => this.handleCartModal(true)}>Carrito</div>
+                </Nav>
 
-  </Navbar.Collapse>
-</Navbar>
+            </Navbar.Collapse>
+            </Navbar>
+            </Container>
+            
 
 <Modal show={this.state.showSignupModal} onHide={() => this.handleSignupModal(false)}>
     <Modal.Header closeButton>

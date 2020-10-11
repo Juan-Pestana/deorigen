@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+body {
+  font-family: 'Open Sans', sans-serif;;
+  font-weight: 400;
+  font-size:1em;
+}
+
+
+
+
+
 .App {
   text-align: center;
 }
@@ -35,6 +47,29 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Product List Format */
+h1,h2,h3, .modal-title {
+  font-family: 'Nothing You Could Do';
+  
+}
+
+h6{
+  margin-bottom: 0.3rem;
+}
+
+hr {
+  margin: 0.5rem auto
+}
+
+.format {
+  color:#adb5bd;
+  line-height: 115%;
+}
+.price {
+  font-weight: 700;
+  color: black
 }
 
 

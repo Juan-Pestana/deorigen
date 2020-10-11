@@ -25,8 +25,8 @@ class ProductCard extends Component {
                     <Card.Img variant="top" src={this.props.productPicUrl} />
                     <Card.Body>
                         <h6>{this.props.productName}</h6>
-                        <p className="format">{this.props.format}</p>
-                        <p> <span className="price">{this.props.price}</span> €</p>
+                        <p className="format">{this.props.format} <br></br>
+                        <span className="price">{this.props.price} €</span> /ud.</p>
                         <hr></hr>
                         <CartControl productId={this.props._id} />
                     </Card.Body>

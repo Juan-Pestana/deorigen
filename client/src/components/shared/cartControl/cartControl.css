@@ -7,13 +7,13 @@
 }
 
 .cartControl .quantity {
-    font-size: 2em;
-    color: red
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #639a67
 }
 
 .cart-icons  img {
     width: 30px;
     height: 30px;
-    
-    
+    margin: 4px;
 }

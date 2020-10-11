@@ -78,8 +78,8 @@ class ProductCard extends Component {
         return (
             <div className="cartControl d-flex justify-content-between">
                 <p>
-                    <span className="quantity-label">En carro</span><br></br>
-                    <span className="quantity">{this.state.quantity}</span>
+                    <span className="quantity">{this.state.quantity} ud.</span><br></br>
+                    <span className="quantity-label format">En carro</span><br></br>
                 </p>
                 <div className="cart-icons">
                    {this.state.quantity > 1 && <img src={iconMinus} alt='quitar unidad del carrito' onClick={() => this.handleQuantity(-1)}/>}
