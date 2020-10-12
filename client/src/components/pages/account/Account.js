@@ -25,7 +25,8 @@ class Account extends Component {
             user : null,
             store: null,
             show: 'PersonalInfo',
-            productToEdit: null
+            productToEdit: null,
+            storeToEdit: null
 
         }
         this.storeService = new storeService()
@@ -69,6 +70,10 @@ class Account extends Component {
         this.setState({productToEdit : id}, this.setShow('EditProduct'))
     }
 
+    storeToEdit = id => {
+        this.setState({storeToEdit : id}, this.setShow('AdminStoreUpdate'))
+    }
+
 
     render(){
 
@@ -98,7 +103,8 @@ class Account extends Component {
                 {this.state.store && this.state.show == 'CreateProductForm' && <CreateProductForm store={this.state.store} setShow={this.setShow}></CreateProductForm>}
                 {this.state.store && this.state.show == 'EditProduct' && <EditProduct product={this.state.productToEdit} setShow={this.setShow}></EditProduct>}
                 {this.state.show == 'AllUsers' && <AllUsers setShow = {this.setShow}/>}
-                {this.state.show == 'AllStores' && <AllStores setShow = {this.setShow}/>}
+                {this.state.show == 'AllStores' && <AllStores storeToEdit = {this.storeToEdit} />}
+                {this.state.show == 'AdminStoreUpdate' && <StoreSettingsForm storeToEdit={this.state.storeToEdit} setShow={this.setShow} adminUpdate = {true}></StoreSettingsForm> }
                 </div>
                 
                 

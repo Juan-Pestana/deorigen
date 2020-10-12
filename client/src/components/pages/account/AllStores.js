@@ -70,6 +70,7 @@ class AllStores extends Component {
 
 
    render(){
+       console.log(this.props)
 
     return(
         <>
@@ -88,7 +89,7 @@ class AllStores extends Component {
         
       {this.state.stores.filter(elm => elm.storeName.includes(this.state.storeNameSearch)) 
                         .filter(elm => elm.owner.firstName.includes(this.state.ownerNameSearch) || elm.owner.lastName.includes(this.state.ownerNameSearch))
-                        .map(elem =><EachStore key={elem.id} {...elem} deleteStore={this.deleteOneStore} setShow ={this.props.setShow}/> )}
+                        .map(elem =><EachStore key={elem.id} {...elem} deleteStore={this.deleteOneStore} storeToEdit = {this.props.storeToEdit}/> )}
 
 
         </Container>

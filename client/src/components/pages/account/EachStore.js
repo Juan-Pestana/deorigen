@@ -60,8 +60,8 @@ class EachUser extends Component {
                     <p>{this.props.owner.firstName} {this.props.owner.lastName}</p>
                 </div>
                 <div className=' col-sm-12 col-md-5'>
-                    <Button  onClick={() => this.deleteOneStore(this.props._id)} variant='dark' size='sm' className='mb-2 d-block ml-auto'>Eliminar</Button>
-                    <Button  onClick={() => this.editOneStore(this.props._id)} variant='dark' size='sm' className='mb-2 d-block ml-auto'>Editar</Button>
+                    <Button  onClick={() => this.props.deleteOneStore(this.props._id)} variant='dark' size='sm' className='mb-2 d-block ml-auto'>Eliminar</Button>
+                    <Button onClick={() => this.props.storeToEdit(this.props._id)} variant='dark' size='sm' className='mb-2 d-block ml-auto'>Editar</Button>
                 {/* <Form onSubmit={this.handleFormSubmit}>
                     <Form.Group>
                         <div className='d-flex'>

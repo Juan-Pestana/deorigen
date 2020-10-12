@@ -5,11 +5,14 @@ import './scss/override.css'
 import App from './components/App';
 import { BrowserRouter as Router } from 'react-router-dom'
 
+const appi = <script>${process.env.REACT_APP_API_URL}</script>
+
 ReactDOM.render(
   <Router>
     <React.StrictMode>
       <App />
     </React.StrictMode>
+    {appi}
   </Router>,
   document.getElementById('root')
 )

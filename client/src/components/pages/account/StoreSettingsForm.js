@@ -12,6 +12,7 @@ class StoreSettingsForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            _id: "",
             storeName: '',
             tagline: '',
             description: '',
@@ -29,7 +30,14 @@ class StoreSettingsForm extends Component {
     componentDidMount = () => this.setStore()
 
     setStore = () => {
-        this.setState ({...this.props.store})
+        if(this.props.adminUpdate){
+            this.storeService
+                .getOneStore(this.props.storeToEdit)
+                .then(response =>this.setState({...response.data}))
+        }else{
+            this.setState ({...this.props.store})
+        }
+        
 
     }
 
@@ -43,8 +51,8 @@ class StoreSettingsForm extends Component {
         e.preventDefault()
 
         this.storeService
-            .updateStore(this.props.store._id, this.state)
-            .then(() => this.props.setShow('StoreSettings'))
+            .updateStore(this.state._id, this.state)
+            .then(() => this.props.adminUpdate ? this.props.setShow('AllStores') : this.props.setShow('StoreSettings'))
             .catch(err => console.log('Erroro!!', { err }))
     }
 
