@@ -68,7 +68,7 @@ class App extends Component {
           <Route path="/shop" render={() => <Shop />} />
           {/* <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} /> */}
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
-          <Route path="/order" render={props => <Order setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props} />} />
+          <Route path="/order" exact render={props => <Order setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props} />} />
           <Route path="/order/thankyou/:orderId" render={props => <ThankYou setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props} />} />
       </Switch>
         
