@@ -3,7 +3,7 @@ const router = express.Router()
 const mongoose = require('mongoose')
 
 const Order = require('../models/order.model')
-
+const User = require('../models/user.model')
 
 
 // Endpoints
@@ -31,10 +31,38 @@ router.get('/getOneOrder/:order_id', (req, res) => {
 
 
 router.post('/newOrder', (req, res) => {
+    const owner = req.body.loggedInUser._id
+    const productList = req.body.productList.map(elm => { 
+        return {product : elm.product._id, quantity : elm.quantity }
+    })
+    const {subtotal, shipping, total, isClosed} = req.body
+    const payment = {cardName : req.body.payment.cardName, cardNumber : req.body.payment.cardNumber}
+    const dateString = new Date().toLocaleString('es-ES')
 
-    Order.create(req.body)
-        .then(response => res.json(response))
-        .catch(err => res.status(500).json(err))
+    let createdOrder
+
+    User.findById(owner)
+    .then(response => res.json(response))
+    .catch(err => res.status(500).json(err))
+
+
+    Order.create({owner, productList, subtotal, shipping, total, isClosed, payment, dateString })
+        // .then(response => User.findByIdAndUpdate(response._id, {orderHistory : [...orderHistory, createdOrder._id]}) )
+         .then(response => {
+             createdOrder = response
+             console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',response.owner, response._id)
+             User.findByIdAndUpdate(response.owner, {orderHistory : [response._id, ...orderHistory, ]})
+                .then(response => console.log("El Usuario editado", response))
+                .catch(err => res.status(500).json(err))
+         })
+         .catch(err => res.status(500).json(err))
+            // //res.json(response)
+            // User.findByIdAndUpdate(response.owner, {orderHistory : [...orderHistory, response._id]})
+            // .then(response => res.json(response))
+            // .catch(err => res.status(500).json(err))
+            // })   
+
+    
 })
 
 router.put('/editOrder/:order_id', (req, res, next) => {
@@ -52,8 +80,8 @@ router.put('/editOrder/:order_id', (req, res, next) => {
 router.get('/getShippingExpenses', (req, res) => res.json({ shipping: 7 }))
 
 router.post('/checkPayment', (req,res) => {
-    const paymentOk = Math.random() > 0.1 ? true : false
-    res.json({paymentOk})
+    Math.random() > 0.1 ? res.json({paymentOk: true}) : res.status(400).json("Payment Rejected")
+    
 
 })
 
