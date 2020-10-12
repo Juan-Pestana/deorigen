@@ -13,6 +13,7 @@ import StoreSettingsForm from './StoreSettingsForm'
 import CreateProductForm from './CreateProductForm'
 import EditProduct from './EditProduct'
 import AllUsers from './AllUsers'
+import AllStores from './AllStores'
 
 import './account.css'
 // import Store from '../../../../../server/models/store.model'
@@ -75,14 +76,14 @@ class Account extends Component {
 
         <Container className="page">
             <div className = 'row accountPage'>
-                <nav className = 'col-3 d-flex flex-column bg-light align-items-right pt-5' account-options> 
+                <nav className = 'col-3 d-flex flex-column bg-light align-items-right pt-5 account-options' > 
                         <div onClick={() => this.setShow('PersonalInfo')} className='nav-link p-3 text-right'>Información Personal</div>
                         <div className='nav-link p-3 text-right'>Ultimos Pedidos</div>
                         
                     {this.state.store && <div onClick={() => this.setShow('StoreSettings')} className='nav-link p-3 text-right'>Tu tienda</div> }
                     {this.state.user ? this.state.user.role ==='admin' && <div className='nav-link p-3 text-right'>Panel de Administrador
                         <div onClick={() => this.setShow('AllUsers')} className='nav-link py-3 px-0 text-right'>Todos los Usuarios</div>
-                        <div className='nav-link py-3 px-0  text-right'>Todas las Tiendas</div>
+                        <div onClick={() => this.setShow('AllStores')}className='nav-link py-3 px-0  text-right'>Todas las Tiendas</div>
                     </div> : console.log('no es admin')}
 
 
@@ -96,7 +97,8 @@ class Account extends Component {
                 {this.state.store && this.state.show == 'StoreSettingsForm' && <StoreSettingsForm store={this.state.store} setShow={this.setShow} ></StoreSettingsForm>}
                 {this.state.store && this.state.show == 'CreateProductForm' && <CreateProductForm store={this.state.store} setShow={this.setShow}></CreateProductForm>}
                 {this.state.store && this.state.show == 'EditProduct' && <EditProduct product={this.state.productToEdit} setShow={this.setShow}></EditProduct>}
-                {this.state.show == 'AllUsers' && <AllUsers/>}
+                {this.state.show == 'AllUsers' && <AllUsers setShow = {this.setShow}/>}
+                {this.state.show == 'AllStores' && <AllStores setShow = {this.setShow}/>}
                 </div>
                 
                 

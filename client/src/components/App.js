@@ -16,7 +16,7 @@ import authService from './../services/auth.service'
 
 import './App.css'
 
-
+const appi = process.env.REACT_APP_API_URL
 
 class App extends Component {
 
@@ -57,6 +57,7 @@ class App extends Component {
 
 
   render() {
+    
     return (
       <>
       <NavBar setTheUser={this.setTheUser} {...this.props} loggedInUser={this.state.loggedInUser} refreshPage={this.refreshPage}/>
@@ -72,7 +73,7 @@ class App extends Component {
       </Switch>
         
       
-        
+      
       </>
     );
   }

@@ -10,6 +10,10 @@
     background-color: white;
 }
 
+.account-options div{
+    cursor: pointer;
+}
+
 .storeProducts .cartControl {
     display : none !important;
 }

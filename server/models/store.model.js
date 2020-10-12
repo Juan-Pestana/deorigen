@@ -4,10 +4,11 @@ const Schema = mongoose.Schema
 const storeSchema = new Schema({
     storeName:{
         type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        lowercase: true,
+        // required: true,
+        // unique: true,
+        // trim: true,
+        // lowercase: true,
+        default: ''
     },
     tagline:{
         type: String,
@@ -16,7 +17,7 @@ const storeSchema = new Schema({
     },
     description:{
         type: String,
-        required: true,
+
         trim: true,
     },
     heroPicUrl:{
@@ -39,7 +40,8 @@ const storeSchema = new Schema({
     owner: { //CONEXIÓN ONE TO ONE pendiente si se integra en user o no
         type: Schema.Types.ObjectId,
         ref: 'User',
-        default: '5f7a11277e7e71bce28a29ca'
+        required : true
+        // default: '5f7a11277e7e71bce28a29ca'
     },
     products: [{
         type: Schema.Types.ObjectId,
