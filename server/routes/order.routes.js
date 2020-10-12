@@ -29,9 +29,8 @@ router.get('/getOneOrder/:order_id', (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-
 router.post('/newOrder', (req, res) => {
-    const owner = req.body.loggedInUser._id
+    const owner = req.body.loggedInUser
     const productList = req.body.productList.map(elm => { 
         return {product : elm.product._id, quantity : elm.quantity }
     })
@@ -40,41 +39,16 @@ router.post('/newOrder', (req, res) => {
     const dateString = new Date().toLocaleString('es-ES')
 
     let newOrderId = ''
-    let orderHistory = []
-    
 
-    Order.create({owner, productList, subtotal, shipping, total, isClosed, payment, dateString })
-        .then(response => newOrderId = response._id)
-        .then(()=>User.findById(owner))
-        .then(response => orderHistory = !response.orderHistory  ? [newOrderId] : response.orderHistory.unshift(newOrderId))
-        .then(()=> User.findByIdAndUpdate(owner,{orderHistory}))
+    Order.create({owner: owner.id, productList, subtotal, shipping, total, isClosed, payment, dateString })
+        .then(response => {
+            newOrderId = response._id.toHexString()
+            owner.orderHistory.unshift(newOrderId)
+        })
+        .then(() => User.findByIdAndUpdate(owner._id, owner, {new:true}))
         .then(response => res.json(response))
-        .catch(err => console.log('este es el error', err))
+        .catch(err => res.status(500).json(err))
 })    
-
-
-
-
-    
-
-    // Order.create({owner, productList, subtotal, shipping, total, isClosed, payment, dateString })
-    //     // .then(response => User.findByIdAndUpdate(response._id, {orderHistory : [...orderHistory, createdOrder._id]}) )
-    //      .then(response => {
-             //createdOrder = response
-             //console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',response.owner, response._id)
-        //      User.findByIdAndUpdate(response.owner, {orderHistory : ["5f8355646f8c454d396d641b", ...orderHistory ]})
-        //         .then(response => res.json(response))
-        //         .catch(err => res.status(500).json(err))
-        //  })
-      //   .catch(err => res.status(500).json(err))
-            // //res.json(response)
-            // User.findByIdAndUpdate(response.owner, {orderHistory : [...orderHistory, response._id]})
-            // .then(response => res.json(response))
-            // .catch(err => res.status(500).json(err))
-            // })   
-
-    
-
 
 router.put('/editOrder/:order_id', (req, res, next) => {
 
