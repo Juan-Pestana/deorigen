@@ -9898,5 +9898,20 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.backdrop {
+  background-color: rgba(192, 215, 187, 0.85) !important;
+}
+
+.storeCard, .storeCard:hover {
+  padding-bottom: 0;
+  padding-top: 8em;
+  background-size: cover;
+  text-decoration: none;
+  color: #005555;
+}
+
+.storeCard p {
+  font-family: "nothing you could do", "sans-serif";
+}
 
 /*# sourceMappingURL=override.css.map */

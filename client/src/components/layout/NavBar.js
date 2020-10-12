@@ -53,7 +53,7 @@ export default class NavBar extends Component {
             <>
             <Container fluid="md" className="bg-dark">
             
-            <Navbar className="NavBar px-lg-5" bg="dark" variant="dark" expand="md" fixed="top" >
+            <Navbar className="NavBar px-lg-5 px-xs-0" bg="dark" variant="dark" expand="md" fixed="top" >
             <Link to="/">
                 <Navbar.Brand>
                 <img
@@ -72,6 +72,7 @@ export default class NavBar extends Component {
                 <Nav className="ml-auto">
                     <Link className="nav-link" to="/">Home</Link>
                     <Link className="nav-link" to="/shop">Tienda</Link>
+                    <Link className="nav-link" to="/storeList">Productores</Link>
                     
                     <NavDropdown  className="nav-dropdown" title={this.props.loggedInUser ? this.props.loggedInUser.firstName : 'Invitado'} id="collasible-nav-dropdown">
                         {this.props.loggedInUser && <NavDropdown.Item><Link to='/account' className= 'dropdown-item'>Tu Cuenta</Link></NavDropdown.Item>}

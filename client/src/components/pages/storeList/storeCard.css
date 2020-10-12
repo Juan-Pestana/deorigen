@@ -1,0 +1,12 @@
+.storeCard {
+    padding-bottom: 0;
+    padding-top: 8em;
+    background-size: cover;
+    text-decoration: none;
+}
+
+.backdrop {
+    background-color: rgba(#c0d7bb, .5) !important;
+
+}
+
