@@ -11,6 +11,8 @@ import Cart from './pages/cart/Cart'
 import Order from './pages/order/Order' 
 import ThankYou from './pages/thankyou/ThankYou' 
 import StoreList from './pages/storeList/StoreList'
+import Store from './pages/store/Store'
+
 
 import authService from './../services/auth.service'
 
@@ -67,7 +69,8 @@ class App extends Component {
           <Route path='/account' render={() => this.state.loggedInUser ? <Account loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />
           <Route path="/" exact render={() => <Index />} />
           <Route path="/shop" render={() => <Shop />} />
-          <Route path="/storelist" render={() => <StoreList />} />
+          <Route path="/storelist" render={props => <StoreList {...props} />} />
+          <Route path="/store/:storeId" render={props  => <Store {...props} />} />
           {/* <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} /> */}
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
           <Route path="/order" exact render={props => <Order setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props} />} />
