@@ -13,6 +13,8 @@ const orderSchema = new Schema({
             } ,
             quantity:{type: Number, min: 0, default: 1}         
     }],
+    subtotal: { type: Number, min:0},
+    shipping: { type: Number, min:0},
     total: { type: Number, min:0},
     payment:{
         cardName: String,

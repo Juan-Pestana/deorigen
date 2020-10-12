@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -29,7 +30,8 @@ class PaymentInfoForm extends Component {
                 cardNumber: '',
                 expiry: '',
                 cvc: ''
-                }
+                },
+            isClosed: false
             
         }
         this.userService = new userService()
@@ -100,6 +102,26 @@ class PaymentInfoForm extends Component {
         const { name, value } = e.target
         this.setState({payment:{...this.state.payment ,[name]: value } })
     }
+
+    handleFormSubmit = e => {
+        e.preventDefault()
+
+        this.orderService
+            .checkPayment({paymentInfo: this.state.payment, amount: this.state.total})
+            .then(reponse => this.setState({ isClosed: true}, () => this.recordNewOrder()))
+            .catch(err => console.log('Error:', err))
+
+    }
+
+    recordNewOrder = () => {
+      console.log('Entra New Order', this.state)
+        this.orderService
+            .newOrder(this.state)
+            .then(response => console.log(response.data))
+            .catch(err => console.log('Error:', err))
+                //this.props.history.push(`order/thankyou/${response.data._id}`))
+
+    }
     
     render() {
 
@@ -116,23 +138,24 @@ class PaymentInfoForm extends Component {
             <Form onSubmit={this.handleFormSubmit} >
                 <Form.Group>
                     <Form.Label>Nombre</Form.Label>
-                    <Form.Control type="text" name="cardName" value={this.state.cardName} onChange={this.handleInputChange} placeholder="Tu Nombre"/>
+                    <Form.Control type="text" name="cardName" value={this.state.payment.cardName} onChange={this.handleCardChange} placeholder="Tu Nombre"/>
                 </Form.Group>
                 <Row>
                     <Form.Group className={"col-12 col-lg-7"}>
                         <Form.Label>Nº de tarjeta</Form.Label>
-                        <Form.Control type="number" name="cardNumber" value={this.state.lastName} onChange={this.handleInputChange} />
+                        <Form.Control type="number" name="cardNumber" value={this.state.payment.cardNumber} onChange={this.handleCardChange} />
                     </Form.Group>
 
                     <Form.Group className={"col-8 col-lg-3"}>
                         <Form.Label>Caduca en</Form.Label>
-                        <Form.Control type="text" name="expiry" value={this.state.lastName} onChange={this.handleInputChange} />
+                        <Form.Control type="text" name="expiry" value={this.state.payment.expiry} onChange={this.handleCardChange} />
                     </Form.Group>
 
                     <Form.Group className={"col-4 col-lg-2"}>
                         <Form.Label>CVC</Form.Label>
-                        <Form.Control type="number" name="cvc" value={this.state.address} onChange={this.handleInputChange} />
+                        <Form.Control type="number" name="cvc" value={this.state.payment.cvc} onChange={this.handleCardChange} />
                     </Form.Group>
+                    
                 </Row>
 
                 <Row style={{ padding: "25px"}}>
