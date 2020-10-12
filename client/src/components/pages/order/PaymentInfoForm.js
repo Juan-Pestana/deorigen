@@ -114,10 +114,14 @@ class PaymentInfoForm extends Component {
     }
 
     recordNewOrder = () => {
-      console.log('Entra New Order', this.state)
+
         this.orderService
             .newOrder(this.state)
-            .then(response => console.log(response.data))
+            .then(response =>{
+                const orderId = response.data.orderHistory[0]
+                console.log(orderId)
+                this.props.history.push(`order/thankyou/${orderId}`)
+            })
             .catch(err => console.log('Error:', err))
                 //this.props.history.push(`order/thankyou/${response.data._id}`))
 
