@@ -1,9 +1,10 @@
 import React from 'react'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng} from 'react-places-autocomplete';
+import {GoogleApiWrapper} from 'google-maps-react'
 // import scriptLoader from 'react-async-script-loader'
 
 
-class LocationSearchInput extends React.Component {
+export class LocationSearchInput extends React.Component {
     constructor(props) {
       super(props);
       this.state = { address: '' };
@@ -71,4 +72,8 @@ class LocationSearchInput extends React.Component {
     }
   }
 
-  export default LocationSearchInput
+
+
+  export default GoogleApiWrapper({
+    apiKey: (process.env.REACT_APP_GOOGLE_MAP_API)
+  })(LocationSearchInput)
