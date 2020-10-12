@@ -8,7 +8,8 @@ import Col from 'react-bootstrap/Col'
 import storeService from './../../../services/store.services'
 import productService from './../../../services/product.services'
 import ProductCard from './../shop/productCard'
-import Card from 'react-bootstrap/esm/Card'
+import MapContainer from './../../shared/MapContainer'
+
 
 
 class StoreSettings extends Component {
@@ -110,7 +111,9 @@ class StoreSettings extends Component {
             
             </div>
             </Container>
+            {this.state.store.location && <MapContainer location = {this.state.store.location.coordinates} storeName = {this.state.store.storeName}/>}
         </div>
+        
         <div className="turnThePhone">
 
             <h4>
