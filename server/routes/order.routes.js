@@ -39,23 +39,34 @@ router.post('/newOrder', (req, res) => {
     const payment = {cardName : req.body.payment.cardName, cardNumber : req.body.payment.cardNumber}
     const dateString = new Date().toLocaleString('es-ES')
 
-    let createdOrder
-
-    User.findById(owner)
-    .then(response => res.json(response))
-    .catch(err => res.status(500).json(err))
-
+    let newOrderId = ''
+    let orderHistory = []
+    
 
     Order.create({owner, productList, subtotal, shipping, total, isClosed, payment, dateString })
-        // .then(response => User.findByIdAndUpdate(response._id, {orderHistory : [...orderHistory, createdOrder._id]}) )
-         .then(response => {
-             createdOrder = response
-             console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',response.owner, response._id)
-             User.findByIdAndUpdate(response.owner, {orderHistory : [response._id, ...orderHistory, ]})
-                .then(response => console.log("El Usuario editado", response))
-                .catch(err => res.status(500).json(err))
-         })
-         .catch(err => res.status(500).json(err))
+        .then(response => newOrderId = response._id)
+        .then(()=>User.findById(owner))
+        .then(response => orderHistory = !response.orderHistory  ? [newOrderId] : response.orderHistory.unshift(newOrderId))
+        .then(()=> User.findByIdAndUpdate(owner,{orderHistory}))
+        .then(response => res.json(response))
+        .catch(err => console.log('este es el error', err))
+})    
+
+
+
+
+    
+
+    // Order.create({owner, productList, subtotal, shipping, total, isClosed, payment, dateString })
+    //     // .then(response => User.findByIdAndUpdate(response._id, {orderHistory : [...orderHistory, createdOrder._id]}) )
+    //      .then(response => {
+             //createdOrder = response
+             //console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',response.owner, response._id)
+        //      User.findByIdAndUpdate(response.owner, {orderHistory : ["5f8355646f8c454d396d641b", ...orderHistory ]})
+        //         .then(response => res.json(response))
+        //         .catch(err => res.status(500).json(err))
+        //  })
+      //   .catch(err => res.status(500).json(err))
             // //res.json(response)
             // User.findByIdAndUpdate(response.owner, {orderHistory : [...orderHistory, response._id]})
             // .then(response => res.json(response))
@@ -63,7 +74,7 @@ router.post('/newOrder', (req, res) => {
             // })   
 
     
-})
+
 
 router.put('/editOrder/:order_id', (req, res, next) => {
 
