@@ -57,9 +57,12 @@ class Cart extends Component {
     }
 
     updateSubtotal = () => {
+        
         const subtotalArr = this.state.productList.map (elm => elm.product.price * elm.quantity)
-        const subtotal = subtotalArr.reduce(function(a, b){ return parseFloat(a) + parseFloat(b) })
-        this.setState({subtotal})     
+        const subtotal = subtotalArr.reduce(function(a, b){ return parseFloat(a) + parseFloat(b) }, 0)
+        this.setState({subtotal})
+        
+            
     }
 
 

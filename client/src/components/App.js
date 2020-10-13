@@ -67,14 +67,14 @@ class App extends Component {
       <NavBar setTheUser={this.setTheUser} {...this.props} loggedInUser={this.state.loggedInUser} refreshPage={this.refreshPage}/>
       <Switch>
           { this.state.refreshUrl && <Redirect push to={this.state.refreshUrl} onLoad={this.refreshPage('')} ></Redirect>}
-          <Route path='/account' render={() => this.state.loggedInUser ? <Account loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />
+          <Route path='/account' render={() => this.state.loggedInUser ? <Account loggedInUser={this.state.loggedInUser}/> : <Redirect to="/login" />} />
           <Route path="/" exact render={() => <Index />} />
           <Route path="/shop" render={() => <Shop />} />
           <Route path="/storelist" render={props => <StoreList {...props} />} />
           <Route path="/store/:storeId" render={props  => <Store {...props} />} />
           {/* <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} /> */}
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
-          <Route path="/order" exact render={props => <Order setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props} />} />
+          <Route path="/order" exact render={(props)=> this.state.loggedInUser ? <Order setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props}></Order>  : <Redirect to="/login" />} />
           <Route path="/order/thankyou/:orderId" render={props => <ThankYou setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props} />} />
         </Switch>
         <Footer/>
