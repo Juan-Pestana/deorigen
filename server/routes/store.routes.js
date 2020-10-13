@@ -84,7 +84,8 @@ router.delete('/deleteStore/:store_id', (req, res) => {
     .then(()=> User.findById(ownerID))
     .then(owner => updOwner = owner)
     .then(()=> {updOwner.role = 'buyer'
-                updOwner.store = ""})
+                updOwner.store = null
+                console.log(updOwner.store)})
     .then(()=>User.findByIdAndUpdate(ownerID, updOwner))
     .then(()=> Product.updateMany({store : req.params.store_id},{active : false}))
 

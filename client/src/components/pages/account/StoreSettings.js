@@ -111,7 +111,7 @@ class StoreSettings extends Component {
             
             </div>
             </Container>
-            {this.state.store.location && <MapContainer location = {this.state.store.location.coordinates} storeName = {this.state.store.storeName}/>}
+
         </div>
         
         <div className="turnThePhone">

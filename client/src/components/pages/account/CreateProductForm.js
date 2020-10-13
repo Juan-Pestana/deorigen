@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
 
 
 import productService from '../../../services/product.services'
@@ -19,7 +23,7 @@ class CreateProductForm extends Component {
                 price: '',
                 category: '',
                 store: this.props.store._id,
-                productPicUrl: ''
+                productPicUrl: 'https://www.tibs.org.tw/images/default.jpg'
             },
             store: {}
             
@@ -85,8 +89,26 @@ class CreateProductForm extends Component {
     render() {
 
         return (
+            <>
+             <Container>
+                <Row>
+                <Col md={4} lg={3} className='m-auto'>
+                <Card className="product-card">
+                    <Card.Img variant="top" src={this.state.product.productPicUrl} />
+                    <Card.Body>
+                        <h6>{this.state.product.productName}</h6>
+                        <p className="format">{this.state.product.format} <br></br>
+                        <span className="price">{this.state.product.price} €</span> /ud.</p>
+                        
+                    </Card.Body>
+                </Card>
+            </Col>
+                
+                </Row>
+            </Container>
+            
 
-            <Form onSubmit={this.handleFormSubmit}>
+            <Form onSubmit={this.handleFormSubmit} className= 'mt-5'>
                 <Form.Group>
                     <Form.Label>Nombre del Producto</Form.Label>
                     <Form.Control type="text" name="productName" value={this.state.product.productName} onChange={this.handleInputChange} />
@@ -123,6 +145,8 @@ class CreateProductForm extends Component {
 
                 <Button variant="dark" type="submit">Enviar Cambios</Button>
             </Form>
+           
+            </>
         )
     }
 }

@@ -101,7 +101,7 @@ export default class NavBar extends Component {
 
 <Modal show={this.state.showLoginModal} onHide={() => this.handleLoginModal(false)}>
     <Modal.Header closeButton>
-    <Modal.Title>Registro de usuario</Modal.Title>
+    <Modal.Title>Inicia sesión</Modal.Title>
     </Modal.Header>
     <Modal.Body>
                 <Login  setTheUser = {this.props.setTheUser} closeModal={() => this.handleLoginModal(false)}/>

@@ -118,6 +118,11 @@ class StoreSettingsForm extends Component {
                 </Form.Group>
 
                 <Form.Group>
+                    <Form.Label>Dirección</Form.Label>
+                    <Form.Control type="textarea" name="address" value={this.state.address} onChange={this.handleInputChange} />
+                </Form.Group>
+
+                <Form.Group>
                     <Form.Label>Foto Header</Form.Label>
                     <Form.Control type="file" name="heroPicUrl" onChange={this.heroPicUpload} />
                 </Form.Group>

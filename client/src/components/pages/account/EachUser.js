@@ -39,7 +39,7 @@ class EachUser extends Component {
 
     handleInputChange = e => {
         const {name, value} = e.target
-       this.setState({ [name] : value})
+       this.setState({ [name]: value})
    }
 
    handleFormSubmit = () => {
@@ -53,20 +53,26 @@ class EachUser extends Component {
     if(this.state.role === 'producer' && !this.state.store){
         this.storeService
             .newStore(this.props._id, newStore)
-            .then(response => this.setState({store : response.data.store }))
+            .then(response => {
+                console.log('que coño pasa???')
+                this.setState({store : response.data.store })})
             .then(()=>this.props.setShow('AllUsers'))
+            .catch(err => console.log('Erroro!!', { err }))
     }else if (this.state.role === 'buyer' && this.state.store ){
         this.storeService
             .deleteStore(this.state.store)
             .then(()=> this.setState({store : undefined}))
             .then(()=>this.props.setShow('AllUsers'))
+            .catch(err => console.log('Erroro!!', { err }))
     }else if(this.state.role === "admin"){
         this.userService
             .updateUser(this.props.id, this.state )
             .then(()=>this.setState({role : 'admin'}))
             .then(()=>this.props.setShow('AllUsers'))
+            .catch(err => console.log('Erroro!!', { err }))
     } else {
         console.log('no hay cambios')
+        this.props.setShow('AllUsers')
     }
 
    }

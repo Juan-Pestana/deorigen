@@ -14,6 +14,7 @@ import CreateProductForm from './CreateProductForm'
 import EditProduct from './EditProduct'
 import AllUsers from './AllUsers'
 import AllStores from './AllStores'
+import AllOrders from './AllOrders'
 
 import './account.css'
 // import Store from '../../../../../server/models/store.model'
@@ -83,7 +84,7 @@ class Account extends Component {
             <div className = 'row accountPage'>
                 <nav className = 'col-3 d-flex flex-column bg-light align-items-right pt-5 account-options' > 
                         <div onClick={() => this.setShow('PersonalInfo')} className='nav-link p-3 text-right'>Información Personal</div>
-                        <div className='nav-link p-3 text-right'>Ultimos Pedidos</div>
+                        <div onClick={() => this.setShow('AllOrders')} className='nav-link p-3 text-right'>Ultimos Pedidos</div>
                         
                     {this.state.store && <div onClick={() => this.setShow('StoreSettings')} className='nav-link p-3 text-right'>Tu tienda</div> }
                     {this.state.user ? this.state.user.role ==='admin' && <div className='nav-link p-3 text-right'>Panel de Administrador
@@ -98,6 +99,7 @@ class Account extends Component {
 
                 {this.state.show == 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfo>}   
                 {this.state.show == 'PersonalInfoForm' && <PersonalInfoForm user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfoForm>}
+                {this.state.show == 'AllOrders' && <AllOrders user={this.props.loggedInUser} setShow={this.setShow}></AllOrders>}
                 {this.state.show == 'StoreSettings' && <StoreSettings user={this.props.loggedInUser} setShow={this.setShow} productToEdit = {this.productToEdit}></StoreSettings>}
                 {this.state.store && this.state.show == 'StoreSettingsForm' && <StoreSettingsForm store={this.state.store} setShow={this.setShow} ></StoreSettingsForm>}
                 {this.state.store && this.state.show == 'CreateProductForm' && <CreateProductForm store={this.state.store} setShow={this.setShow}></CreateProductForm>}

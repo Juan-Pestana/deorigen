@@ -15,6 +15,12 @@ router.get('/getAllOrders', (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
+router.get('/getOrdersFromUser/:userId', (req, res) => {
+    Order.find({owner : req.params.userId})
+    .then(response => res.json(response))
+    .catch(err => res.status(500).json(err))
+})
+
 
 router.get('/getOneOrder/:order_id', (req, res) => {
 
