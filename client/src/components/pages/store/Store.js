@@ -1,71 +1,98 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 
 import storeService from './../../../services/store.services'
+import productService from './../../../services/product.services'
+import MapContainer from './../../shared/MapContainer'
+import MiniShopCard from './MiniShopCard'
+
+import './store.css'
 
 class Store extends Component {
 
      constructor() {
         super()
         this.state = {
-            showMinishopModal: false
+            showMinishopModal: false,
+            store: {},
         }
-        this.storeService = new storeService()
+         this.storeService = new storeService()
+         this.productService = new productService()
     }
 
-    componentDidMount = () => {
+    componentDidMount = () => this.loadStoreFromDb()
+    
+    loadStoreFromDb = () => {
         this.storeService
             .getOneStore(this.props.match.params.storeId)
-            .then(response => this.setState(response.data))
+            .then(response => this.setState({ store: response.data }))
             .catch(err => console.log('Error:', err))
     }
 
+ 
+    handleMinishopModal = showMinishopModal => this.setState({ showMinishopModal })
+
+
     render() {
         return (
-            <Container className="page d-flex flex-column justify-content-center">
-                <Jumbotron className="p-0 mb-0">
-                    <img src={this.state.heroPicUrl} alt={this.state.storeName} style={{width:"100%", objectFit:"cover", objectPosition:"center", height:300}}/>
-                </Jumbotron>
-                <h1 className="text-center mb-4" style={{fontFamily:"'open sans', 'sans-serif'"}}>{this.state.storeName}</h1>
-                <Row className="d-flex justify-content-center mb-4">
-                    <Col lg={6} className="text-right">
-                        <img src={this.state.contentPicUrl} alt={this.state.tagline} />
-                    </Col>
+            <>
+                <Container className="page d-flex flex-column justify-content-center">
+                    <Jumbotron className="p-0 mb-0">
+                        <img src={this.state.store.heroPicUrl} alt={this.state.store.storeName} style={{width:"100%", objectFit:"cover", objectPosition:"center", height:300}}/>
+                    </Jumbotron>
+                    <h1 className="text-center mb-4" style={{fontFamily:"'open sans', 'sans-serif'"}}>{this.state.store.storeName}</h1>
+                    <Row className="d-flex justify-content-center mb-4" style={{minHeight:400}}>
+                        <Col lg={6} className="text-right">
+                            <img src={this.state.store.contentPicUrl} alt={this.state.store.tagline} />
+                        </Col>
 
-                    <Col lg={6} className="text-center" style={{padding:"10% 15% 10% 1%"}}>
-                        <h2>{this.state.tagline}</h2>
-                    </Col>
-                </Row>
+                        <Col lg={6} className="text-center" style={{padding:"10% 15% 10% 1%"}}>
+                            <h2>{this.state.store.tagline}</h2>
+                        </Col>
+                    </Row>
 
-                 <Row className="d-flex justify-content-center mb-4">
-                    <Col lg={6} className="text-right">
-                        <section className="pl-5 pt-3">
-                            <p>{this.state.description}</p> 
-                           
-                            <p><em>{this.state.address}</em></p>
+                    <Row className="d-flex justify-content-center mb-4" style={{minHeight:400}}>
+                        <Col lg={6} className="text-left text-md-right">
+                            <section className="pl-5 pt-3">
+                                <p>{this.state.store.description}</p> 
+                            
+                                <p><em>{this.state.store.address}</em></p>
 
-                        </section> 
-                    </Col>
+                            </section> 
+                        </Col>
 
-                    <Col lg={6} className="text-center" style={{padding:"10% 15% 10% 1%"}}>
-                        <h2>{this.state.tagline}</h2>
-                    </Col>
-                </Row>
+                        <Col lg={5} className="text-center mx-3 px-0" style={{minHeight:400}}>
+                            {this.state.store.location && <MapContainer location={this.state.store.location.coordinates}
+                                storeName={this.state.store.storeName} style={{ height: "100%", width: "100%" }} />}
+                        </Col>
+                    </Row>
 
+                    <Row >
+                        <Col className="d-flex justify-content-center miniShopBanner" onClick={() => this.handleMinishopModal(true)}>
+                            {this.state.store.products && this.state.store.products.map(elm => <img src={elm.productPicUrl} alt={elm.productName} />)}
 
-                
-                
-                <main>
+                        </Col>
+                    </Row>
+                                
+                </Container>
 
-                </main>
-            
-            </Container>
+                <Modal show={this.state.showMinishopModal} onHide={() => this.handleMinishopModal(false)}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>De {this.state.store.storeName}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="container">
+                        <Row className="d-flex">
+                        {this.state.store.products && this.state.store.products.map(elm => <MiniShopCard key={elm._id} {...elm}/>)}
+                        </Row>
+                    </Modal.Body>
+                </Modal>
+            </>
 
         )
     }

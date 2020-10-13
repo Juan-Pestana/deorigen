@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import {Redirect } from 'react-router-dom'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/esm/Card'
 
 import authService from '../../../services/auth.service'
@@ -120,6 +119,7 @@ class PaymentInfoForm extends Component {
             .then(response =>{
                 const orderId = response.data.orderHistory[0]
                 console.log(orderId)
+                localStorage.setItem('deOrigenCart', JSON.stringify([]))
                 this.props.history.push(`order/thankyou/${orderId}`)
             })
             .catch(err => console.log('Error:', err))
@@ -130,49 +130,55 @@ class PaymentInfoForm extends Component {
     render() {
 
         return (
-            <Container className="px-0 px-md-3">
-                {this.state.loggedInUser && <PayPersonalCard {...this.state.loggedInUser} />}
-                <hr></hr>
-
-                {this.state.productList && <PayProductCard {...this.state} />}
-                <hr></hr>
-            <Card>
-                <Card.Header>Pago</Card.Header>
-                <Card.Body>
-            <Form onSubmit={this.handleFormSubmit} >
-                <Form.Group>
-                    <Form.Label>Nombre</Form.Label>
-                    <Form.Control type="text" name="cardName" value={this.state.payment.cardName} onChange={this.handleCardChange} placeholder="Tu Nombre"/>
-                </Form.Group>
+            <Container>
                 <Row>
-                    <Form.Group className={"col-12 col-lg-7"}>
-                        <Form.Label>Nº de tarjeta</Form.Label>
-                        <Form.Control type="number" name="cardNumber" value={this.state.payment.cardNumber} onChange={this.handleCardChange} />
-                    </Form.Group>
+                    <h1 className="col-lg-3">Tu Información de Pago</h1>
+                
+                    <div className="col-lg-9 px-0 px-md-3 pb-5">
+                            {this.state.loggedInUser && <PayPersonalCard {...this.state.loggedInUser} />}
+                            <hr></hr>
 
-                    <Form.Group className={"col-8 col-lg-3"}>
-                        <Form.Label>Caduca en</Form.Label>
-                        <Form.Control type="text" name="expiry" value={this.state.payment.expiry} onChange={this.handleCardChange} />
-                    </Form.Group>
+                            {this.state.productList && <PayProductCard {...this.state} />}
+                            <hr></hr>
+                        <Card>
+                            <Card.Header>Pago</Card.Header>
+                            <Card.Body>
+                                <Form onSubmit={this.handleFormSubmit} >
+                                    <Form.Group>
+                                        <Form.Label>Nombre</Form.Label>
+                                        <Form.Control type="text" name="cardName" value={this.state.payment.cardName} onChange={this.handleCardChange} placeholder="Tu Nombre"/>
+                                    </Form.Group>
+                                    <Row>
+                                        <Form.Group className={"col-12 col-lg-7"}>
+                                            <Form.Label>Nº de tarjeta</Form.Label>
+                                            <Form.Control type="number" name="cardNumber" value={this.state.payment.cardNumber} onChange={this.handleCardChange} />
+                                        </Form.Group>
 
-                    <Form.Group className={"col-4 col-lg-2"}>
-                        <Form.Label>CVC</Form.Label>
-                        <Form.Control type="number" name="cvc" value={this.state.payment.cvc} onChange={this.handleCardChange} />
-                    </Form.Group>
-                    
+                                        <Form.Group className={"col-8 col-lg-3"}>
+                                            <Form.Label>Caduca en</Form.Label>
+                                            <Form.Control type="text" name="expiry" value={this.state.payment.expiry} onChange={this.handleCardChange} />
+                                        </Form.Group>
+
+                                        <Form.Group className={"col-4 col-lg-2"}>
+                                            <Form.Label>CVC</Form.Label>
+                                            <Form.Control type="number" name="cvc" value={this.state.payment.cvc} onChange={this.handleCardChange} />
+                                        </Form.Group>
+                                        
+                                    </Row>
+
+                                    <Row style={{ padding: "25px"}}>
+                                        <Button style={{ padding: "10px"}}className="btn btn-secondary btn-block" type="submit"> Proceder al pago </Button> 
+                                    </Row>
+
+                                </Form>
+                            </Card.Body>
+                        </Card>
+                    </div>  
                 </Row>
-
-                <Row style={{ padding: "25px"}}>
-                    <Button style={{ padding: "10px"}}className="btn btn-secondary btn-block" type="submit"> Proceder al pago </Button> 
-                </Row>
-
-            </Form>
-            </Card.Body>
-            </Card>
-
-            </Container>
+            </Container>   
         )
     }
 }
 
 export default PaymentInfoForm
+

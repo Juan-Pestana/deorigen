@@ -4,3 +4,10 @@
 .accountPage{
     height: 90vh;
 }
+
+.orderSelect:hover{
+    font-weight: 700;
+    color: #005555;
+    pointer-events: stroke;
+
+}

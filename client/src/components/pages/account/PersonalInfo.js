@@ -61,10 +61,10 @@ class PersonalInfo extends Component {
             <hr className='mb-2'/>
 
             {this.state.isClosing && 
-                                <Row style={{ padding: "25px"}}>
-                                    <Button style={{ padding: "10px"}}className="btn btn-secondary btn-block" 
-                                            onClick={() => this.props.setShow('PaymentInfoForm')}> Confirmar Datos personales </Button> 
-                                </Row>
+                        <Row style={{ padding: "25px 25px 25px 0"}}>
+                            <Button style={{ padding: "10px"}}className="btn btn-secondary btn-block" 
+                                    onClick={() => this.props.setShow('PaymentInfoForm')}> Confirmar Datos </Button> 
+                        </Row>
             }
         </div>
         

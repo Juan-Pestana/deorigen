@@ -52,7 +52,7 @@ class Shop extends Component {
     render(){
 
         return(
-            <Container className="px-0 px-md-3 px-lg-5 page">
+            <Container className="px-2 px-md-3 px-lg-5 page">
                 
                 <h1>Tienda</h1>
                 <Row className="justify-content-between">

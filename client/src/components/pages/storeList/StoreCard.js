@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Jumbotron from 'react-bootstrap/Jumbotron'
@@ -21,4 +21,5 @@ const StoreCard = ({_id, storeName, tagline, heroPicUrl}) => {
     )
 }
 
-export default  StoreCard
+export default StoreCard
+

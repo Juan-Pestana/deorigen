@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 import Modal from 'react-bootstrap/Modal'
 import Card from 'react-bootstrap/Card'
-import Table from 'react-bootstrap/Card'
+
 
 export default class PayProductCard  extends Component  {
     constructor(props) {
