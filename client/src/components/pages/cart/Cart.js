@@ -77,7 +77,7 @@ class Cart extends Component {
                 }
                 <hr></hr>
                 <Row className={"justify-content-center"} style={{ padding : "20px"}}>
-                    <h4>Total aproximado: {this.state.subtotal}</h4>
+                    <h4>Total aproximado: {this.state.subtotal} €</h4>
                 </Row>
                 {(!this.state.isClosing && this.state.productList.length === 0) && 
                     <Row style={{ padding: "25px"}}>

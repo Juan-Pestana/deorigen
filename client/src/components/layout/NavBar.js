@@ -33,6 +33,7 @@ export default class NavBar extends Component {
     }
 
     logoutUser = () => {
+        localStorage.setItem('deOrigenCart', JSON.stringify([]))
         this.authService
         .logout()
         .then(() => this.props.setTheUser(null))

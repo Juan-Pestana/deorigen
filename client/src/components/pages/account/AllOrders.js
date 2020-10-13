@@ -36,7 +36,7 @@ class AllOrders extends Component {
             .getOrdersFromUser(this.props.user._id)
             .then(response => {
     
-                this.setState({orders : response.data})})
+                this.setState({orders : response.data},() => this.sortByDate())})
             .catch(err => console.log('Error:', err))
 
     }
@@ -68,7 +68,7 @@ class AllOrders extends Component {
     return(
         <>
         <Container className='pt-3'>
-         <Row>
+         <Row className='mb-4'>
             <ButtonGroup>
                 <Button onClick ={()=>this.sortByDate()}>Por fecha</Button>
                 <Button className='btn-outline' onClick ={()=>this.sortByAmount()}>Por Importe</Button>
