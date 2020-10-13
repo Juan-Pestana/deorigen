@@ -63,9 +63,14 @@ export class MapContainer extends Component {
         onClick={this.onMapClicked}
       >
  
-        <Marker onClick={this.onMarkerClick}
+        <Marker 
+                onClick={this.onMarkerClick}
                 name={this.state.storeName}
-                position = {this.state.center} />
+                position = {this.state.center} 
+                icon={{
+                  url: "https://res.cloudinary.com/pestana/image/upload/v1602604357/deorigen/marker_zi7cwi.png",
+                  scaledSize: new this.props.google.maps.Size(40,40)}}
+                />
  
         
       </Map>

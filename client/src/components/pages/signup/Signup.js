@@ -18,6 +18,7 @@ class Signup extends Component {
             lastName: '',
             address: '',
             phone: '',
+            errorMessage: '',
         }
         this.authService = new authService()
     }
@@ -39,7 +40,10 @@ class Signup extends Component {
                 this.props.closeModal()
                 // this.props.history.push('/')
             })
-            .catch(err => console.log('Error:', { err }))
+            .catch(err =>{
+                this.setState({errorMessage : err.response.data.message})
+                console.log('Error:', { err })
+            } )
     }
 
 
@@ -83,7 +87,10 @@ class Signup extends Component {
                                     <Form.Control type="text" name="phone" value={this.state.phone} onChange={this.handleInputChange} />
                                 </Form.Group>
 
-                                <Button variant="dark" type="submit">Registrarme</Button>
+                                <div className = 'd-flex'>
+                                    <Button variant="dark" type="submit">Registrarme</Button>
+                                    <p className='text-danger ml-5 my-auto'>{this.state.errorMessage}</p>
+                                </div>
                             </Form>
                         </>
             //             </Col>
