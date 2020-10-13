@@ -1,9 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import Col from 'react-bootstrap/Col'
 
 import iconPlus from './cart_plus.png'
 import iconMinus from './cart_minus.png'

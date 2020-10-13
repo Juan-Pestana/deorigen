@@ -1,14 +1,15 @@
+
 import React from 'react'
 
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 
-import CartControl from './../../shared/cartControl/CartControl'
+import CartControl from '../../shared/cartControl/CartControl'
 
-const ProductCard = ({productPicUrl, productName, format, price, _id}) => {
+const MiniShopCard = ({productPicUrl, productName, format, price, _id}) => {
         
         return (
-            <Col md={4} lg={3} >
+            <Col md={6} >
                 <Card className="product-card">
                     <Card.Img variant="top" src={productPicUrl} />
                     <Card.Body>
@@ -25,4 +26,4 @@ const ProductCard = ({productPicUrl, productName, format, price, _id}) => {
     }
 
 
-export default ProductCard
+export default MiniShopCard

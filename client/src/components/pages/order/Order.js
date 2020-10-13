@@ -41,15 +41,15 @@ class Order extends Component {
         return(
 
         <Container className="page px-0 px-md-3">
-        <Row className="d-none d-md-block">
-            <nav className = 'col d-flex pt-5 bg-light align-items-center'> 
-                    <div className='nav-link p-3' onClick={() => this.setShow('Cart')}>Listado de productos</div>    
-                    <div className='nav-link p-3' onClick={() => this.setShow('PersonalInfo')}>Información Personal</div>
-                    <div className='nav-link p-3' onClick={() => this.setShow('PaymentInfoForm')}>Información de pago</div>
+        <Row className="d-none d-md-block ">
+            <nav className = 'col d-flex pt-5 bg-light align-items-center justify-content-around '> 
+                    <div className='nav-link p-3 orderSelect' onClick={() => this.setShow('Cart')}>Listado de productos</div>    
+                    <div className='nav-link p-3 orderSelect' onClick={() => this.setShow('PersonalInfo')}>Información Personal</div>
+                    <div className='nav-link p-3 orderSelect' onClick={() => this.setShow('PaymentInfoForm')}>Información de pago</div>
            </nav>
         </Row>    
         <Row>
-            <div className = 'col d-flex mt-5'> 
+            <div className = 'col d-flex mt-5 flex-column'> 
                 
                 {this.state.show == 'Cart' && <Cart user={this.props.loggedInUser} {...this.props} setShow={this.setShow} closing={true}></Cart>}   
                 {this.state.show == 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} {...this.props}  setShow={this.setShow} closing={true}></PersonalInfo>}   

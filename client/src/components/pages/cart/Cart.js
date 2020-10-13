@@ -1,11 +1,8 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
-import CardDeck from 'react-bootstrap/CardDeck'
 
 import CartCard from './CartCard'
 
@@ -107,3 +104,4 @@ class Cart extends Component {
 }
 
 export default Cart
+

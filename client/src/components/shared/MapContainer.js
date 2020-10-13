@@ -39,8 +39,8 @@ export class MapContainer extends Component {
   render() {
 
     const style = {
-        width: '100%',
-        height: '400px'
+        width: this.props.style.width,
+        height: this.props.style.height
       }
       console.log(this.state.center)
 

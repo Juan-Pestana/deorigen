@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Dropdown from 'react-bootstrap/Dropdown'
 
 import storeService from './../../../services/store.services'
 
@@ -81,7 +82,7 @@ class Account extends Component {
 
         <Container className="page">
             <div className = 'row accountPage'>
-                <nav className = 'col-3 d-flex flex-column bg-light align-items-right pt-5 account-options' > 
+                <nav className = 'col-md-3 d-none d-md-flex flex-column bg-light align-items-right pt-5 account-options' > 
                         <div onClick={() => this.setShow('PersonalInfo')} className='nav-link p-3 text-right'>Información Personal</div>
                         <div className='nav-link p-3 text-right'>Ultimos Pedidos</div>
                         
@@ -90,11 +91,30 @@ class Account extends Component {
                         <div onClick={() => this.setShow('AllUsers')} className='nav-link py-3 px-0 text-right'>Todos los Usuarios</div>
                         <div onClick={() => this.setShow('AllStores')}className='nav-link py-3 px-0  text-right'>Todas las Tiendas</div>
                     </div> : console.log('no es admin')}
-
-
-
                 </nav>
-                <div className = 'col-9 d-flex flex-column accountContent '> 
+                           
+                    <Dropdown className ="d-md-none btn-light btn-block" >
+                    <Dropdown.Toggle className ="d-md-none btn-light btn-block" variant="light" id="dropdown-basic">
+                        Menú
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={() => this.setShow('PersonalInfo')} >Información Personal</Dropdown.Item>
+                        <Dropdown.Item onClick={() => this.setShow('LastOrders')} >Ultimos Pedidos</Dropdown.Item>
+                        {this.state.store && <Dropdown.Item onClick={() => this.setShow('StoreSettings')} >Tu tienda</Dropdown.Item>}
+                        {this.state.user ?
+                            this.state.user.role === 'admin' && <><Dropdown.Item >Panel de Administrador</Dropdown.Item>
+                            <Dropdown.Item onClick={() => this.setShow('AllUsers')} >Todos los Usuarios</Dropdown.Item>
+                            <Dropdown.Item onClick={() => this.setShow('AllStores')}>Todas las Tiendas</Dropdown.Item></>
+                            :
+                            console.log('no es admin')}
+                   
+                    </Dropdown.Menu>
+                    </Dropdown>
+                    
+
+                    
+                <div className = 'col-md-9 d-flex flex-column accountContent '> 
 
                 {this.state.show == 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfo>}   
                 {this.state.show == 'PersonalInfoForm' && <PersonalInfoForm user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfoForm>}
