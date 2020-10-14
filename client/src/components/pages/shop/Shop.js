@@ -59,22 +59,22 @@ class Shop extends Component {
                     <Col  className="searchBar">
                         <Form.Control className="input" type="text" name="search" value={this.state.search} onChange={this.handleInputChange} placeholder='Introduce el nombre del producto'/>
                     </Col>
-                    <Col  lg="auto" className="filters" className="d-flex justify-content-center">
+                    <Col  lg="auto" className="filters" className="d-flex justify-content-center pr-2">
                     <ButtonGroup className="d-none d-md-block" >
                         <Button variant="outline-dark" name='meat' onClick= { () => this.setCategory('meat')}>Carne</Button>
                         <Button variant="outline-dark" name='fish' onClick={ () => this.setCategory('fish')}>Pescado</Button>
                         <Button variant="outline-dark" name='veggies' onClick={ () =>this.setCategory('veggies')}>Verduras</Button>
                         <Button variant="outline-dark" name='wine' onClick={ () => this.setCategory('wine')}>Vino</Button>
                         <Button variant="outline-dark" name='dairy' onClick={ () => this.setCategory('dairy')}>Lacteos</Button>
-                        <Button variant="outline-primary" name='clear' onClick={ () => this.setCategory('')}>Limpiar</Button>
+                        <Button variant="outline-primary" name='clear' onClick={ () => this.setCategory('')}>Todos</Button>
                     </ButtonGroup>
-                    <div className="d-flex flex-wrap justify-content-between d-md-none smallPhone" >
+                    <div className="d-flex flex-wrap justify-content-between d-md-none smallPhone pr-2" >
                         <Button variant="outline-dark" name='meat' onClick= { () => this.setCategory('meat')}>Carne</Button>
                         <Button variant="outline-dark" name='fish' onClick={ () => this.setCategory('fish')}>Pescado</Button>
                         <Button variant="outline-dark" name='veggies' onClick={ () =>this.setCategory('veggies')}>Verduras</Button>
                         <Button variant="outline-dark" name='wine' onClick={ () => this.setCategory('wine')}>Vino</Button>
                         <Button variant="outline-dark" name='dairy' onClick={ () => this.setCategory('dairy')}>Lacteos</Button>
-                        <Button variant="outline-primary" name='clear' onClick={ () => this.setCategory('')}>Limpiar</Button>
+                        <Button variant="outline-primary" name='clear' onClick={ () => this.setCategory('')}>Todos</Button>
                     </div>
                     </Col>
                 </Row>
