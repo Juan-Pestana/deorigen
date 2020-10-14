@@ -20,6 +20,7 @@ class AllUsers extends Component {
        super()
        this.state = {
            users : [],
+           usersCopy : [],
            filterRole: "",
            search: ""
 
@@ -38,7 +39,7 @@ class AllUsers extends Component {
             .getAllUsers()
             .then(response => {
                 console.log('estos son los usuarios', response.data)
-                this.setState({users : response.data})})
+                this.setState({users : response.data, usersCopy : response.data})})
             .catch(err => console.log('Error:', err))
 
     }
@@ -67,6 +68,7 @@ class AllUsers extends Component {
             .catch(err => console.log('Error:', err))
 
     }
+    
 
 
 
@@ -78,7 +80,7 @@ class AllUsers extends Component {
         <Container className='pt-3'>
         <Row className="justify-content-between">
                     <Col  className="searchBar">
-                        <Form.Control className="input" type="text" name="search" value={this.state.search} onChange={this.handleInputChange} placeholder='Introduce el nombre del producto'/>
+                        <Form.Control className="input" type="text" name="search" value={this.state.search} onChange={this.handleInputChange} placeholder='Introduce el nombre del usuario'/>
                     </Col>
                     <Col  lg="auto" className="filters" className="d-flex justify-content-center">
                         <ButtonGroup className="d-none d-md-block" >
@@ -93,7 +95,7 @@ class AllUsers extends Component {
         
         {(this.state.filterRole? this.state.users.filter(elm => elm.role === this.state.filterRole) : this.state.users)
                         .filter(elm => elm.firstName.includes(this.state.search))
-                        .map(elem =><EachUser key={elem.id} {...elem} deleteUser={this.deleteOneUser} setShow ={this.props.setShow}/> )}
+                        .map(elem => <EachUser key={elem._id} {...elem} deleteUser={this.deleteOneUser} setShow ={this.props.setShow}/> )}
 
 
         </Container>

@@ -13,3 +13,24 @@
     z-index: -1000;
     background-color: #005555;
 }
+
+.cartLink {
+    position: relative;
+}
+
+.counterContainer {
+    position : absolute;
+    top: 3px;
+    right: -3px;
+    height : 15px;
+    width : 15px;
+    background-color: green;
+    border-radius: 50%;
+}
+
+.counterNumber {
+    font-size: small;
+    color: white;
+    display: block;
+    margin-left: 4px;
+    margin-bottom: 3px; }

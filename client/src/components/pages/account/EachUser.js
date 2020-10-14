@@ -9,8 +9,8 @@ import userService from './../../../services/user.services'
 
 class EachUser extends Component {
 
-     constructor() {
-        super()
+     constructor(props) {
+        super(props)
         this.state = {
             username : '',
             firstName : '',
@@ -35,18 +35,7 @@ class EachUser extends Component {
 
     setUser = () =>{
 
-        this.setState({
-            username : this.props.username,
-            firstName : this.props.firstName,
-            lastName : this.props.lastName,
-            email : this.props.email,
-            role : this.props.role,
-            store : this.props.store,
-            address : this.props.address,
-            orderHistory: this.props.orderHistory,
-            currentOrder: this.props.currentOrder,
-            
-        })
+        this.setState({...this.props})
     }
 
     handleInputChange = e => {
