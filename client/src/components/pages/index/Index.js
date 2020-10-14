@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 
+import IndexStoreList from './IndexStoreList'
+
+
 
 const Index = () => {
     return (
@@ -12,6 +15,7 @@ const Index = () => {
             <Link to="/shop">
                 <Button size="sm" variant="dark" style={{ marginTop: '20px' }}>Vamos alatienda</Button>
             </Link>
+            <IndexStoreList />
         </Container>
     )
 }

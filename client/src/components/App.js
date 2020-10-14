@@ -5,6 +5,7 @@ import NavBar from './layout/NavBar'
 import Index from './pages/index/Index'
 import Shop from './pages/shop/Shop'
 import Login from './pages/login/Login'
+import LoginContainer from './pages/login/LoginContainer'
 import Account from './pages/account/Account'
 import Signup from './pages/signup/Signup' 
 import Cart from './pages/cart/Cart' 
@@ -73,7 +74,7 @@ class App extends Component {
           <Route path="/storelist" render={props => <StoreList {...props} />} />
           <Route path="/store/:storeId" render={props  => <Store {...props} />} />
           {/* <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} /> */}
-          <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
+          <Route path="/login" render={props => <LoginContainer setTheUser={this.setTheUser} {...props} />} />
           <Route path="/order" exact render={(props)=> this.state.loggedInUser ? <Order setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props}></Order>  : <Redirect to="/login" />} />
           <Route path="/order/thankyou/:orderId" render={props => <ThankYou setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props} />} />
         </Switch>

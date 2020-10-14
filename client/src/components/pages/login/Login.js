@@ -32,11 +32,11 @@ class Login extends Component {
             .login(this.state)
             .then(response => {
                 this.props.setTheUser(response.data)
-                this.props.closeModal()
-                // this.props.history.push('/')
+                this.props.closeModal? this.props.closeModal() : this.props.history.goBack()
+                
             })
             .catch(err => {
-                this.setState({errorMessage : err.response.data.message})
+                //this.setState({errorMessage : err.response.data.message})
                 console.log('Erroooooor:', { err })})
     }
 
@@ -45,8 +45,8 @@ class Login extends Component {
 
         return (
 
-
-                            <Form onSubmit={this.handleFormSubmit}>
+                
+                            <Form onSubmit={this.handleFormSubmit} className="mt-5">
                                 <Form.Group>
                                     <Form.Label>Email</Form.Label>
                                     <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />

@@ -28,7 +28,7 @@ class ProductCard extends Component {
             <ul className="ml-5">
                 <li>Hacer un seguimiento de tu pedido <Link to="/">aquí</Link></li>
                 <li>Seguir comprando <Link to="/shop">aquí</Link></li>
-                <li>Descubrir más sobre nuestros productores <Link to="/storeList">aquí</Link></li>
+                <li>Descubrir más sobre nuestros productores <Link to="/store/storeList">aquí</Link></li>
 
 
             </ul>
