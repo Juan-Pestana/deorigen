@@ -73,7 +73,7 @@ class Store extends Component {
                         </Col>
                     </Row>
                     <h3 className="text-center">Los Productos de {this.state.store.storeName}</h3>    
-                    <Row >
+                    <Row className= 'mb-4'>
                         <Col className="d-flex justify-content-center miniShopBanner" onClick={() => this.handleMinishopModal(true)}>
                             {this.state.store.products && this.state.store.products.map(elm => <img src={elm.productPicUrl} alt={elm.productName} />)}
 
