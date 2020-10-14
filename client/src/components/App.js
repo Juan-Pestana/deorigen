@@ -12,6 +12,7 @@ import Order from './pages/order/Order'
 import ThankYou from './pages/thankyou/ThankYou' 
 import StoreList from './pages/storeList/StoreList'
 import Store from './pages/store/Store'
+import Footer from './layout/Footer'
 
 
 import authService from './../services/auth.service'
@@ -75,7 +76,8 @@ class App extends Component {
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
           <Route path="/order" exact render={(props)=> this.state.loggedInUser ? <Order setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props}></Order>  : <Redirect to="/login" />} />
           <Route path="/order/thankyou/:orderId" render={props => <ThankYou setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props} />} />
-      </Switch>
+        </Switch>
+        <Footer/>
         
       
       

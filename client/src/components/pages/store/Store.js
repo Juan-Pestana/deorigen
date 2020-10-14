@@ -49,7 +49,7 @@ class Store extends Component {
                     <h1 className="text-center mb-4" style={{fontFamily:"'open sans', 'sans-serif'"}}>{this.state.store.storeName}</h1>
                     <Row className="d-flex justify-content-center mb-4" style={{minHeight:400}}>
                         <Col lg={6} className="text-right">
-                            <img src={this.state.store.contentPicUrl} alt={this.state.store.tagline} />
+                            <img src={this.state.store.contentPicUrl} alt={this.state.store.tagline} style={{maxHeight:400, maxWidth:'100%', objectFit:'contain'}}/>
                         </Col>
 
                         <Col lg={6} className="text-center" style={{padding:"10% 15% 10% 1%"}}>
@@ -72,7 +72,7 @@ class Store extends Component {
                                 storeName={this.state.store.storeName} style={{ height: "100%", width: "100%" }} />}
                         </Col>
                     </Row>
-
+                    <h3 className="text-center">Los Productos de {this.state.store.storeName}</h3>    
                     <Row >
                         <Col className="d-flex justify-content-center miniShopBanner" onClick={() => this.handleMinishopModal(true)}>
                             {this.state.store.products && this.state.store.products.map(elm => <img src={elm.productPicUrl} alt={elm.productName} />)}

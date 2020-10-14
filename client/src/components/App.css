@@ -69,12 +69,23 @@ hr {
   margin: 0.5rem auto
 }
 
+footer a {
+  color: black;
+  font-weight:600
+}
+
+footer a:hover {
+  color: black;
+  font-weight:600;
+  color: #005555;
+  text-decoration: none;
+}
 
 
 .container.page {
   background-color: white;
   padding-top: 80px;
-  min-height: 750px;
+  min-height: 95vh;
 }
 
 .format {

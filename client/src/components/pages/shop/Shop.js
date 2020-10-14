@@ -81,7 +81,7 @@ class Shop extends Component {
                 <Row>
                     <CardDeck>
                         {(this.state.category ? this.state.products.filter(elm => elm.category === this.state.category)  : this.state.products)
-                            .filter(elm => elm.productName.includes(this.state.search))
+                            .filter(elm => elm.productName.toLowerCase().includes(this.state.search.toLowerCase()))
                             .map(elm => <ProductCard key = {elm._id} {...elm} />)}
                     </CardDeck>
                 </Row>
