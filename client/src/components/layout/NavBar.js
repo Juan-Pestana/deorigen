@@ -15,7 +15,7 @@ import authService from './../../services/auth.service'
 import Signup from './../pages/signup/Signup'
 import Login from './../pages/login/Login'
 import Cart from './../pages/cart/Cart'
-
+import ProductCounter from './ProductCounter'
 
 
 
@@ -83,7 +83,7 @@ export default class NavBar extends Component {
                         {!this.props.loggedInUser &&<NavDropdown.Item onClick={() => this.handleSignupModal(true)}>Regístrate</NavDropdown.Item>}
 
                     </NavDropdown>
-                    <div className="nav-link" onClick={() => this.handleCartModal(true)}>Carrito</div>
+                    <div className="nav-link cartLink" onClick={() => this.handleCartModal(true)}>Carrito<ProductCounter/></div>
                 </Nav>
 
             </Navbar.Collapse>

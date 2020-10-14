@@ -126,7 +126,7 @@ class StoreSettingsForm extends Component {
 
                 <Form.Group>
                     <Form.Label>Descripción</Form.Label>
-                    <Form.Control type="textarea" name="description" value={this.state.store.description} onChange={this.handleInputChange} />
+                    <Form.Control as="textarea" rows='3' name="description" value={this.state.description} onChange={this.handleInputChange} />
                 </Form.Group>
 
                 <Form.Group>
