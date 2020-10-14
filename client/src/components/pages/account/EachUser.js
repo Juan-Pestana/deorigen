@@ -34,7 +34,19 @@ class EachUser extends Component {
     }
 
     setUser = () =>{
-        this.setState({...this.props})
+
+        this.setState({
+            username : this.props.username,
+            firstName : this.props.firstName,
+            lastName : this.props.lastName,
+            email : this.props.email,
+            role : this.props.role,
+            store : this.props.store,
+            address : this.props.address,
+            orderHistory: this.props.orderHistory,
+            currentOrder: this.props.currentOrder,
+            
+        })
     }
 
     handleInputChange = e => {
