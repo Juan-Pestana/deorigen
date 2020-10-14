@@ -19,7 +19,7 @@ router.get('/getAllStores', (req, res) => {
 
 router.get('/getLast3Stores', (req, res) => {
 
-    Store.find().sort({created_At : -1}).limit(3)
+    Store.find().sort({created_At : 1}).limit(3)
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })

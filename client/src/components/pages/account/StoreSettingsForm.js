@@ -23,7 +23,8 @@ class StoreSettingsForm extends Component {
                 contentPicUrl: '',
                 location: ''
             },
-            uploadingImage: false
+            uploadingImageH: false,
+            uploadingImageC: false
         }
         this.storeService = new storeService()
         this.filesService = new filesService()
@@ -60,7 +61,7 @@ class StoreSettingsForm extends Component {
 
     contentPicUpload = e => {
 
-        this.setState({ uploadingImage: true })
+        this.setState({ uploadingImageC: true })
         // const picUrl = e.target.name
         const uploadData = new FormData()
         uploadData.append( 'imageUrl', e.target.files[0])
@@ -72,7 +73,7 @@ class StoreSettingsForm extends Component {
                 console.log(response)
                 this.setState({
                     store: { ...this.state.store, contentPicUrl: response.data.secure_url },
-                    uploadingImage: null
+                    uploadingImageC: null
                 })
             })
 
@@ -81,7 +82,7 @@ class StoreSettingsForm extends Component {
 
     heroPicUpload = e => {
 
-        this.setState({ uploadingImage: true })
+        this.setState({ uploadingImageH: true })
         // const picUrl = e.target.name
         const uploadData = new FormData()
         uploadData.append( 'imageUrl', e.target.files[0])
@@ -93,7 +94,7 @@ class StoreSettingsForm extends Component {
                 console.log(response)
                 this.setState({
                     store: { ...this.state.store, heroPicUrl: response.data.secure_url },
-                    uploadingImage: null
+                    uploadingImageH: null
                 })
             })
 
@@ -134,13 +135,13 @@ class StoreSettingsForm extends Component {
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label> {this.state.uploadingImage ? <span><Spinner animation="border" variant="light"/></span> : "Foto Header"}</Form.Label>
-                    <Form.Control type="file" name="heroPicUrl" onChange={this.heroPicUpload} className="btn btn-dark"/>
+                    <Form.Label>Foto Cabecera{this.state.uploadingImageH &&<Spinner animation="border" size="sm" variant="light" /> } </Form.Label>
+                    <Form.Control type="file" name="heroPicUrl" onChange={this.heroPicUpload} />
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Foto Contenido</Form.Label>
-                    <Form.Control type="file" name="imageUrl" onChange={this.contentPicUpload} className="btn"/>
+                    <Form.Label>Foto Contenido{this.state.uploadingImageC &&<Spinner animation="border" size="sm" variant="light" /> }</Form.Label>
+                    <Form.Control type="file" name="imageUrl" onChange={this.contentPicUpload} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Localización</Form.Label>
@@ -148,7 +149,8 @@ class StoreSettingsForm extends Component {
                 </Form.Group>
 
 
-                <Button variant="dark" type="submit">Enviar Cambios</Button>
+                <Button variant="dark" type="submit" disabled={this.state.uploadingImageH || this.state.uploadingImageC}>
+                    {this.state.uploadingImageH || this.state.uploadingImageC ? 'Subiendo...' : 'Editar Tienda'}</Button>
             </Form>
         )
     }
