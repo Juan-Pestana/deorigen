@@ -24,7 +24,10 @@ class StoreSettings extends Component {
        this.productService= new productService()
    }
 
-   componentDidMount = () => this.setStoreFromDB()
+    componentDidMount = () => {
+        this.setStoreFromDB()
+        this.props.refreshPage(null)
+    }
 
    setStoreFromDB = () => {
             this.storeService

@@ -85,7 +85,7 @@ class Account extends Component {
                         <div onClick={() => this.setShow('PersonalInfo')} className='nav-link p-3 text-right'>Información Personal</div>
                         <div onClick={() => this.setShow('AllOrders')} className='nav-link p-3 text-right'>Ultimos Pedidos</div>
                         
-                    {this.state.store && <div onClick={() => this.setShow('StoreSettings')} className='nav-link p-3 text-right'>Tu tienda</div> }
+                        {this.state.store && <div onClick={() => this.setShow('StoreSettings')} className='nav-link p-3 text-right'>Tu tienda</div>}
                     {this.state.user ? this.state.user.role ==='admin' && <div className='nav-link p-3 text-right'>Panel de Administrador
                         <div onClick={() => this.setShow('AllUsers')} className='nav-link py-3 px-0 text-right'>Todos los Usuarios</div>
                         <div onClick={() => this.setShow('AllStores')}className='nav-link py-3 px-0  text-right'>Todas las Tiendas</div>
@@ -118,7 +118,7 @@ class Account extends Component {
                 {this.state.show === 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfo>}   
                 {this.state.show === 'PersonalInfoForm' && <PersonalInfoForm user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfoForm>}
                 {this.state.show === 'AllOrders' && <AllOrders user={this.props.loggedInUser} setShow={this.setShow}></AllOrders>}
-                {this.state.show === 'StoreSettings' && <StoreSettings user={this.props.loggedInUser} setShow={this.setShow} productToEdit = {this.productToEdit}></StoreSettings>}
+                {this.state.show === 'StoreSettings' && <StoreSettings user={this.props.loggedInUser} setShow={this.setShow} productToEdit = {this.productToEdit} refreshPage={this.props.refreshPage}></StoreSettings>}
                 {this.state.store && this.state.show === 'StoreSettingsForm' && <StoreSettingsForm store={this.state.store} setShow={this.setShow} ></StoreSettingsForm>}
                 {this.state.store && this.state.show === 'CreateProductForm' && <CreateProductForm store={this.state.store} setShow={this.setShow}></CreateProductForm>}
                 {this.state.store && this.state.show === 'EditProduct' && <EditProduct product={this.state.productToEdit} setShow={this.setShow}></EditProduct>}

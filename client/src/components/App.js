@@ -67,7 +67,7 @@ class App extends Component {
       <NavBar setTheUser={this.setTheUser} {...this.props} loggedInUser={this.state.loggedInUser} refreshPage={this.refreshPage}/>
       <Switch>
           { this.state.refreshUrl && <Redirect push to={this.state.refreshUrl} onLoad={this.refreshPage('')} ></Redirect>}
-          <Route path='/account' render={() => this.state.loggedInUser ? <Account loggedInUser={this.state.loggedInUser}/> : <Redirect to="/login" />} />
+          <Route path='/account' render={() => this.state.loggedInUser ? <Account loggedInUser={this.state.loggedInUser} refreshPage={this.refreshPage}/> : <Redirect to="/login" />} />
           <Route path="/" exact render={() => <Index />} />
           <Route path="/shop" render={() => <Shop />} />
           <Route path="/storelist" render={props => <StoreList {...props} />} />

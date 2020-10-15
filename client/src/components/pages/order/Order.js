@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row'
 
 import Cart from './../cart/Cart'
 import PersonalInfo from './../account/PersonalInfo'
+import PersonalInfoForm from './../account/PersonalInfoForm'
 import PaymentInfoForm from './PaymentInfoForm'
 
 import './order.css'
@@ -52,7 +53,8 @@ class Order extends Component {
             <div className = 'col d-flex mt-5 flex-column'> 
                 
                 {this.state.show === 'Cart' && <Cart user={this.props.loggedInUser} {...this.props} setShow={this.setShow} closing={true}></Cart>}   
-                {this.state.show === 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} {...this.props}  setShow={this.setShow} closing={true}></PersonalInfo>}   
+                {this.state.show === 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} {...this.props} setShow={this.setShow} closing={true}></PersonalInfo>}  
+                {this.state.show === 'PersonalInfoForm' && <PersonalInfoForm user={this.props.loggedInUser} {...this.props}  setShow={this.setShow} closing={true}></PersonalInfoForm>}         
                 {this.state.show === 'PaymentInfoForm' && <PaymentInfoForm {...this.props} setShow={this.setShow}></PaymentInfoForm>} 
             </div>
         </Row>    
