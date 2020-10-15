@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -82,9 +83,13 @@ class Cart extends Component {
                 <Row className={"justify-content-center"} style={{ padding : "20px"}}>
                     <h4>Total aproximado: {this.state.subtotal} €</h4>
                 </Row>
-                {(!this.state.isClosing && this.state.productList.length === 0) && 
+                {(this.state.productList.length === 0) && 
                     <Row style={{ padding: "25px"}}>
-                        <Button to="/shop" style={{ padding: "10px"}}className="btn btn-secondary btn-block" onClick={() => this.props.closeModal(false,"/shop")}> Ir a la Tienda </Button> 
+                    {this.props.closeModal
+                        ?
+                        <Button style={{ padding: "10px" }} className="btn btn-secondary btn-block" onClick={() => this.props.closeModal(false, "/shop")}> Ir a la Tienda </Button>
+                        :
+                        <Link to="/shop" style={{ padding: "10px" }} className="btn btn-secondary btn-block">Volver a la Tienda</Link>}
                     </Row>
                 }
                 {(!this.state.isClosing && this.state.productList.length > 0 )&& 

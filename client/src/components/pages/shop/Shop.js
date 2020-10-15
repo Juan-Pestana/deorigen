@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -84,6 +85,10 @@ class Shop extends Component {
                             .filter(elm => elm.productName.toLowerCase().includes(this.state.search.toLowerCase()))
                             .map(elm => <ProductCard key = {elm._id} {...elm} />)}
                     </CardDeck>
+                </Row>
+                
+                <Row style={{ padding: "25px" }}>
+                    <Link to="/order" style={{ padding: "10px" }} className="btn btn-secondary btn-block"   > Tramitar Pedido </Link>
                 </Row>
             </Container>
         )

@@ -5,20 +5,23 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import Carousel from 'react-bootstrap/Carousel'
 
 import IndexStoreList from './IndexStoreList'
-import logo from './LogoHome.svg'
+import ControlledCarousel from './Carousel'
 
+import logo from './LogoHome.svg'
 import './index.css'
+
 
 
 
 const Index = () => {
     return (
-        <Container className="page pb-5">
+        <Container className="page pb-5 index">
             <h1 className='text-center'><img src={logo} alt="Logo De Origen" style={{width : '50%'}}/> </h1>
-           
-            {/* Carrusel */}
+        
+            <ControlledCarousel />
             <Row className='bg-dark text-secondary features d-flex justify-content-around'>
                 <Col md="3" className="text-center p-3">
                     <img src="https://res.cloudinary.com/pestana/image/upload/v1602695107/deorigen/field_lgfrzr.png"></img>

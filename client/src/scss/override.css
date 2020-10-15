@@ -9904,8 +9904,9 @@ h3 {
 
 .storeCard, .storeCard:hover {
   padding-bottom: 0;
-  padding-top: 8em;
+  padding-top: 10em;
   background-size: cover;
+  background-position: center;
   text-decoration: none;
   color: #005555;
 }

@@ -41,9 +41,9 @@ class IndexStoreList extends Component {
     render() {
         return (
             <>
-                <h1>Descubre a Nuestros Productores</h1>
+                <h3 className="mt-4">Descubre a Nuestros Productores</h3>
                 {this.state.stores.map(elm => <StoreCard key = {elm._id} {...elm} storeLink={'storelist'}/>)}
-              
+                <Link to="storelist" ><h3>...Y muchos más</h3></Link>
             </>    
 
         )

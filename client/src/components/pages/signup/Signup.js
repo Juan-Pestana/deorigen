@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
+
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -7,6 +9,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 import authService from '../../../services/auth.service'
+
 
 class Signup extends Component {
     constructor(props) {
@@ -44,6 +47,11 @@ class Signup extends Component {
                 this.setState({errorMessage : err.response.data.message})
                 console.log('Error:', { err })
             } )
+    }
+
+        handleLink = () => {
+        this.props.closeModal && this.props.closeModal()
+        
     }
 
 
@@ -91,6 +99,7 @@ class Signup extends Component {
                                     <Button variant="dark" type="submit">Registrarme</Button>
                                     <p className='text-danger ml-5 my-auto'>{this.state.errorMessage}</p>
                                 </div>
+                                <p className="mt-2">¿Ya tienes cuenta? <Link to="login" className="nav.link" onClick={() =>this.handleLink()}>Inicia sesión</Link></p>
                             </Form>
                         </>
             //             </Col>

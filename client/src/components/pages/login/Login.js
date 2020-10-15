@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -40,6 +41,11 @@ class Login extends Component {
                 console.log('Erroooooor:', { err })})
     }
 
+    handleLink = () => {
+        this.props.closeModal && this.props.closeModal()
+        
+    }
+
 
     render() {
 
@@ -60,6 +66,7 @@ class Login extends Component {
                                     <Button variant="dark" type="submit">Acceder</Button>
                                     <p className='text-danger ml-5 my-auto'>{this.state.errorMessage}</p>
                                 </div>
+                                <p className="mt-2">¿No tienes cuenta? <Link to="/signup" className="nav.link" onClick={() =>this.handleLink()}>Regístrate</Link> </p>
                                 
                             </Form>
 
