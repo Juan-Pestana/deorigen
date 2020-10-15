@@ -43,13 +43,13 @@ class AllOrders extends Component {
 
     sortByDate = () => {
         let toSort = [...this.state.orders]
-        toSort.sort((a, b) => a.createdAt < b.createdAt)
+        toSort.sort((a, b) => a.createdAt > b.createdAt)
         this.setState({sorted : toSort})
     }
 
     sortByAmount = () => {
         let toSort = [...this.state.orders]
-        toSort.sort((a, b) => a.subtotal < b.subtotal)
+        toSort.sort((a, b) => a.subtotal > b.subtotal)
         this.setState({sorted : toSort})
     }
 

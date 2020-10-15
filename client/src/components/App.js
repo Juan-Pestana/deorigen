@@ -63,6 +63,7 @@ class App extends Component {
     
     return (
       <>
+      <div style={{position: "relative"}}>
       <NavBar setTheUser={this.setTheUser} {...this.props} loggedInUser={this.state.loggedInUser} refreshPage={this.refreshPage}/>
       <Switch>
           { this.state.refreshUrl && <Redirect push to={this.state.refreshUrl} onLoad={this.refreshPage('')} ></Redirect>}
@@ -78,6 +79,8 @@ class App extends Component {
           <Route path="/order/thankyou/:orderId" render={props => <ThankYou setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props} />} />
         </Switch>
         <Footer/>
+      </div>
+      
         
       
       
