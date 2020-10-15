@@ -71,7 +71,7 @@ export default class NavBar extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    <Link className="nav-link" to="/"Inicio</Link>
+                    <Link className="nav-link" to="/">Inicio</Link>
                     <Link className="nav-link" to="/shop">Tienda</Link>
                     <Link className="nav-link" to="/storeList">Productores</Link>
                     
