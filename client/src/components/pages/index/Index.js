@@ -19,7 +19,7 @@ import './index.css'
 const Index = () => {
     return (
         <Container className="page index">
-            <h1 className='text-center'><img src={logo} alt="Logo De Origen" style={{width : '50%'}}/> </h1>
+            <h1 className='text-center mt-3 mt-lg-5'><img src={logo} alt="Logo De Origen" style={{width : '50%', paddingTop: 0}}/> </h1>
         
             <ControlledCarousel />
             <Row className='bg-dark text-secondary features d-flex justify-content-around'>

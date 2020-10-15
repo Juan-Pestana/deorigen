@@ -61,7 +61,7 @@ export default class NavBar extends Component {
                     alt=""
                     src={logo}
                    
-                    height="10vh"
+                    height="50vh"
                     className="d-inline-block align-top"
                 />
                     {' '} 
@@ -71,7 +71,7 @@ export default class NavBar extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    <Link className="nav-link" to="/">Home</Link>
+                    <Link className="nav-link" to="/"Inicio</Link>
                     <Link className="nav-link" to="/shop">Tienda</Link>
                     <Link className="nav-link" to="/storeList">Productores</Link>
                     
@@ -83,7 +83,7 @@ export default class NavBar extends Component {
                         {!this.props.loggedInUser &&<NavDropdown.Item onClick={() => this.handleSignupModal(true)}>Regístrate</NavDropdown.Item>}
 
                     </NavDropdown>
-                    <div className="nav-link cartLink" onClick={() => this.handleCartModal(true)}>Carrito<ProductCounter/></div>
+                    <div className="nav-link cartLink" onClick={() => this.handleCartModal(true)}>Carro<ProductCounter/></div>
                 </Nav>
 
             </Navbar.Collapse>

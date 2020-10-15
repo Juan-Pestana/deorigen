@@ -16,7 +16,12 @@
 .carousel-caption h3 {
     width: 100%;
     padding: 20px;
-    background-color: rgba(#c0d7bb, .85)
+    background-color: rgba(#c0d7bb, .85);
+    text-shadow:  1px 1px 2px #005555;
+}
+
+.carousel-caption p {
+    text-shadow:  1px 1px 2px #005555;
 }
 
 @media (max-width: 768px){
