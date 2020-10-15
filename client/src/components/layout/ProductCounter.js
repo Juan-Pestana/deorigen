@@ -33,9 +33,9 @@ export default class ProductCounter extends Component {
     render() {
         return (
             <>
-                <div className= 'counterContainer'>
+                {this.state.counter > 0 && <div className= 'counterContainer'>
                     <p className= 'counterNumber'>{this.state.counter}</p>
-                </div>
+                </div>}
             </>
         )
 

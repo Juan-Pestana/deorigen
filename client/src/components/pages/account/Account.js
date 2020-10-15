@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Dropdown from 'react-bootstrap/Dropdown'
 
 import storeService from './../../../services/store.services'
@@ -117,16 +115,16 @@ class Account extends Component {
                     
                 <div className = 'col-md-9 d-flex flex-column accountContent '> 
 
-                {this.state.show == 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfo>}   
-                {this.state.show == 'PersonalInfoForm' && <PersonalInfoForm user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfoForm>}
-                {this.state.show == 'AllOrders' && <AllOrders user={this.props.loggedInUser} setShow={this.setShow}></AllOrders>}
-                {this.state.show == 'StoreSettings' && <StoreSettings user={this.props.loggedInUser} setShow={this.setShow} productToEdit = {this.productToEdit}></StoreSettings>}
-                {this.state.store && this.state.show == 'StoreSettingsForm' && <StoreSettingsForm store={this.state.store} setShow={this.setShow} ></StoreSettingsForm>}
-                {this.state.store && this.state.show == 'CreateProductForm' && <CreateProductForm store={this.state.store} setShow={this.setShow}></CreateProductForm>}
-                {this.state.store && this.state.show == 'EditProduct' && <EditProduct product={this.state.productToEdit} setShow={this.setShow}></EditProduct>}
-                {this.state.show == 'AllUsers' && <AllUsers setShow = {this.setShow}/>}
-                {this.state.show == 'AllStores' && <AllStores storeToEdit = {this.storeToEdit} />}
-                {this.state.show == 'AdminStoreUpdate' && <StoreSettingsForm storeToEdit={this.state.storeToEdit} setShow={this.setShow} adminUpdate = {true}></StoreSettingsForm> }
+                {this.state.show === 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfo>}   
+                {this.state.show === 'PersonalInfoForm' && <PersonalInfoForm user={this.props.loggedInUser} setShow={this.setShow}></PersonalInfoForm>}
+                {this.state.show === 'AllOrders' && <AllOrders user={this.props.loggedInUser} setShow={this.setShow}></AllOrders>}
+                {this.state.show === 'StoreSettings' && <StoreSettings user={this.props.loggedInUser} setShow={this.setShow} productToEdit = {this.productToEdit}></StoreSettings>}
+                {this.state.store && this.state.show === 'StoreSettingsForm' && <StoreSettingsForm store={this.state.store} setShow={this.setShow} ></StoreSettingsForm>}
+                {this.state.store && this.state.show === 'CreateProductForm' && <CreateProductForm store={this.state.store} setShow={this.setShow}></CreateProductForm>}
+                {this.state.store && this.state.show === 'EditProduct' && <EditProduct product={this.state.productToEdit} setShow={this.setShow}></EditProduct>}
+                {this.state.show === 'AllUsers' && <AllUsers setShow = {this.setShow}/>}
+                {this.state.show === 'AllStores' && <AllStores storeToEdit = {this.storeToEdit} />}
+                {this.state.show === 'AdminStoreUpdate' && <StoreSettingsForm storeToEdit={this.state.storeToEdit} setShow={this.setShow} adminUpdate = {true}></StoreSettingsForm> }
                 </div>
                 
                 

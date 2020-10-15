@@ -82,7 +82,7 @@ class AllUsers extends Component {
                     <Col  className="searchBar">
                         <Form.Control className="input" type="text" name="search" value={this.state.search} onChange={this.handleInputChange} placeholder='Introduce el nombre del usuario'/>
                     </Col>
-                    <Col  lg="auto" className="filters" className="d-flex justify-content-center">
+                    <Col  lg="auto" className="filters" >
                         <ButtonGroup className="d-none d-md-block" >
                             <Button variant="outline-dark" name='admin' onClick= { () => this.setFilterRole('admin')}>Administradores</Button>
                             <Button variant="outline-dark" name='buyer' onClick={ () => this.setFilterRole('buyer')}>Clientes</Button>

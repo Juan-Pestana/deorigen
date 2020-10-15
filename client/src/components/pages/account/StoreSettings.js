@@ -1,14 +1,13 @@
 import React, {Component} from 'react'
 
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+
 
 
 import storeService from './../../../services/store.services'
 import productService from './../../../services/product.services'
 import ProductCard from './../shop/productCard'
-import MapContainer from './../../shared/MapContainer'
+
 
 
 
@@ -77,11 +76,11 @@ class StoreSettings extends Component {
             <div className='d-flex justify-content-around'>
                 <div>
                     <p className = 'text-muted'>Foto Header</p>
-                    <img className= 'heroPic'src={this.state.store.heroPicUrl}/>
+                    <img className= 'heroPic'src={this.state.store.heroPicUrl} alt={this.state.store.storeName}/>
                 </div>
                 <div>
                     <p className = 'text-muted'>Foto Contenido</p>
-                    <img className= 'heroPic'src={this.state.store.contentPicUrl}/>
+                    <img className= 'heroPic'src={this.state.store.contentPicUrl} alt={this.state.store.storeName}/>
                 </div>
                 
             </div>

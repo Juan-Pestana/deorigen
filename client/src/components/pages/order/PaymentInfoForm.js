@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Redirect } from 'react-router-dom'
+
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -66,7 +66,7 @@ class PaymentInfoForm extends Component {
                     let productList= []
                     response.data.forEach(elm1 =>{
                         cartLocalStorage.forEach(elm2 => {
-                            if (elm1._id == elm2.product){
+                            if (elm1._id === elm2.product){
                             productList.push({product : elm1, quantity: elm2.quantity})
                             }
                         })

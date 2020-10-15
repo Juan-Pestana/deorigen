@@ -4,7 +4,7 @@ import storeService from '../../../services/store.services'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+
 
 import Cart from './../cart/Cart'
 import PersonalInfo from './../account/PersonalInfo'
@@ -51,9 +51,9 @@ class Order extends Component {
         <Row>
             <div className = 'col d-flex mt-5 flex-column'> 
                 
-                {this.state.show == 'Cart' && <Cart user={this.props.loggedInUser} {...this.props} setShow={this.setShow} closing={true}></Cart>}   
-                {this.state.show == 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} {...this.props}  setShow={this.setShow} closing={true}></PersonalInfo>}   
-                {this.state.show == 'PaymentInfoForm' && <PaymentInfoForm {...this.props} setShow={this.setShow}></PaymentInfoForm>} 
+                {this.state.show === 'Cart' && <Cart user={this.props.loggedInUser} {...this.props} setShow={this.setShow} closing={true}></Cart>}   
+                {this.state.show === 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} {...this.props}  setShow={this.setShow} closing={true}></PersonalInfo>}   
+                {this.state.show === 'PaymentInfoForm' && <PaymentInfoForm {...this.props} setShow={this.setShow}></PaymentInfoForm>} 
             </div>
         </Row>    
             

@@ -42,7 +42,7 @@ class Cart extends Component {
                     let productList= []
                     response.data.forEach(elm1 =>{
                         cartLocalStorage.forEach(elm2 => {
-                                if (elm1._id == elm2.product){
+                                if (elm1._id === elm2.product){
                                 productList.push({product : elm1, quantity: elm2.quantity})
                             }
                         })

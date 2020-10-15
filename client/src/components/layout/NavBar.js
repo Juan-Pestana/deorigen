@@ -29,7 +29,7 @@ export default class NavBar extends Component {
             showCartModal : false,
         }
         this.authService = new authService()
-
+        this.wrapper = React.createRef();
     }
 
     logoutUser = () => {
@@ -75,7 +75,7 @@ export default class NavBar extends Component {
                     <Link className="nav-link" to="/shop">Tienda</Link>
                     <Link className="nav-link" to="/storeList">Productores</Link>
                     
-                    <NavDropdown  className="nav-dropdown" title={this.props.loggedInUser ? this.props.loggedInUser.firstName : 'Invitado'} id="collasible-nav-dropdown">
+                    <NavDropdown  className="nav-dropdown dropdown" title={this.props.loggedInUser ? this.props.loggedInUser.firstName : 'Invitado'} id="collasible-nav-dropdown">
                         {this.props.loggedInUser && <NavDropdown.Item><Link to='/account' className= 'dropdown-item'>Tu Cuenta</Link></NavDropdown.Item>}
                         {this.props.loggedInUser && <NavDropdown.Item onClick={this.logoutUser }>Cerrar Sesión</NavDropdown.Item>}
                         
