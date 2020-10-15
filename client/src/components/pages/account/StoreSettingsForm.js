@@ -113,7 +113,7 @@ class StoreSettingsForm extends Component {
 
         return (
 
-            <Form onSubmit={this.handleFormSubmit}>
+            <Form onSubmit={this.handleFormSubmit} className='pt-4'>
                 <Form.Group>
                     <Form.Label>Nombre de la tienda</Form.Label>
                     <Form.Control type="text" name="storeName" value={this.state.store.storeName} onChange={this.handleInputChange} />
@@ -126,7 +126,7 @@ class StoreSettingsForm extends Component {
 
                 <Form.Group>
                     <Form.Label>Descripción</Form.Label>
-                    <Form.Control as="textarea" rows='3' name="description" value={this.state.description} onChange={this.handleInputChange} />
+                    <Form.Control as="textarea" rows='3' name="description" value={this.state.store.description} onChange={this.handleInputChange} />
                 </Form.Group>
 
                 <Form.Group>

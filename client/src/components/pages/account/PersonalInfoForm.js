@@ -54,7 +54,7 @@ class PersonalInfoForm extends Component {
 
         return (
 
-            <Form onSubmit={this.handleFormSubmit}>
+            <Form onSubmit={this.handleFormSubmit} className='pt-4'>
                 <Form.Group>
                     <Form.Label>Nombre</Form.Label>
                     <Form.Control type="text" name="firstName" value={this.state.firstName} onChange={this.handleInputChange} />

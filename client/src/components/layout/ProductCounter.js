@@ -9,12 +9,12 @@ export default class ProductCounter extends Component {
         this.state = {
             counter : 0
         }
-       
+      
 
     }
 
     componentDidMount = () =>{
-        var counter = setInterval(this.fetchProducts, 2000)
+        const interval = setInterval(this.fetchProducts, 2000)
     }
 
     fetchProducts = () => {
@@ -25,6 +25,8 @@ export default class ProductCounter extends Component {
             
         
     }
+
+
 
 
 

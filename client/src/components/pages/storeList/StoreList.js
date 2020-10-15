@@ -48,7 +48,7 @@ class StoreList extends Component {
                     </Col>
                 </Row>
                 
-                {this.state.stores.filter(elm => elm.storeName.includes(this.state.search))
+                {this.state.stores.filter(elm => elm.storeName.toLowerCase().includes(this.state.search.toLowerCase()))
                             .map(elm => <StoreCard key = {elm._id} {...elm} />)}
                 
 
