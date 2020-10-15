@@ -13,6 +13,7 @@ import OrderService from '../../../services/order.services'
 
 
 
+
 class AllOrders extends Component {
 
     constructor() {
@@ -36,21 +37,30 @@ class AllOrders extends Component {
             .getOrdersFromUser(this.props.user._id)
             .then(response => {
     
-                this.setState({orders : response.data},() => this.sortByDate())})
+                this.setState({orders : response.data, sorted : response.data})})
             .catch(err => console.log('Error:', err))
+
+            
 
     }
 
     sortByDate = () => {
         let toSort = [...this.state.orders]
-        toSort.sort((a, b) => a.createdAt > b.createdAt)
-        this.setState({sorted : toSort})
+
+        let sorted = toSort.reverse()
+        
+
+        
+        this.setState({sorted})
     }
 
     sortByAmount = () => {
         let toSort = [...this.state.orders]
-        toSort.sort((a, b) => a.subtotal > b.subtotal)
-        this.setState({sorted : toSort})
+        let sorted = toSort.sort(function (a, b) {
+            if (a.subtotal > b.subtotal) {
+              return -1;
+            }});
+        this.setState({sorted : sorted})
     }
 
 
@@ -71,15 +81,13 @@ class AllOrders extends Component {
          <Row className='mb-4'>
             <ButtonGroup>
                 <Button onClick ={()=>this.sortByDate()}>Por fecha</Button>
-                <Button className='btn-outline' onClick ={()=>this.sortByAmount()}>Por Importe</Button>
+                <Button  onClick ={()=>this.sortByAmount()}>Por Importe</Button>
             </ButtonGroup>
              
          </Row>
         
         
-      {(this.state.sorted ? this.state.sorted : this.state.orders)
-                      
-                        .map(elem =><div key={elem._id} className='row'>
+      {this.state.sorted.map(elem =><div key={elem._id} className='row'>
                 <div className=' col-sm-6 col-md-4'>
                     <label className='text-muted'>Fecha</label>
                     <p>{elem.dateString}</p>
