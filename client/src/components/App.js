@@ -63,7 +63,7 @@ class App extends Component {
     
     return (
       <>
-      <div style={{position: "relative"}}>
+      <div style={{position: "relative", height: 'fitContent'}}>
       <NavBar setTheUser={this.setTheUser} {...this.props} loggedInUser={this.state.loggedInUser} refreshPage={this.refreshPage}/>
       <Switch>
           { this.state.refreshUrl && <Redirect push to={this.state.refreshUrl} onLoad={this.refreshPage('')} ></Redirect>}

@@ -12,10 +12,16 @@
 
 .accountContent{
     background-color: white;
+    height: fit-content;
 }
+
 
 .account-options div{
     cursor: pointer;
+}
+
+.account-options {
+    height: 100%
 }
 
 
