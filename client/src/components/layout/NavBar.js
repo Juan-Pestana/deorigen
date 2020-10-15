@@ -61,7 +61,7 @@ export default class NavBar extends Component {
                     alt=""
                     src={logo}
                    
-                    height="40"
+                    height="50vh"
                     className="d-inline-block align-top"
                 />
                     {' '} 
