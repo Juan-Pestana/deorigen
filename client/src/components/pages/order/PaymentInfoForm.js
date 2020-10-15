@@ -50,9 +50,7 @@ class PaymentInfoForm extends Component {
         this.authService
             .isLoggedIn()
             .then(response => this.setState({ loggedInUser: response.data }))
-            .catch(err => {
-                (err => console.log('Error:', err))
-            })
+            .catch(err => console.log('Error:', err))
         }
 
     loadProductsFromLocalStorage = () =>{
@@ -110,7 +108,7 @@ class PaymentInfoForm extends Component {
             .then(reponse => this.setState({ isClosed: true}, () => this.recordNewOrder()))
             .catch(err => console.log('Error:', err))
             :
-        () => this.props.history.push('/login')    
+        this.props.history.push('/login')    
 
     }
 
