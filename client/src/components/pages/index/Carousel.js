@@ -10,11 +10,11 @@ function ControlledCarousel() {
   };
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
+    <Carousel activeIndex={index} onSelect={handleSelect} className="carousel mb-5 mt-3">
       <Carousel.Item>
         <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
+          className="d-block w-100 carouselImg"
+          src="https://res.cloudinary.com/dpflfpgcj/image/upload/v1602609705/deorigen/Vegie%20Hero.jpg.jpg"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -24,8 +24,8 @@ function ControlledCarousel() {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=282c34"
+          className="d-block w-100 carouselImg"
+          src="https://res.cloudinary.com/dpflfpgcj/image/upload/v1602668520/deorigen/Queso%20hero.jpg.jpg"
           alt="Second slide"
         />
 
@@ -36,8 +36,8 @@ function ControlledCarousel() {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
+          className="d-block w-100 carouselImg"
+          src="https://res.cloudinary.com/dpflfpgcj/image/upload/v1602604372/deorigen/wine%20content.jpg.jpg"
           alt="Third slide"
         />
 
