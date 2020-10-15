@@ -41,7 +41,7 @@ class PersonalInfo extends Component {
     return(
         <>
         <h1>Tu Información Personal</h1>
-        <div className='container m-4'>
+        <div className='container my-4 mx-0 mx-lg-4'>
             <button onClick={()=>this.props.setShow('PersonalInfoForm')} className='btn btn-outline-secondary btn-sm float-right mr-3'>Editar</button>
     
             <label className = 'text-muted'>Nombre</label>

@@ -90,9 +90,9 @@ footer a:hover {
 
 .container.page {
   background-color: white;
-  padding-top: 80px;
-  min-height: 95vh;
-  padding-bottom: 100px
+  padding-top: 60px;
+  min-height: 100vh;
+  padding-bottom: 60px
 }
 
 /* Product List Format */
