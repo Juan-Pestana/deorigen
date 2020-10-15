@@ -1,4 +1,5 @@
 import React, { useState, setIndex } from 'react'
+import {Link} from 'react-router-dom'
 
 import Carousel from 'react-bootstrap/Carousel'
 
@@ -11,17 +12,19 @@ function ControlledCarousel() {
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect} className="carousel mb-5 mt-3">
-      <Carousel.Item>
-        <img
-          className="d-block w-100 carouselImg"
-          src="https://res.cloudinary.com/dpflfpgcj/image/upload/v1602609705/deorigen/Vegie%20Hero.jpg.jpg"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carouselImg"
+            src="https://res.cloudinary.com/pestana/image/upload/v1602762691/deorigen/Carousel-market_1_v9pyub.jpg"
+            alt="First slide"
+          />
+          <Carousel.Caption>
+      <Link to="/shop">
+            <h3 className="text-secondary">Visita nuestra tienda</h3>
+      </Link>
+            <p>Productos de calidad directos De Origen.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100 carouselImg"
@@ -30,8 +33,8 @@ function ControlledCarousel() {
         />
 
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3 className="text-secondary">Carne de primera</h3>
+          <p>Ganado alimentado solo con pastos.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -42,9 +45,9 @@ function ControlledCarousel() {
         />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
+          <h3 className="text-secondary">Tiempo de vendimia</h3>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            Toda una nueva selección de productos de temporada en otoño.
           </p>
         </Carousel.Caption>
       </Carousel.Item>

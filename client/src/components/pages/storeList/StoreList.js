@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
+
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Jumbotron from 'react-bootstrap/Jumbotron'
-import Button from 'react-bootstrap/Button'
+
 import Form from 'react-bootstrap/Form'
 
 import storeService from './../../../services/store.services'
@@ -41,9 +40,9 @@ class StoreList extends Component {
 
     render() {
         return (
-            <Container className="px-1 px-md-3 px-lg-5 page">
+            <Container className="px-1 px-md-3 px-lg-5 page ">
                 <h1>Nuestros Productores</h1>
-                <Row className="justify-content-between">
+                <Row className="justify-content-between mr-0">
                     <Col  className="searchBar">
                         <Form.Control className="input" type="text" name="search" value={this.state.search} onChange={this.handleInputChange} placeholder='Introduce el nombre del productor'/>
                     </Col>

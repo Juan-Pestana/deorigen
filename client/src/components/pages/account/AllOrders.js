@@ -2,11 +2,11 @@ import React, {Component} from 'react'
 
 
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+
 import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Container from 'react-bootstrap/Container'
-import Form from 'react-bootstrap/Form'
+
 
 import OrderService from '../../../services/order.services'
 
@@ -43,13 +43,13 @@ class AllOrders extends Component {
 
     sortByDate = () => {
         let toSort = [...this.state.orders]
-        toSort.sort((a, b) => a.createdAt < b.createdAt)
+        toSort.sort((a, b) => a.createdAt > b.createdAt)
         this.setState({sorted : toSort})
     }
 
     sortByAmount = () => {
         let toSort = [...this.state.orders]
-        toSort.sort((a, b) => a.subtotal < b.subtotal)
+        toSort.sort((a, b) => a.subtotal > b.subtotal)
         this.setState({sorted : toSort})
     }
 

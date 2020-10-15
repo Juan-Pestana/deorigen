@@ -29,7 +29,7 @@ export default class NavBar extends Component {
             showCartModal : false,
         }
         this.authService = new authService()
-
+        this.wrapper = React.createRef();
     }
 
     logoutUser = () => {
@@ -71,11 +71,11 @@ export default class NavBar extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    <Link className="nav-link" to="/">Home</Link>
+                    <Link className="nav-link" to="/"Inicio</Link>
                     <Link className="nav-link" to="/shop">Tienda</Link>
                     <Link className="nav-link" to="/storeList">Productores</Link>
                     
-                    <NavDropdown  className="nav-dropdown" title={this.props.loggedInUser ? this.props.loggedInUser.firstName : 'Invitado'} id="collasible-nav-dropdown">
+                    <NavDropdown  className="nav-dropdown dropdown" title={this.props.loggedInUser ? this.props.loggedInUser.firstName : 'Invitado'} id="collasible-nav-dropdown">
                         {this.props.loggedInUser && <NavDropdown.Item><Link to='/account' className= 'dropdown-item'>Tu Cuenta</Link></NavDropdown.Item>}
                         {this.props.loggedInUser && <NavDropdown.Item onClick={this.logoutUser }>Cerrar Sesión</NavDropdown.Item>}
                         
@@ -83,7 +83,7 @@ export default class NavBar extends Component {
                         {!this.props.loggedInUser &&<NavDropdown.Item onClick={() => this.handleSignupModal(true)}>Regístrate</NavDropdown.Item>}
 
                     </NavDropdown>
-                    <div className="nav-link cartLink" onClick={() => this.handleCartModal(true)}>Carrito<ProductCounter/></div>
+                    <div className="nav-link cartLink" onClick={() => this.handleCartModal(true)}>Carro<ProductCounter/></div>
                 </Nav>
 
             </Navbar.Collapse>

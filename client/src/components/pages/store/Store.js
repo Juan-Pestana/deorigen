@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+
 
 import Modal from 'react-bootstrap/Modal'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Jumbotron from 'react-bootstrap/Jumbotron'
+import Button from 'react-bootstrap/Button'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
 import storeService from './../../../services/store.services'
 import productService from './../../../services/product.services'
@@ -74,7 +76,7 @@ class Store extends Component {
                     </Row>
                     <h3 className="text-center">Los Productos de {this.state.store.storeName}</h3>    
                     <Row className= 'mb-4'>
-                        <Col className="d-flex justify-content-center miniShopBanner" onClick={() => this.handleMinishopModal(true)}>
+                        <Col className="d-flex justify-content-center miniShopBanner flex-wrap" onClick={() => this.handleMinishopModal(true)}>
                             {this.state.store.products && this.state.store.products.map(elm => <img src={elm.productPicUrl} alt={elm.productName} />)}
 
                         </Col>
@@ -89,6 +91,12 @@ class Store extends Component {
                     <Modal.Body className="container">
                         <Row className="d-flex">
                         {this.state.store.products && this.state.store.products.map(elm => <MiniShopCard key={elm._id} {...elm}/>)}
+                        </Row>
+                        <Row className="d-flex justify-content-center">
+                            <ButtonGroup className="text-center" style={{width: "70%"}}>
+                                <Button variant="outline-secondary" onClick={() => this.handleMinishopModal(false)}>Volver</Button>
+                                <Button variant="secondary" onClick={() => this.props.history.push('/shop')}> Ir a la Tienda </Button>
+                            </ButtonGroup>
                         </Row>
                     </Modal.Body>
                 </Modal>

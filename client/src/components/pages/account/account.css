@@ -1,9 +1,13 @@
 
 
+.page{
+    height: fit-content;
+
+
+}
+
 .accountPage{
-    height: 90vh;
-
-
+    height: fit-content;
 }
 
 .accountContent{
@@ -13,6 +17,8 @@
 .account-options div{
     cursor: pointer;
 }
+
+
 
 .storeProducts .cartControl {
     display : none !important;

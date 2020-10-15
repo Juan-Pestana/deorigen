@@ -1,8 +1,13 @@
 .NavBar {
-    padding-top: 20px;
-    padding-bottom: 10px;
+    /* padding-top: 20px;
+    padding-bottom: 10px; */
+    height: fit-content;
     
     
+}
+
+.NavBar img{
+    height: 40px;
 }
 
 .bg-navbar {
@@ -34,3 +39,4 @@
     display: block;
     margin-left: 4px;
     margin-bottom: 3px; }
+

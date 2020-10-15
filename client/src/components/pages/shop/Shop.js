@@ -7,7 +7,6 @@ import Col from 'react-bootstrap/Col'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal'
 import CardDeck from 'react-bootstrap/CardDeck'
 
 import ProductCard from './productCard'
@@ -60,7 +59,7 @@ class Shop extends Component {
                     <Col  className="searchBar">
                         <Form.Control className="input" type="text" name="search" value={this.state.search} onChange={this.handleInputChange} placeholder='Introduce el nombre del producto'/>
                     </Col>
-                    <Col  lg="auto" className="filters" className="d-flex justify-content-center pr-2">
+                    <Col  lg="auto" className="filters" >
                     <ButtonGroup className="d-none d-md-block" >
                         <Button variant="outline-dark" name='meat' onClick= { () => this.setCategory('meat')}>Carne</Button>
                         <Button variant="outline-dark" name='fish' onClick={ () => this.setCategory('fish')}>Pescado</Button>

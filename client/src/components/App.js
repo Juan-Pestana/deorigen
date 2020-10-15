@@ -4,11 +4,9 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import NavBar from './layout/NavBar'
 import Index from './pages/index/Index'
 import Shop from './pages/shop/Shop'
-import Login from './pages/login/Login'
 import LoginContainer from './pages/login/LoginContainer'
 import Account from './pages/account/Account'
 import SignupContainer from './pages/signup/SignupContainer' 
-import Cart from './pages/cart/Cart' 
 import Order from './pages/order/Order' 
 import ThankYou from './pages/thankyou/ThankYou' 
 import StoreList from './pages/storeList/StoreList'
@@ -21,7 +19,7 @@ import authService from './../services/auth.service'
 
 import './App.css'
 
-const appi = process.env.REACT_APP_API_URL
+
 
 class App extends Component {
 
@@ -65,6 +63,7 @@ class App extends Component {
     
     return (
       <>
+      <div style={{position: "relative"}}>
       <NavBar setTheUser={this.setTheUser} {...this.props} loggedInUser={this.state.loggedInUser} refreshPage={this.refreshPage}/>
       <Switch>
           { this.state.refreshUrl && <Redirect push to={this.state.refreshUrl} onLoad={this.refreshPage('')} ></Redirect>}
@@ -80,6 +79,8 @@ class App extends Component {
           <Route path="/order/thankyou/:orderId" render={props => <ThankYou setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props} />} />
         </Switch>
         <Footer/>
+      </div>
+      
         
       
       
