@@ -12,7 +12,8 @@
 
 .accountContent{
     background-color: white;
-    height: fit-content;
+    height: 90vh;
+    overflow: scroll;
 }
 
 
