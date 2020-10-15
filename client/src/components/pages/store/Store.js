@@ -45,7 +45,7 @@ class Store extends Component {
         return (
             <>
                 <Container className="page d-flex flex-column justify-content-center">
-                    <Jumbotron className="p-0 mb-0">
+                    <Jumbotron className="pt-3 mb-0">
                         <img src={this.state.store.heroPicUrl} alt={this.state.store.storeName} style={{width:"100%", objectFit:"cover", objectPosition:"center", height:300}}/>
                     </Jumbotron>
                     <h1 className="text-center mb-4" style={{fontFamily:"'open sans', 'sans-serif'"}}>{this.state.store.storeName}</h1>
