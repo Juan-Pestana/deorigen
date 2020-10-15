@@ -18,7 +18,7 @@ import './index.css'
 
 const Index = () => {
     return (
-        <Container className="page pb-5 index">
+        <Container className="page index">
             <h1 className='text-center'><img src={logo} alt="Logo De Origen" style={{width : '50%'}}/> </h1>
         
             <ControlledCarousel />

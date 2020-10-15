@@ -51,8 +51,7 @@ class PaymentInfoForm extends Component {
             .isLoggedIn()
             .then(response => this.setState({ loggedInUser: response.data }))
             .catch(err => {
-                this.setState({ loggedInUser: null })
-
+                this.props.history.push('/login') 
             })
         }
 
@@ -104,11 +103,14 @@ class PaymentInfoForm extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault()
-
+        this.state.loggedInUser
+            ?
         this.orderService
             .checkPayment({paymentInfo: this.state.payment, amount: this.state.total})
             .then(reponse => this.setState({ isClosed: true}, () => this.recordNewOrder()))
             .catch(err => console.log('Error:', err))
+            :
+        this.props.history.push('/login')    
 
     }
 
@@ -123,7 +125,7 @@ class PaymentInfoForm extends Component {
                 this.props.history.push(`order/thankyou/${orderId}`)
             })
             .catch(err => console.log('Error:', err))
-                //this.props.history.push(`order/thankyou/${response.data._id}`))
+                
 
     }
     

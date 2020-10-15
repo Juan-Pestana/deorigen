@@ -41,7 +41,7 @@ class StoreList extends Component {
 
     render() {
         return (
-            <Container className="px-1 px-md-3 px-lg-5 pb-5 page">
+            <Container className="px-1 px-md-3 px-lg-5 page">
                 <h1>Nuestros Productores</h1>
                 <Row className="justify-content-between">
                     <Col  className="searchBar">

@@ -37,6 +37,7 @@ router.get('/getOneOrder/:order_id', (req, res) => {
 
 router.post('/newOrder', (req, res) => {
     const owner = req.body.loggedInUser
+    console.log(req.body.loggedInUser)
     const productList = req.body.productList.map(elm => { 
         return {product : elm.product._id, quantity : elm.quantity }
     })
@@ -45,9 +46,10 @@ router.post('/newOrder', (req, res) => {
     const dateString = new Date().toLocaleString('es-ES')
 
     let newOrderId = ''
-
-    Order.create({owner: owner.id, productList, subtotal, shipping, total, isClosed, payment, dateString })
+    console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&',owner._id, productList, subtotal, shipping, total, isClosed, payment, dateString )
+    Order.create({owner: owner._id, productList, subtotal, shipping, total, isClosed, payment, dateString })
         .then(response => {
+            console.log('*************************************************************************',response)
             newOrderId = response._id.toHexString()
             owner.orderHistory.unshift(newOrderId)
         })
