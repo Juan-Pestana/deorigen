@@ -41,7 +41,7 @@ class PaymentInfoForm extends Component {
 
     componentDidMount = () => {
         this.fetchUser() 
-        this.loadProductsFromLocalStorage()
+        // this.loadProductsFromLocalStorage()
     }
     
     //Initialize State
@@ -49,7 +49,7 @@ class PaymentInfoForm extends Component {
     fetchUser = () => {
         this.authService
             .isLoggedIn()
-            .then(response => this.setState({ loggedInUser: response.data }))
+            .then(response => this.setState({ loggedInUser: response.data }), ()=> this.loadProductsFromLocalStorage())
             .catch(err => console.log('Error:', err))
         }
 
