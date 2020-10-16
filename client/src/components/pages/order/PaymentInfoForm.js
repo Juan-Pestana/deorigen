@@ -30,7 +30,8 @@ class PaymentInfoForm extends Component {
                 expiry: '',
                 cvc: ''
                 },
-            isClosed: false
+            isClosed: false,
+            loggedInUser: {}
             
         }
         this.userService = new userService()
