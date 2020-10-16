@@ -50,9 +50,7 @@ class PaymentInfoForm extends Component {
         this.authService
             .isLoggedIn()
             .then(response => this.setState({ loggedInUser: response.data }))
-            .catch(err => {
-                this.props.history.push('/login') 
-            })
+            .catch(err => console.log('Error:', err))
         }
 
     loadProductsFromLocalStorage = () =>{
