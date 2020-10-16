@@ -101,14 +101,14 @@ class PaymentInfoForm extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault()
-        this.state.loggedInUser
-            ?
+        // this.state.loggedInUser
+        //     ?
         this.orderService
             .checkPayment({paymentInfo: this.state.payment, amount: this.state.total})
             .then(reponse => this.setState({ isClosed: true}, () => this.recordNewOrder()))
             .catch(err => console.log('Error:', err))
-            :
-        this.props.history.push('/login')    
+        //     :
+        // this.props.history.push('/login')    
 
     }
 
