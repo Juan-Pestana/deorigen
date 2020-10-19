@@ -103,8 +103,10 @@ class StoreSettingsForm extends Component {
 
 
     setLocation = location => {
-        this.setState({location})
-    }
+        this.setState({
+            store: { ...this.state.store, location: location }
+        }
+    )}
 
 
 
