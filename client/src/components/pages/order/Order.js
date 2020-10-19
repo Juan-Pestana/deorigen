@@ -55,7 +55,7 @@ class Order extends Component {
                 {this.state.show === 'Cart' && <Cart user={this.props.loggedInUser} {...this.props} setShow={this.setShow} closing={true}></Cart>}   
                 {this.state.show === 'PersonalInfo' && <PersonalInfo user={this.props.loggedInUser} {...this.props} setShow={this.setShow} closing={true}></PersonalInfo>}  
                 {this.state.show === 'PersonalInfoForm' && <PersonalInfoForm user={this.props.loggedInUser} {...this.props}  setShow={this.setShow} closing={true}></PersonalInfoForm>}         
-                {this.state.show === 'PaymentInfoForm' && <PaymentInfoForm {...this.props} setShow={this.setShow}></PaymentInfoForm>} 
+                {this.state.show === 'PaymentInfoForm' && <PaymentInfoForm  loggedInUser={this.state.loggedInUser} {...this.props} setShow={this.setShow}></PaymentInfoForm>} 
             </div>
         </Row>    
             
