@@ -33,7 +33,7 @@ export default class PayProductCard  extends Component  {
                 <Modal.Title>Tu Pedido</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {this.props.productList.map(elm =><p key={elm._id}>{elm.quantity} x {elm.product.productName}. {elm.product.format}</p>)}
+                    {this.props.productList.map(elm =><p key={elm._id} > {elm.quantity} x {elm.product.productName}. {elm.product.format}</p>)}
                 </Modal.Body>
             </Modal>
             </>
