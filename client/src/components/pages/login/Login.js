@@ -36,7 +36,7 @@ class Login extends Component {
             })
             .catch(err => {
                 this.setState({errorMessage : err.response.data.message})
-                console.log('Erroooooor:', { err })})
+                console.log('Error:', { err })})
     }
 
     handleLink = () => {

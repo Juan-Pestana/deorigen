@@ -38,7 +38,7 @@ class AllUsers extends Component {
     this.userService
             .getAllUsers()
             .then(response => {
-                console.log('estos son los usuarios', response.data)
+                
                 this.setState({users : response.data, usersCopy : response.data})})
             .catch(err => console.log('Error:', err))
 

@@ -43,7 +43,7 @@ class Signup extends Component {
             })
             .catch(err =>{
             err.response.data.message && this.setState({errorMessage : err.response.data.message})
-                console.log('Error:', { err })
+               
             } )
     }
 
@@ -54,13 +54,10 @@ class Signup extends Component {
 
 
     render() {
-        console.log(this.props)
+    
         return (
 
-            // <Container>
-            //     <main>
-            //         <Row className="justify-content-center">
-            //             <Col md={{ span: 5 }}>
+ 
             <>
                             
                             <Form onSubmit={this.handleFormSubmit}>

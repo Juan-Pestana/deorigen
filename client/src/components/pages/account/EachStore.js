@@ -47,7 +47,7 @@ class EachUser extends Component {
 
 
     render() {
-        console.log(this.props)
+
         return (
             <>
             <div className='row'>

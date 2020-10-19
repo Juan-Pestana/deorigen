@@ -39,7 +39,7 @@ class Account extends Component {
 
             
             this.setState({user : this.props.loggedInUser}, ()=>{
-                console.log(this.state.user)
+              
                 this.setStore()
             })     
     }
@@ -61,12 +61,12 @@ class Account extends Component {
 
 
     setShow = (pageShow) => {
-        console.log('cambia a ', pageShow)
+      
         this.setState({show : pageShow})
     }
 
     productToEdit = id =>{
-        console.log('este es el id', id)
+       
         this.setState({productToEdit : id}, this.setShow('EditProduct'))
     }
 

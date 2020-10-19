@@ -41,7 +41,7 @@ class ProductCard extends Component {
         let cartLocalStorage = JSON.parse(localStorage.getItem('deOrigenCart'))
         let itemExists = false
 
-        console.log(cartLocalStorage)
+ 
         
         cartLocalStorage.forEach(elm => {
                 if (elm.product === productId) {

@@ -59,7 +59,7 @@ class CreateProductForm extends Component {
                     .updateStore(this.state.store._id, this.state.store)     
             } )
             .then(() => this.props.setShow('StoreSettings'))
-            .catch(err => console.log('Erroro!!', { err }))
+            .catch(err => console.log('Error!!', { err }))
     }
 
     productPicUpload = e => {
@@ -68,11 +68,11 @@ class CreateProductForm extends Component {
         const uploadData = new FormData()
         uploadData.append( 'imageUrl', e.target.files[0])
 
-        console.log(uploadData)
+       
         this.filesService
             .uploadImage(uploadData)
             .then(response => {
-                console.log(response)
+               
                 this.setState({ 
                     product: {...this.state.product, productPicUrl : response.data.secure_url}
                 })

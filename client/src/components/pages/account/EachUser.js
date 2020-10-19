@@ -55,24 +55,23 @@ class EachUser extends Component {
         this.storeService
             .newStore(this.props._id, newStore)
             .then(response => {
-                console.log('que coño pasa???')
                 this.setState({store : response.data.store })})
             .then(()=>this.props.setShow('AllUsers'))
-            .catch(err => console.log('Erroro!!', { err }))
+            .catch(err => console.log('Error!!', { err }))
     }else if (this.state.role === 'buyer' && this.state.store ){
         this.storeService
             .deleteStore(this.state.store)
             .then(()=> this.setState({store : undefined}))
             .then(()=>this.props.setShow('AllUsers'))
-            .catch(err => console.log('Erroro!!', { err }))
+            .catch(err => console.log('Error!!', { err }))
     }else if(this.state.role === "admin"){
         this.userService
             .updateUser(this.props.id, this.state )
             .then(()=>this.setState({role : 'admin'}))
             .then(()=>this.props.setShow('AllUsers'))
-            .catch(err => console.log('Erroro!!', { err }))
+            .catch(err => console.log('Error!!', { err }))
     } else {
-        console.log('no hay cambios')
+     
         this.props.setShow('AllUsers')
     }
 
@@ -83,7 +82,7 @@ class EachUser extends Component {
 
 
     render() {
-        console.log(this.props)
+
         return (
             <>
             <div className='row'>

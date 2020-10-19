@@ -36,11 +36,11 @@ class EditProduct extends Component {
     componentDidMount = () => this.setProduct()
 
     setProduct = () => {
-            console.log('este es el id', this.props.product)
+         
         this.productService
             .getOneProduct(this.props.product)
             .then(response => this.setState({...response.data}))
-            .catch(err => console.log('Erroro!!', { err }))
+            .catch(err => console.log('Error!!', { err }))
 
     }
 
@@ -66,17 +66,16 @@ class EditProduct extends Component {
         const uploadData = new FormData()
         uploadData.append( 'imageUrl', e.target.files[0])
 
-        console.log(uploadData)
+      
         this.filesService
             .uploadImage(uploadData)
             .then(response => {
-                console.log(response)
                 this.setState({ 
                     product: {...this.state.product, productPicUrl : response.data.secure_url}
                 })
             })
 
-            .catch(err => console.log('Erroro!!', { err }))
+            .catch(err => console.log('Error!!', { err }))
     }
 
 

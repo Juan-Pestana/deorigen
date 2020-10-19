@@ -42,7 +42,7 @@ export class MapContainer extends Component {
         width: this.props.style.width,
         height: this.props.style.height
       }
-      console.log(this.state.center)
+   
 
     
 

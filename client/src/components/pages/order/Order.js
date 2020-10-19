@@ -33,7 +33,7 @@ class Order extends Component {
  
 
     setShow = (pageShow) => {
-        console.log('cambia a ', pageShow)
+  
         this.setState({show : pageShow})}
 
 

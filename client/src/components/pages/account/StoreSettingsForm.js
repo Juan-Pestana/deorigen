@@ -66,11 +66,11 @@ class StoreSettingsForm extends Component {
         const uploadData = new FormData()
         uploadData.append( 'imageUrl', e.target.files[0])
 
-        console.log(uploadData)
+  
         this.filesService
             .uploadImage(uploadData)
             .then(response => {
-                console.log(response)
+    
                 this.setState({
                     store: { ...this.state.store, contentPicUrl: response.data.secure_url },
                     uploadingImageC: null
@@ -87,11 +87,11 @@ class StoreSettingsForm extends Component {
         const uploadData = new FormData()
         uploadData.append( 'imageUrl', e.target.files[0])
 
-        console.log(uploadData)
+      
         this.filesService
             .uploadImage(uploadData)
             .then(response => {
-                console.log(response)
+             
                 this.setState({
                     store: { ...this.state.store, heroPicUrl: response.data.secure_url },
                     uploadingImageH: null
