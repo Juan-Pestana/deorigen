@@ -41,20 +41,14 @@ class PaymentInfoForm extends Component {
     }
 
     componentDidMount = () => {
-        this.fetchUser() 
+        this.setUser() 
         // this.loadProductsFromLocalStorage()
     }
     
     //Initialize State
 
-    fetchUser = () => {
-        this.authService
-            .isLoggedIn()
-            .then(response => {
-                this.setState({ loggedInUser: response.data }, () => this.loadProductsFromLocalStorage())
-            })
-            .catch(err => console.log('Error:', err))
-        }
+    setUser = () => this.setState({ loggedInUser: this.props.loggedInUser }, () => this.loadProductsFromLocalStorage())
+    
 
     loadProductsFromLocalStorage = () =>{
         let cartLocalStorage = JSON.parse(localStorage.getItem('deOrigenCart'))
@@ -104,15 +98,7 @@ class PaymentInfoForm extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault()
-        // this.state.loggedInUser
-        //     ?
-        this.orderService
-            .checkPayment({paymentInfo: this.state.payment, amount: this.state.total})
-            .then(reponse => this.setState({ isClosed: true}, () => this.recordNewOrder()))
-            .catch(err => console.log('Error:', err))
-        //     :
-        // this.props.history.push('/login')    
-
+        this.setState({ isClosed: true}, () => this.recordNewOrder())
     }
 
     recordNewOrder = () => {
