@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/override.css'
 import App from './components/App';
-import { HashRouter as Router } from 'react-router-dom'
+import { Browserrouter as Router } from 'react-router-dom'
 
 const appi = <script>${process.env.REACT_APP_API_URL}</script>
 
